@@ -16,7 +16,7 @@ services:
       AKSA_ALLOW_ANONYMOUS_CUSTOM_TEMPLATES: "${AKSA_ALLOW_ANONYMOUS_CUSTOM_TEMPLATES:-true}"
       AKSA_INSECURE: "${AKSA_INSECURE}"
       AKSA_PRIVATE_KEY: "${AKSA_PRIVATE_KEY}"
-      AKSA_SERVER_DATABASE_URL: "postgres://${POSTGRES_USER:-aksa}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-aksa}?sslmode=disable"
+      AKSA_SERVER_DATABASE_URL: "postgres://${POSTGRES_USER:-aksa}:${POSTGRES_PASSWORD:-aksa}@postgres:5432/${POSTGRES_DB:-aksa}?sslmode=disable"
       AKSA_SERVER_NATS_URL: "${AKSA_SERVER_NATS_URL:-nats://nats:4222}"
       # Redis variables (if set, backend uses Redis broker instead of NATS)
       AKSA_SERVER_REDIS_HOST: "${REDIS_HOST:-redis:6379}"
@@ -83,7 +83,7 @@ services:
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-aksa}
       POSTGRES_USER: ${POSTGRES_USER:-aksa}
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-aksa}"
     volumes:
       - postgres_data:/var/lib/postgresql
     healthcheck:

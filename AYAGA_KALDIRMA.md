@@ -1,14 +1,49 @@
 # Uygulamayı Ayağa Kaldırma (Windows / PowerShell)
 
-Bu doküman `scrumlr.io` projesini lokal ortamda hızlıca çalıştırmak içindir.
+Bu doküman `scrumlr.io` projesini **sadece Docker ile** lokal ortamda hızlıca çalıştırmak içindir.
 
 ## 1) Ön Koşullar
 
 - Docker Desktop (çalışır durumda)
 - PowerShell
-- (Opsiyonel) Node.js + Yarn (`yarn start` için)
+- Git (projeyi klonlamak için)
 
-## 2) Docker ile Tam Sistem (Önerilen)
+> Node.js veya Yarn gerekmez. Tüm servisler Docker içinde çalışır.
+
+## 2) 2 Dakikada Kurulum (Arkadaş Bilgisayarı İçin)
+
+### Adım 1: Projeyi klonla
+
+```powershell
+git clone https://github.com/arelbir/scrum-table.git
+```
+
+### Adım 2: Docker compose klasörüne gir
+
+```powershell
+cd .\scrum-table\deployment\docker
+```
+
+### Adım 3: Servisleri build edip başlat
+
+```powershell
+docker compose up -d --build
+```
+
+### Adım 4: Durumu kontrol et
+
+```powershell
+docker compose ps
+```
+
+### Adım 5: Uygulamayı aç
+
+- Uygulama: `http://localhost:3001`
+- Backend health: `http://localhost:3001/api`
+
+> Bu kurulumda `.env` zorunlu değildir. Varsayılan ayarlarla Postgres + Redis + NATS + Backend + Frontend + Caddy birlikte kalkar.
+
+## 3) Docker ile Tam Sistem (Alternatif Akış)
 
 > Bu yöntem frontend + backend + postgres + nats + caddy servislerini birlikte ayağa kaldırır.
 
@@ -45,7 +80,7 @@ docker compose ps
 
 ---
 
-## 3) Log ve Hata Kontrolü
+## 4) Log ve Hata Kontrolü
 
 ### Son loglar
 
@@ -62,7 +97,7 @@ docker compose logs --tail 200 aksa-backend
 
 ---
 
-## 4) Durdurma / Temizleme
+## 5) Durdurma / Temizleme
 
 ### Servisleri durdur
 
@@ -78,7 +113,7 @@ docker compose down -v
 
 ---
 
-## 5) Sık Karşılaşılan Sorunlar
+## 6) Sık Karşılaşılan Sorunlar
 
 ## A) PowerShell'de `&&` hatası
 
@@ -106,7 +141,7 @@ docker compose up -d --build
 
 ---
 
-## 6) Docker'sız Frontend Geliştirme (Opsiyonel)
+## 7) Docker'sız Frontend Geliştirme (Opsiyonel)
 
 Bu mod sadece frontend içindir:
 

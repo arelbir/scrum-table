@@ -6,13 +6,13 @@ import (
 	"errors"
 	"testing"
 
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/sessions"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/realtime"
 )
 
 func TestGetUser(t *testing.T) {
@@ -961,3 +961,4 @@ func TestDeleteUser_DatabaseError(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Equal(t, common.InternalServerError, err)
 }
+

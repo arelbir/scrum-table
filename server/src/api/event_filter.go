@@ -4,15 +4,15 @@ import (
 	"slices"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/boards"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/technical_helper"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/boards"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/technical_helper"
+	"aksa.local/scrum/server/votings"
 )
 
 func (bs *BoardSubscription) eventFilter(event *realtime.BoardEvent, userID uuid.UUID) *realtime.BoardEvent {
@@ -275,3 +275,4 @@ func eventInitFilter(event InitEvent, clientID uuid.UUID) InitEvent {
 		},
 	}
 }
+

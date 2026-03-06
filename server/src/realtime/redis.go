@@ -10,7 +10,7 @@ import (
 	"github.com/redis/go-redis/v9"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
 type redisClient struct {
@@ -66,12 +66,12 @@ func decodeEvent(data string, into interface{}) error {
 }
 
 func (r *redisClient) Publish(ctx context.Context, subject string, event interface{}) error {
-	ctx, span := tracer.Start(ctx, "scrumlr.realtime.redis.publish")
+	ctx, span := tracer.Start(ctx, "aksa.realtime.redis.publish")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
 	span.SetAttributes(
-		attribute.String("scrumlr.realtime.redis.publish.subject", subject),
+		attribute.String("aksa.realtime.redis.publish.subject", subject),
 	)
 
 	payload, err := encodeEvent(event)
@@ -93,12 +93,12 @@ func (r *redisClient) Publish(ctx context.Context, subject string, event interfa
 }
 
 func (r *redisClient) SubscribeToBoardSessionEvents(ctx context.Context, subject string) (chan *BoardSessionRequestEventType, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.realtime.redis.subscribe.session")
+	ctx, span := tracer.Start(ctx, "aksa.realtime.redis.subscribe.session")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
 	span.SetAttributes(
-		attribute.String("scrumlr.realtime.redis.subscribe.session.subject", subject),
+		attribute.String("aksa.realtime.redis.subscribe.session.subject", subject),
 	)
 
 	pubsub := r.con.Subscribe(ctx, subject)
@@ -140,12 +140,12 @@ func (r *redisClient) SubscribeToBoardSessionEvents(ctx context.Context, subject
 }
 
 func (r *redisClient) SubscribeToBoardEvents(ctx context.Context, subject string) (chan *BoardEvent, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.realtime.redis.subscribe.board")
+	ctx, span := tracer.Start(ctx, "aksa.realtime.redis.subscribe.board")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
 	span.SetAttributes(
-		attribute.String("scrumlr.realtime.redis.subscribe.board.subject", subject),
+		attribute.String("aksa.realtime.redis.subscribe.board.subject", subject),
 	)
 
 	retChannel := make(chan *BoardEvent)
@@ -184,3 +184,5 @@ func (r *redisClient) SubscribeToBoardEvents(ctx context.Context, subject string
 	}()
 	return retChannel, nil
 }
+
+

@@ -17,13 +17,13 @@ func main() {
 }
 
 func run() error {
-	port, err := getEnvInt("SCRUMLR_SERVER_PORT", 8080)
+	port, err := getEnvInt("AKSA_SERVER_PORT", 8080)
 	if err != nil {
 		return err
 	}
 
-	address := getEnvString("SCRUMLR_SERVER_LISTEN_ADDRESS", "127.0.0.1")
-	basePath := getEnvString("SCRUMLR_BASE_PATH", "/")
+	address := getEnvString("AKSA_SERVER_LISTEN_ADDRESS", "127.0.0.1")
+	basePath := getEnvString("AKSA_BASE_PATH", "/")
 	if !strings.HasPrefix(basePath, "/") {
 		return fmt.Errorf("base path must start with '/'")
 	}
@@ -72,3 +72,4 @@ func getEnvInt(name string, defaultValue int) (int, error) {
 	}
 	return parsed, nil
 }
+

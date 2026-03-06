@@ -6,17 +6,17 @@ import (
 	"github.com/go-chi/render"
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/boardreactions"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/boardreactions"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
 )
 
-//var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+//var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 // createBoardReaction creates a new board reaction
 func (s *Server) createBoardReaction(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.board_reactions.api.create")
+	ctx, span := tracer.Start(r.Context(), "aksa.board_reactions.api.create")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -40,3 +40,5 @@ func (s *Server) createBoardReaction(w http.ResponseWriter, r *http.Request) {
 	render.Status(r, http.StatusCreated)
 	render.Respond(w, r, nil)
 }
+
+

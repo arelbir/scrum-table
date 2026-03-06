@@ -3,15 +3,15 @@ package boards
 import (
 	"time"
 
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/sessions"
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/sessionrequests"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/sessionrequests"
+	"aksa.local/scrum/server/votings"
 )
 
 type DatabaseBoard struct {
@@ -79,3 +79,4 @@ type DatabaseFullBoard struct {
 	Votings              []votings.DatabaseVoting
 	Votes                []votings.DatabaseVote
 }
+

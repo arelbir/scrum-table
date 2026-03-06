@@ -10,7 +10,7 @@ import {AccessPolicySelection} from "components/AccessPolicySelection";
 import {TextInputLabel} from "components/TextInputLabel";
 import {TextInput} from "components/TextInput";
 import {LegacyButton} from "components/Button";
-import {ScrumlrLogo} from "components/ScrumlrLogo";
+import {AksaLogo} from "components/AksaLogo";
 import {PassphraseModal} from "components/PassphraseDialog/PassphraseModal/PassphraseModal";
 import {legacyColumnTemplates} from "./legacyColumnTemplates";
 import "./LegacyNewBoard.scss";
@@ -136,7 +136,7 @@ export const LegacyNewBoard = () => {
       <div className="new-board">
         <div>
           <a href="/" aria-label="Homepage">
-            <ScrumlrLogo />
+            <AksaLogo />
           </a>
 
           {!extendedConfiguration && (
@@ -244,3 +244,4 @@ export const LegacyNewBoard = () => {
     </div>
   );
 };
+

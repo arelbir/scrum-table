@@ -5,7 +5,7 @@ import classNames from "classnames";
 import {useTranslation} from "react-i18next";
 import {Avatar} from "components/Avatar";
 import {Portal} from "components/Portal";
-import {ScrumlrLogo} from "components/ScrumlrLogo";
+import {AksaLogo} from "components/AksaLogo";
 import {useAppSelector, useAppDispatch} from "store";
 import {dialogTransitionConfig} from "utils/transitionConfig";
 import {ArrowLeft, Close, Logout} from "components/Icon";
@@ -131,7 +131,7 @@ export const SettingsDialog = (props: SettingsDialogProps) => {
               style={styles}
             >
               <div className="settings-dialog__sidebar">
-                <ScrumlrLogo className="settings-dialog__scrumlr-logo" />
+                <AksaLogo className="settings-dialog__aksa-logo" />
                 {/* render all menu items */}
                 <nav className="settings-dialog__navigation">{MENU_ENTRIES.map((menuEntry) => renderMenuItem(menuEntry))}</nav>
                 <button className="navigation__item navigation__item--logout accent-color__poker-purple" type="button" onClick={handleLogout}>
@@ -159,3 +159,4 @@ export const SettingsDialog = (props: SettingsDialogProps) => {
     </Portal>
   );
 };
+

@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
 )
 
 type DatabaseVotingTestSuite struct {
@@ -326,3 +326,4 @@ func (suite *DatabaseVotingTestSuite) seedVotes(db *bun.DB) {
 		}
 	}
 }
+

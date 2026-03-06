@@ -9,7 +9,7 @@ import (
 	"github.com/testcontainers/testcontainers-go/modules/nats"
 	"github.com/testcontainers/testcontainers-go/modules/redis"
 
-	"scrumlr.io/server/initialize"
+	"aksa.local/scrum/server/initialize"
 )
 
 type RealtimeHealthTestSuite struct {
@@ -85,3 +85,4 @@ func (suite *RealtimeHealthTestSuite) Test_Redis_WrongUrl() {
 
 	assert.False(t, healthy)
 }
+

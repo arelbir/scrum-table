@@ -116,7 +116,7 @@ exports[`Feedback should match snapshot 1`] = `
       <input
         class="feedback-form__contact-input"
         name="contact"
-        placeholder="stan@scrumlr.io"
+        placeholder="stan@aksa.local"
       />
     </button>
     <button
@@ -128,3 +128,4 @@ exports[`Feedback should match snapshot 1`] = `
   </form>
 </div>
 `;
+

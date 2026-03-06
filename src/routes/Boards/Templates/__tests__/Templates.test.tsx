@@ -9,7 +9,7 @@ const mockedTemplateWithColumns = mergeTemplateAndColumns(templatesPreloaded, te
 jest.mock("api", () => ({API: {getTemplates: jest.fn()}}));
 
 // thunks are currently not supported within our test utils.
-// wait for https://github.com/inovex/scrumlr.io/issues/5079
+// TODO: enable when related issue is resolved.
 describe.skip("Templates", () => {
   beforeEach(() => {
     (API.getTemplates as jest.Mock).mockImplementation(() => Promise.resolve(mockedTemplateWithColumns));
@@ -298,3 +298,5 @@ describe("Templates - Anonymous Board Creation", () => {
     // This is the opposite of showCustomTemplates - when templates are hidden, arrows are shown
   });
 });
+
+

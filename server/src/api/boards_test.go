@@ -9,20 +9,20 @@ import (
 	"testing"
 	"time"
 
-	"scrumlr.io/server/hash"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/hash"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/technical_helper"
 
-	"scrumlr.io/server/boards"
+	"aksa.local/scrum/server/boards"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/suite"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/sessionrequests"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/sessionrequests"
 )
 
 type BoardTestSuite struct {
@@ -460,3 +460,4 @@ func (suite *BoardTestSuite) TestIncrementTimer() {
 		})
 	}
 }
+

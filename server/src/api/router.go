@@ -5,20 +5,20 @@ import (
 	"os"
 	"time"
 
-	"scrumlr.io/server/websocket"
+	"aksa.local/scrum/server/websocket"
 
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/users"
 
-	"scrumlr.io/server/boards"
+	"aksa.local/scrum/server/boards"
 
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/votings"
 
-	"scrumlr.io/server/boardreactions"
-	"scrumlr.io/server/boardtemplates"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/columntemplates"
-	"scrumlr.io/server/notes"
+	"aksa.local/scrum/server/boardreactions"
+	"aksa.local/scrum/server/boardtemplates"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/columntemplates"
+	"aksa.local/scrum/server/notes"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -32,13 +32,13 @@ import (
 
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 
-	"scrumlr.io/server/auth"
-	"scrumlr.io/server/feedback"
-	"scrumlr.io/server/health"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessionrequests"
+	"aksa.local/scrum/server/auth"
+	"aksa.local/scrum/server/feedback"
+	"aksa.local/scrum/server/health"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessionrequests"
 )
 
 type Server struct {
@@ -114,7 +114,7 @@ func New(
 	r.Use(middleware.RequestID)
 	r.Use(logger.RequestIDMiddleware)
 	r.Use(render.SetContentType(render.ContentTypeJSON))
-	r.Use(otelhttp.NewMiddleware("scrumlr"))
+	r.Use(otelhttp.NewMiddleware("aksa"))
 
 	if !checkOrigin {
 		r.Use(cors.Handler(cors.Options{
@@ -168,7 +168,7 @@ func New(
 	// see https://github.com/markbates/goth/pull/141
 	if s.experimentalFileSystemStore {
 		logger.Get().Infow("using experimental file system store")
-		store := gorillaSessions.NewFilesystemStore(os.TempDir(), []byte("scrumlr.io"))
+		store := gorillaSessions.NewFilesystemStore(os.TempDir(), []byte("aksa.local"))
 		store.MaxLength(0x8000) // 32KB should be plenty of space
 		gothic.Store = store
 	}
@@ -379,3 +379,5 @@ func (s *Server) initBoardReactionResources(r chi.Router) {
 		r.Post("/", s.createBoardReaction)
 	})
 }
+
+

@@ -12,13 +12,13 @@ import (
 	"github.com/stretchr/testify/suite"
 	"github.com/testcontainers/testcontainers-go/modules/nats"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/initialize"
-	"scrumlr.io/server/initialize/testDbTemplates"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/initialize"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessions"
 )
 
 type UserServiceIntegrationTestsuite struct {
@@ -306,3 +306,4 @@ func (suite *UserServiceIntegrationTestsuite) seedUsersTestData(db *bun.DB) {
 		log.Fatalf("Failed to insert Update user session: %s", err)
 	}
 }
+

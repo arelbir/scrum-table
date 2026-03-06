@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 type ColumnVisability struct {
@@ -51,3 +51,4 @@ func (n NoteSlice) hideOtherAuthors(userID uuid.UUID, showAuthors bool, visibleN
 		}
 	}
 }
+

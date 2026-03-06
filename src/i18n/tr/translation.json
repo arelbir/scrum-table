@@ -1,0 +1,777 @@
+﻿{
+  "InfoBar": {
+    "ReturnToPresentedNote": "Sunulan nota d\u00f6n",
+    "VotingIsAnonymous": "Oylama anonim",
+    "VotingIsNotAnonymous": "Oylama anonim de\u011fil"
+  },
+  "LegacyNewBoard": {
+    "boardName": "Pano ad\u0131",
+    "createNewBoard": "Yeni pano olu\u015ftur",
+    "extendedConfigurationButton": "Geli\u015fmi\u015f yap\u0131land\u0131rma",
+    "basicConfigurationButton": "\u015eablon se\u00e7imi",
+    "extendedConfigurationTitle": "Geli\u015fmi\u015f yap\u0131land\u0131rma",
+    "basicConfigurationTitle": "Bir \u015fablon se\u00e7",
+    "importBoard": "JSON i\u00e7e aktar",
+    "uploadFile": "Dosya y\u00fckle veya buraya s\u00fcr\u00fckle",
+    "importNewBoard": "\u015eimdi i\u00e7e aktar"
+  },
+  "Templates": {
+    "switchTitle": "\u015eablonlar",
+    "title": "Bir \u015fablon se\u00e7",
+    "savedTemplates": "\u015eablonlar\u0131m",
+    "recommendedTemplates": "\u00d6nerilerimiz",
+    "CreateTemplateCard": {
+      "create": "Yeni bir \u015fablon olu\u015ftur"
+    },
+    "TemplateCard": {
+      "addFavourite": "Favoriye ekle",
+      "removeFavourite": "Favoriden kald\u0131r",
+      "column_one": "{{count}} s\u00fctun",
+      "column_other": "{{count}} s\u00fctun",
+      "start": "Ba\u015flat",
+      "save": "Kaydet",
+      "signInToCreateBoards": "Pano olu\u015fturmak i\u00e7in bir kimlik sa\u011flay\u0131c\u0131 ile giri\u015f yap\u0131n."
+    },
+    "TemplateEditor": {
+      "createTitle": "\u015eablon olu\u015ftur",
+      "editTitle": "\u015eablonu d\u00fczenle",
+      "cancel": "\u0130ptal",
+      "saveEdit": "Kaydet",
+      "saveCreate": "\u015eablon olu\u015ftur",
+      "info": "De\u011fi\u015fiklikler, panoda dahil olmak \u00fczere her zaman yap\u0131labilir."
+    },
+    "ColumnsConfiguratorColumn": {
+      "defaultColumnName": "S\u00fctun 1",
+      "defaultActionsName": "Aksiyonlar",
+      "indexedColumnName": "S\u00fctun {{index}}",
+      "namePlaceholder": "Ba\u015fl\u0131k",
+      "descriptionPlaceholder": "A\u00e7\u0131klama (iste\u011fe ba\u011fl\u0131)",
+      "save": "Kaydet",
+      "cancel": "\u0130ptal"
+    },
+    "AccessSettings": {
+      "title": "Eri\u015fim Ayarlar\u0131",
+      "Options": {
+        "Public": {
+          "title": "A\u00e7\u0131k",
+          "description": "Kat\u0131l\u0131mc\u0131lar ba\u011flant\u0131 \u00fczerinden h\u0131zl\u0131ca kat\u0131labilir \u2013 temel g\u00fcvenlik sa\u011flar."
+        },
+        "By_Invite": {
+          "title": "Onay",
+          "description": "Kat\u0131l\u0131mc\u0131lar kat\u0131lmadan \u00f6nce onaylan\u0131r \u2013 y\u00fcksek g\u00fcvenlik sa\u011flar."
+        },
+        "By_Passphrase": {
+          "title": "Parola korumal\u0131",
+          "description": "Eri\u015fim sadece belirlenen parola ile m\u00fcmk\u00fcnd\u00fcr \u2013 y\u00fcksek g\u00fcvenlik sa\u011flar.",
+          "inputPlaceholder": "Parola girin",
+          "hint": "Parola daha sonra ayarlardan de\u011fi\u015ftirilebilir."
+        }
+      },
+      "Buttons": {
+        "cancel": "Geri d\u00f6n",
+        "start": "Oturumu ba\u015flat"
+      }
+    }
+  },
+  "Sessions": {
+    "switchTitle": "Oturumlar",
+    "title": "Bir oturum se\u00e7"
+  },
+  "CreateBoard": {
+    "title": "Yeni pano olu\u015ftur",
+    "dropdown": {
+      "open": "A\u00e7\u0131k",
+      "password": "Parola",
+      "approval": "Onay"
+    },
+    "validation": {
+      "REQUIRED": "Bu alan zorunludur."
+    }
+  },
+  "LoginBoard": {
+    "title": "Giri\u015f yap",
+    "subtitleLogin": "Giri\u015f yap\u0131n ve avantajlardan yararlan\u0131n",
+    "loginFeature1": "\u00d6zel \u015fablonlar olu\u015fturup kaydedin",
+    "loginFeature2": "\u00d6zel ayarlar profilinize kaydedilir",
+    "subtitleAnonymous": "Anonim giri\u015f",
+    "anonymousLogin": "Avantajs\u0131z \u015fekilde anonim kat\u0131l",
+    "noLoginAvailable": "Ge\u00e7erli bir giri\u015f y\u00f6ntemi yok",
+    "dividerWord": "veya",
+    "login": "Anonim devam et",
+    "acceptTerms": "Kay\u0131t olarak <terms>Kullan\u0131m \u015eartlar\u0131</terms> ve <privacy>Gizlilik Politikas\u0131</privacy>'n\u0131 kabul edersiniz.",
+    "generateRandomName": "Rastgele isim \u00fcret"
+  },
+  "AccessPolicy": {
+    "PUBLIC": "A\u00e7\u0131k",
+    "BY_PASSPHRASE": "Parola korumal\u0131",
+    "BY_INVITE": "Kapal\u0131"
+  },
+  "BoardGuard": {
+    "incorrectPassphrase": "Parola yanl\u0131\u015f.",
+    "reject": "Reddedildiniz.",
+    "returnToHomepage": "Ana sayfaya d\u00f6n",
+    "waitingForApproval": "Onay bekleniyor."
+  },
+  "AuthRedirect": {
+    "error": "Ops! Giri\u015f ba\u015far\u0131s\u0131z, l\u00fctfen tekrar deneyin."
+  },
+  "AccessPolicySelection": {
+    "title": "Eri\u015fim politikas\u0131",
+    "publicTitle": "A\u00e7\u0131k",
+    "byPassphraseTitle": "Korumal\u0131",
+    "manualVerificationTitle": "Manuel onay",
+    "passphrase": "Parola",
+    "public": "URL ile ek do\u011frulama olmadan eri\u015fim. URL'ler tahmin edilmesi zor oldu\u011fundan \u00e7o\u011fu oturum i\u00e7in yeterlidir.",
+    "byPassphrase": "URL ve parola ile eri\u015fim. Hassas veri yaz\u0131lacaksa ve e\u015fzamanl\u0131 \u00e7al\u0131\u015f\u0131lmayacaksa uygundur.",
+    "manualVerification": "Pano y\u00f6neticileri her eri\u015fim iste\u011fini tek tek onaylar veya reddeder. Bu politika en g\u00fcvenlisidir.",
+    "generatePassphrase": "Rastgele parola \u00fcret",
+    "copyPassphraseToClipboard": "Parolay\u0131 panoya kopyala",
+    "passphraseValidationError": "Parola belirlenmeli",
+    "togglePassphraseVisibility": "Parola g\u00f6r\u00fcn\u00fcrl\u00fc\u011f\u00fcn\u00fc de\u011fi\u015ftir"
+  },
+  "BoardHeader": {
+    "returnToHomepage": "Ana sayfaya d\u00f6n",
+    "showParticipants": "Kat\u0131l\u0131mc\u0131lar\u0131 g\u00f6ster",
+    "showAllBoardSettings": "T\u00fcm pano ayarlar\u0131n\u0131 g\u00f6ster",
+    "showProfileSettings": "Profil ayarlar\u0131n\u0131 g\u00f6ster"
+  },
+  "ConfirmationDialog": {
+    "returnToHomepage": "Bu oturumu b\u0131rak\u0131p ana sayfaya d\u00f6nmek istedi\u011finize emin misiniz?",
+    "deleteBoard": "Bu panoyu silmek istedi\u011finize kesinlikle emin misiniz?",
+    "deleteNote": "Bu notu silmek istedi\u011finize emin misiniz?",
+    "deleteNoteButton": "Notu sil",
+    "deleteStackButton": "Y\u0131\u011f\u0131n\u0131 sil",
+    "deleteOptions": "Neyi silmek istiyorsunuz?",
+    "banParticipant": "'{{user}}' adl\u0131 kat\u0131l\u0131mc\u0131y\u0131 oturumdan kald\u0131rmak istedi\u011finize emin misiniz?",
+    "unbanParticipant": "'{{user}}' adl\u0131 kat\u0131l\u0131mc\u0131n\u0131n yeniden kat\u0131lmas\u0131na izin vermek istedi\u011finize emin misiniz?",
+    "warning": "Bu i\u015flem geri al\u0131namaz.",
+    "yes": "Evet",
+    "no": "Hay\u0131r",
+    "cancel": "\u0130ptal",
+    "close": "Kapat"
+  },
+  "DeleteBoardOption": {
+    "warning": "Bu panoyu silmek istedi\u011finize kesinlikle emin misiniz? Bu i\u015flem geri al\u0131namaz.",
+    "button": "Panoyu sil"
+  },
+  "ExportBoardOption": {
+    "title": "Panoyu d\u0131\u015fa aktar",
+    "button": "Panoyu d\u0131\u015fa aktar",
+    "exportAsJson": "JSON olarak d\u0131\u015fa aktar",
+    "exportAsCSV": "CSV olarak d\u0131\u015fa aktar",
+    "openPrintView": "PDF d\u0131\u015fa aktar",
+    "exportToClipboard": "Markdown'\u0131 panoya kopyala",
+    "copyToClipboardSuccess": "Markdown kopyaland\u0131!",
+    "hintHiddenColumns": "A\u015fa\u011f\u0131daki s\u00fctunlar gizli ve d\u0131\u015fa aktar\u0131lmayacak:",
+    "hintHiddenNotes": "Di\u011fer kat\u0131l\u0131mc\u0131lar\u0131n notlar\u0131 gizli ve d\u0131\u015fa aktar\u0131lmayacak."
+  },
+  "PrintView": {
+    "Participants": "Kat\u0131l\u0131mc\u0131lar",
+    "GeneratedOn": "Olu\u015fturulma tarihi",
+    "ProvidedBy": "\u2665\uFE0F ile sunan",
+    "Notes": "Notlar",
+    "Votes": "Oylar",
+    "Print": "Yazd\u0131r",
+    "Close": "Kapat"
+  },
+  "MarkdownExport": {
+    "columns": "S\u00fctunlar",
+    "note": "Not",
+    "notes": "Notlar",
+    "participants": "Kat\u0131l\u0131mc\u0131lar",
+    "linkToBoard": "Pano ba\u011flant\u0131s\u0131",
+    "vote": "Oy",
+    "votes": "Oylar",
+    "stackSize": "Y\u0131\u011f\u0131n boyutu",
+    "showAuthorsDisabled": "Not yazarlar\u0131 gizli"
+  },
+  "ShareQrCodeOption": {
+    "title": "Oturumu Payla\u015f",
+    "button": "Panoyu payla\u015f",
+    "copyInviteURL": "Davet URL'sini kopyala",
+    "inviteUrlCopied": "Davet URL'si kopyaland\u0131",
+    "hint": "Parola pano ayarlar\u0131ndan de\u011fi\u015ftirilebilir."
+  },
+  "Column": {
+    "settings": "Ayarlar",
+    "editName": "Ad\u0131 de\u011fi\u015ftir",
+    "submitName": "Ad\u0131 onayla",
+    "resetName": "\u0130ptal",
+    "hideColumn": "S\u00fctunu gizle",
+    "showColumn": "S\u00fctunu g\u00f6ster",
+    "deleteColumn": "S\u00fctunu sil",
+    "addColumnLeft": "Sola s\u00fctun ekle",
+    "addColumnRight": "Sa\u011fa s\u00fctun ekle",
+    "hiddenColumn": "S\u00fctun t\u00fcm kat\u0131l\u0131mc\u0131lar i\u00e7in gizli",
+    "notes_one": "{{count}} not",
+    "notes_other": "{{count}} not",
+    "color": "Rengi de\u011fi\u015ftir",
+    "Header": {
+      "descriptionPlaceholder": "A\u00e7\u0131klama ekle (iste\u011fe ba\u011fl\u0131)"
+    }
+  },
+  "ErrorPage": {
+    "navigateHome": "Ana sayfa",
+    "navigateBack": "Geri d\u00f6n"
+  },
+  "NotFoundPage": {
+    "title": "Hata!",
+    "descriptionLine1": "Bu sayfa mevcut de\u011fil.",
+    "descriptionLine2": "Ana sayfaya geri d\u00f6n.",
+    "navigateHome": "Ana sayfaya d\u00f6n"
+  },
+  "JoinRequest": {
+    "title": "Kat\u0131lmak istiyor",
+    "accept": "Kabul et",
+    "reject": "Reddet"
+  },
+  "RaiseRequest": {
+    "title": "El kald\u0131r\u0131yor",
+    "lower": "Eli indir"
+  },
+  "Request": {
+    "title": "Biri kat\u0131lmak istiyor / el kald\u0131rd\u0131"
+  },
+  "LoginProviders": {
+    "signInWithGoogle": "Google ile giri\u015f yap",
+    "signInWithGitHub": "GitHub ile giri\u015f yap",
+    "signInWithMicrosoft": "Microsoft ile giri\u015f yap",
+    "signInWithAzureAd": "Azure AD ile giri\u015f yap",
+    "signInWithApple": "Apple ile giri\u015f yap",
+    "signInWithOIDC": "OpenID Connect ile giri\u015f yap"
+  },
+  "NoteInput": {
+    "placeholder": "Notunu ekle...",
+    "imageInfo": "Bu ba\u011flant\u0131 g\u00f6rsel olarak eklenecek!",
+    "create": "Not olu\u015ftur"
+  },
+  "PassphraseDialog": {
+    "showPassword": "Parolay\u0131 g\u00f6ster",
+    "hidePassword": "Parolay\u0131 gizle",
+    "label": "Bu panoyu a\u00e7mak i\u00e7in parolay\u0131 girin",
+    "submit": "Panoyu a\u00e7",
+    "inputPlaceholder": "Parola",
+    "incorrectPassphrase": "Ops, parola do\u011fru de\u011fil. Tekrar deneyin."
+  },
+  "PassphraseModal": {
+    "title": "Yeni parola ata",
+    "continuePublic": "Parolas\u0131z devam et",
+    "newPassword": "Panoyu a\u00e7",
+    "info": "Bu pano daha \u00f6nce parola korumal\u0131yd\u0131. Koruma i\u00e7in yeni parola girin veya parolas\u0131z devam edin. T\u00fcm ayarlar her zaman de\u011fi\u015ftirilebilir.",
+    "submit": "Panoyu a\u00e7",
+    "inputPlaceholder": "Parola",
+    "showPassword": "Parolay\u0131 g\u00f6ster"
+  },
+  "Timer": {
+    "endTimer": "Zamanlay\u0131c\u0131y\u0131 bitir",
+    "addOneMinute": "Zamanlay\u0131c\u0131y\u0131 bir dakika art\u0131r",
+    "reduce": "S\u00fcreyi azalt",
+    "increase": "S\u00fcreyi art\u0131r"
+  },
+  "CookieNotice": {
+    "description": "Biz ve se\u00e7ili i\u015f ortaklar\u0131m\u0131z, \u00e7erez politikas\u0131nda belirtildi\u011fi \u00fczere \u00e7erezleri veya benzer teknolojileri kullan\u0131r. Bu bildirimi kapatarak, bu bildirinin d\u0131\u015f\u0131ndaki herhangi bir ba\u011flant\u0131 ya da d\u00fc\u011fmeyle etkile\u015fime girerek veya gezinmeye devam ederek bu teknolojilerin kullan\u0131m\u0131na onay verebilirsiniz.",
+    "learnMore": "\u00c7erez Politikam\u0131z hakk\u0131nda daha fazla bilgi edinin",
+    "decline": "Reddet",
+    "accept": "Kabul et"
+  },
+  "CookiePolicy": {
+    "title": "aksa.local \u00c7erez Politikas\u0131",
+    "decline": "Reddet",
+    "accept": "Kabul et",
+    "body": "Bu belge, aksa.local\u0131n a\u015fa\u011f\u0131da belirtilen ama\u00e7lara ula\u015fmas\u0131na yard\u0131mc\u0131 olan teknolojiler hakk\u0131nda Kullan\u0131c\u0131lar\u0131 bilgilendirir.\nBu teknolojiler, Kullan\u0131c\u0131lar aksa.local ile etkile\u015fimde bulunurken Sahip'in bilgilere eri\u015fmesine ve bunlar\u0131 depolamas\u0131na (\u00f6rn. \u00e7erez kullanarak) veya kaynaklar\u0131 kullanmas\u0131na (\u00f6rn. betik \u00e7al\u0131\u015ft\u0131rarak) olanak tan\u0131r.\n\nBasitlik ad\u0131na, aksi gerekmedik\u00e7e bu teknolojilerin tamam\u0131 bu belgede \"\u0130zleyiciler\" olarak adland\u0131r\u0131l\u0131r. \u00d6rne\u011fin \u00e7erezler hem web hem mobil taray\u0131c\u0131larda kullan\u0131labilir; ancak mobil uygulama ba\u011flam\u0131nda \u00e7erez demek her zaman do\u011fru olmayabilir. Bu nedenle burada \u00c7erez terimi yaln\u0131zca \u00f6zel olarak o izleyici t\u00fcr\u00fc kastedildi\u011finde kullan\u0131l\u0131r.\n\n\u0130zleyicilerin baz\u0131 kullan\u0131m ama\u00e7lar\u0131 Kullan\u0131c\u0131 onay\u0131 gerektirebilir. Onay verildi\u011finde, bu belgede a\u00e7\u0131klanan y\u00f6ntemler izlenerek istenen zamanda geri \u00e7ekilebilir.\n\naksa.local yaln\u0131zca Sahip taraf\u0131ndan do\u011frudan y\u00f6netilen (birinci taraf) \u0130zleyicileri kullan\u0131r. Birinci taraf \u00e7erezlerin ve benzer \u0130zleyicilerin ge\u00e7erlilik ile saklama s\u00fcreleri, Sahip taraf\u0131ndan belirlenen \u00f6mre g\u00f6re de\u011fi\u015febilir. Baz\u0131lar\u0131 Kullan\u0131c\u0131n\u0131n taray\u0131c\u0131 oturumu sona erdi\u011finde sona erer.\n\n## aksa.local\u0131n \u00e7al\u0131\u015fmas\u0131 ve Hizmetin sunumu i\u00e7in zorunlu faaliyetler\n\naksa.local, Hizmetin i\u015fletimi veya sunumu i\u00e7in kesinlikle gerekli faaliyetleri y\u00fcr\u00fctmek amac\u0131yla teknik \u00e7erezler ve benzer \u0130zleyiciler kullan\u0131r.\n\n## Tercihleri y\u00f6netme ve onay verme/geri \u00e7ekme\n\n\u0130zleyici tercihlerini y\u00f6netmenin ve ilgili durumlarda onay verip geri \u00e7ekmenin \u00e7e\u015fitli yollar\u0131 vard\u0131r. Kullan\u0131c\u0131lar, cihaz ayarlar\u0131 \u00fczerinden \u0130zleyicilerin kullan\u0131m\u0131n\u0131 veya depolanmas\u0131n\u0131 engelleyebilir. Ayr\u0131ca \u0130zleyici kullan\u0131m\u0131 onaya dayal\u0131ysa, \u00e7erez bildirimi \u00fczerinden veya varsa ilgili onay tercihleri arac\u0131 \u00fczerinden tercihlerini g\u00fcncelleyerek onay verebilir ya da geri \u00e7ekebilir.\n\nKullan\u0131c\u0131lar, taray\u0131c\u0131 veya cihaz \u00f6zelliklerini kullanarak daha \u00f6nce saklanan \u0130zleyicileri de silebilir. Taray\u0131c\u0131n\u0131n yerel belle\u011finde bulunan di\u011fer \u0130zleyiciler de tarama ge\u00e7mi\u015fi temizlenerek kald\u0131r\u0131labilir.\n\n## \u0130zleyici ayarlar\u0131n\u0131 bulma\n\nKullan\u0131c\u0131lar, en yayg\u0131n taray\u0131c\u0131larda \u00e7erez y\u00f6netimi hakk\u0131nda bilgiyi \u015fu adreslerde bulabilir:\n\n- Google Chrome\n- Mozilla Firefox\n- Apple Safari\n- Microsoft Internet Explorer\n- Microsoft Edge\n- Brave\n- Opera\n\nKullan\u0131c\u0131lar, mobil uygulamalarda kullan\u0131lan belirli \u0130zleyici kategorilerini de cihaz reklam ayarlar\u0131 veya genel izleme ayarlar\u0131 \u00fczerinden devre d\u0131\u015f\u0131 b\u0131rakabilir.\n\nSahip ve Veri Sorumlusu\nKazanc\u0131 Holding\n\n\u0130zleme teknolojilerinin karma\u015f\u0131kl\u0131\u011f\u0131 nedeniyle, Kullan\u0131c\u0131lar aksa.local'da kullan\u0131lan bu teknolojiler hakk\u0131nda daha fazla bilgi almak isterse Sahip ile ileti\u015fime ge\u00e7ebilir."
+  },
+  "MenuBars": {
+    "markAsDone": "Beni haz\u0131r olarak i\u015faretle",
+    "unmarkAsDone": "Haz\u0131r i\u015faretimi kald\u0131r",
+    "addImage": "G\u00f6rsel veya giphy ekle",
+    "addSticker": "Sticker ekle",
+    "themeToggle": "Renk d\u00fczenini de\u011fi\u015ftir",
+    "editColumns": "S\u00fctun modunu ba\u015flat",
+    "stopEditingColumns": "S\u00fctun modunu bitir",
+    "startPresenterMode": "Sunum modunu ba\u015flat",
+    "stopPresenterMode": "Sunum modunu bitir",
+    "returnToHomepage": "Ana sayfaya d\u00f6n",
+    "raiseHand": "El kald\u0131r",
+    "lowerHand": "Eli indir",
+    "openBoardReactionMenu": "Tepki ver",
+    "settings": "Ayarlar",
+    "openMenu": "Kullan\u0131c\u0131 men\u00fcs\u00fcn\u00fc a\u00e7"
+  },
+  "Hotkeys": {
+    "hotkeysEnabled": "K\u0131sayollar etkin!",
+    "hotkeysDisabled": "K\u0131sayollar devre d\u0131\u015f\u0131!",
+    "hotkeyToggle": "K\u0131sayollar\u0131 etkinle\u015ftir",
+    "timerStarted": "{{duration}} dakikal\u0131k zamanlay\u0131c\u0131 ba\u015flat\u0131ld\u0131",
+    "cheatSheet": "K\u0131sayol K\u0131lavuzu",
+    "toggleColumnVisibility": {
+      "hide": "Gizli s\u00fctunlar art\u0131k sizden gizli",
+      "show": "Gizli s\u00fctunlar art\u0131k sizin i\u00e7in g\u00f6r\u00fcn\u00fcr"
+    },
+    "toggleShowOtherUsersNotes": {
+      "hide": "Di\u011fer kat\u0131l\u0131mc\u0131lar\u0131n notlar\u0131 art\u0131k gizli",
+      "show": "Di\u011fer kat\u0131l\u0131mc\u0131lar\u0131n notlar\u0131 art\u0131k g\u00f6r\u00fcn\u00fcr"
+    },
+    "toggleShowAuthors": {
+      "hide": "Not yazarlar\u0131 art\u0131k gizli",
+      "show": "Not yazarlar\u0131 art\u0131k g\u00f6r\u00fcn\u00fcr"
+    },
+    "toggleRaisedHand": {
+      "raise": "El kald\u0131rd\u0131n\u0131z",
+      "lower": "Elinizi indirdiniz"
+    },
+    "toggleReadyState": {
+      "ready": "Kendinizi haz\u0131r olarak i\u015faretlediniz",
+      "notReady": "Kendinizi haz\u0131r de\u011fil olarak i\u015faretlediniz"
+    },
+    "togglePresentationMode": {
+      "startPresenting": "Sunum modunu ba\u015flatt\u0131n\u0131z",
+      "endPresenting": "Sunum modunu bitirdiniz"
+    }
+  },
+  "VoteConfigurationButton": {
+    "label": "Oylama",
+    "isAnonymous": "Anonim oylama",
+    "allowMultipleVotesPerNote": "K\u00fcm\u00fclatif oylamaya izin ver",
+    "numberOfVotes": "Oy say\u0131s\u0131",
+    "increaseVotes": "Oy say\u0131s\u0131n\u0131 art\u0131r",
+    "decreaseVotes": "Oy say\u0131s\u0131n\u0131 azalt",
+    "startVoting": "Oylama a\u015famas\u0131n\u0131 ba\u015flat",
+    "cancelVoting": "Oylama a\u015famas\u0131n\u0131 iptal et",
+    "stopVoting": "Oylama a\u015famas\u0131n\u0131 bitir"
+  },
+  "VoteDisplay": {
+    "finishActionTooltip": "Oylamay\u0131 sonu\u00e7land\u0131r",
+    "tooltip": "{{remaining}} / {{total}} oy kald\u0131"
+  },
+  "TimerToggleButton": {
+    "label": "Zamanlay\u0131c\u0131",
+    "1min": "1 dakika",
+    "3min": "3 dakika",
+    "5min": "5 dakika",
+    "min": "dakika",
+    "customTime": "\u00d6zel s\u00fcre",
+    "cancelTimer": "Zamanlay\u0131c\u0131y\u0131 iptal et"
+  },
+  "BoardReactionsMenu": {
+    "react": "{{reaction}} ile tepki ver [{{shortcut}}]"
+  },
+  "BoardReaction": {
+    "me": "Ben"
+  },
+  "AppInfo": {
+    "version": "GitHub s\u00fcr\u00fcm listesinin ba\u011flant\u0131s\u0131"
+  },
+  "Toast": {
+    "authenticationError": "Giri\u015f yap\u0131l\u0131rken bir sorun olu\u015ftu",
+    "votingStarted": "Oylama a\u015famas\u0131n\u0131 ba\u015flatt\u0131n\u0131z!",
+    "votingFinished": "Oylama a\u015famas\u0131n\u0131 bitirdiniz!",
+    "focusModeStart": "Moderasyon a\u015famas\u0131n\u0131 ba\u015flatt\u0131n\u0131z! Se\u00e7ti\u011finiz notlar t\u00fcm kullan\u0131c\u0131lara sunulacak",
+    "focusModeFinished": "Moderasyon a\u015famas\u0131n\u0131 bitirdiniz",
+    "votingPhaseStarted": "Oylama a\u015famas\u0131 ba\u015flad\u0131! Art\u0131k oy verebilirsiniz!",
+    "votingPhaseEnded": "Oylama a\u015famas\u0131 bitti! Art\u0131k oy veremezsiniz!",
+    "moderationStarted": "Moderasyon a\u015famas\u0131 ba\u015flad\u0131!",
+    "moderationEnded": "Moderasyon a\u015famas\u0131 bitti!",
+    "timerStarted": "Zamanlay\u0131c\u0131 ba\u015flat\u0131ld\u0131!",
+    "timerEnded": "Zamanlay\u0131c\u0131 bitti!",
+    "timerCancelled": "Zamanlay\u0131c\u0131 iptal edildi!",
+    "hiddenColumnsVisible": "Gizli s\u00fctunlar art\u0131k sizin i\u00e7in g\u00f6r\u00fcn\u00fcr!",
+    "passwordCopied": "Pano korundu ve parola kopyaland\u0131!",
+    "boardMadePublic": "Pano art\u0131k a\u00e7\u0131k!",
+    "allParticipantsDone": "T\u00fcm kat\u0131l\u0131mc\u0131lar haz\u0131r!",
+    "moderatorResetReadyStates": "Kat\u0131l\u0131mc\u0131lar\u0131n haz\u0131r durumunu s\u0131f\u0131rlamak istiyor musunuz?",
+    "moderatorResetReadyStatesButton": "S\u0131f\u0131rla!",
+    "bannedParticipant": "'{{user}}' adl\u0131 kat\u0131l\u0131mc\u0131 kald\u0131r\u0131ld\u0131",
+    "unbannedParticipant": "'{{user}}' adl\u0131 kat\u0131l\u0131mc\u0131n\u0131n yasa\u011f\u0131 kald\u0131r\u0131ld\u0131",
+    "lockedBoard": "Pano \u015fu anda kilitli; yaln\u0131zca moderat\u00f6rler de\u011fi\u015fiklik yapabilir.",
+    "noteToHiddenColumn": "Gizli bir s\u00fctuna not eklediniz!",
+    "noteToHiddenColumnButton": "S\u00fctunu g\u00f6ster",
+    "noteMovedToStack": "Not bir y\u0131\u011f\u0131na ta\u015f\u0131nd\u0131!",
+    "noteDeleted": "Not silindi!",
+    "emptyNoteDialog": "Not metin i\u00e7ermelidir.",
+    "ready": "Haz\u0131r m\u0131s\u0131n\u0131z?",
+    "readyButton": "Haz\u0131r\u0131m!",
+    "boardReactionsDisabled": "Pano tepkileri devre d\u0131\u015f\u0131",
+    "enable": "Etkinle\u015ftir",
+    "failedImport": "Dosya i\u00e7e aktar\u0131l\u0131rken hata olu\u015ftu"
+  },
+  "Language": {
+    "german": "Almanca",
+    "english": "\u0130ngilizce",
+    "french": "Frans\u0131zca"
+  },
+  "Homepage": {
+    "developers": "\u00a9 2021-{{currentYear}}, <kazanci>Kazanc\u0131 Holding</kazanci> taraf\u0131ndan sunulur",
+    "teaserTitle": "Ekibinle yeni zirvelere ula\u015f ve ilk <retrospective>retrospektifini</retrospective> ba\u015flat.",
+    "teaserText": "\u0130lk ortak \u00e7al\u0131\u015fma oturumunu hemen ba\u015flat - kay\u0131t gerekmez ve tamamen \u00fccretsiz.",
+    "startButton": "Hemen ba\u015fla",
+    "privacyPolicy": "Gizlilik politikas\u0131",
+    "cookiePolicy": "\u00c7erez politikas\u0131",
+    "terms": "Kullan\u0131m \u015fartlar\u0131"
+  },
+  "Note": {
+    "me": "Ben",
+    "you": "sen",
+    "userImageAlt": "{{user}} taraf\u0131ndan sa\u011flanan medya",
+    "edited": "d\u00fczenlendi"
+  },
+  "StackView": {
+    "prevNote": "\u00d6nceki not",
+    "nextNote": "Sonraki not",
+    "close": "Kapat"
+  },
+  "NoteDialogDeleteStackButton": {
+    "title": "Bu y\u0131\u011f\u0131n\u0131 sil"
+  },
+  "NoteDialogDeleteNoteButton": {
+    "title": "Bu notu sil"
+  },
+  "NoteDialogUnstackNoteButton": {
+    "title": "Bu notu y\u0131\u011f\u0131ndan \u00e7\u0131kar"
+  },
+  "NoteReactionList": {
+    "toggleBarLabel": "tepki \u00e7ubu\u011funu a\u00e7/kapat"
+  },
+  "NoteReactionsPopup": {
+    "allReactionsTab": "T\u00fcm\u00fc"
+  },
+  "Input": {
+    "placeholder": {
+      "search": "Ara"
+    }
+  },
+  "SettingsDialog": {
+    "BoardSettings": "Pano Ayarlar\u0131",
+    "BoardSettingsDescription": "Ad, Eri\u015fim Politikas\u0131",
+    "Participants": "Kat\u0131l\u0131mc\u0131lar",
+    "ParticipantsDescription": "Kullan\u0131c\u0131 listesi, Kullan\u0131c\u0131 rol\u00fc",
+    "Appearance": "G\u00f6r\u00fcn\u00fcm",
+    "AppearanceDescription": "Bildirimler, Dil, Aray\u00fcz",
+    "ShareSession": "Oturumu Payla\u015f",
+    "ShareSessionDescription": "QR Kod, URL",
+    "ExportBoard": "Panoyu D\u0131\u015fa Aktar",
+    "ExportBoardDescription": "Panoyu payla\u015f",
+    "Feedback": "Geri Bildirim",
+    "FeedbackDescription": "Sizden haber almak isteriz",
+    "ProfileDescription": "Profili d\u00fczenle",
+    "Logout": "\u00c7\u0131k\u0131\u015f"
+  },
+  "BoardSettings": {
+    "BoardName": "Pano Ad\u0131",
+    "AccessPolicy": "Eri\u015fim Politikas\u0131",
+    "Password": "Parola",
+    "SetAccessPolicyOpen": "Parola korumas\u0131n\u0131 kald\u0131r",
+    "SecurePasswordHint": "L\u00fctfen g\u00fcvenli bir parola girin",
+    "DeleteBoard": "Panoyu Sil",
+    "ShowAuthorOption": "Not yazarlar\u0131n\u0131 g\u00f6ster",
+    "ShowHiddenColumnsOption": "Gizli s\u00fctunlar\u0131 bana g\u00f6ster",
+    "ShowOtherUsersNotesOption": "Di\u011fer kullan\u0131c\u0131lar\u0131n notlar\u0131n\u0131 g\u00f6ster",
+    "ShowNoteReactionsOptions": "Not tepkilerini g\u00f6ster",
+    "AllowNoteRepositioningOption": "Notlar\u0131n yerini de\u011fi\u015ftirmeye izin ver",
+    "IsLocked": "Panoyu Kilitle",
+    "generatePassword": "Parola \u00fcret ve koru",
+    "save": "kaydet",
+    "edit": "d\u00fczenle"
+  },
+  "Participants": {
+    "Title": "Kat\u0131l\u0131mc\u0131lar",
+    "OwnerFilterTooltip": "Sadece sahibi g\u00f6ster",
+    "ModeratorFilterTooltip": "Sadece moderat\u00f6rleri g\u00f6ster",
+    "ParticipantFilterTooltip": "Sadece kat\u0131l\u0131mc\u0131lar\u0131 g\u00f6ster",
+    "OnlineFilterTooltip": "Ba\u011flant\u0131s\u0131 kopuk kat\u0131l\u0131mc\u0131lar\u0131 g\u00f6ster",
+    "ChangeRoleToParticipantTooltip": "Rol\u00fc kat\u0131l\u0131mc\u0131 olarak de\u011fi\u015ftir",
+    "ChangeRoleToModeratorTooltip": "Rol\u00fc moderat\u00f6r olarak de\u011fi\u015ftir",
+    "ResetBannerText": "T\u00fcm kullan\u0131c\u0131lar\u0131n haz\u0131r durumunu s\u0131f\u0131rla.",
+    "ResetBannerButton": "S\u0131f\u0131rla",
+    "BanParticipantTooltip": "Kat\u0131l\u0131mc\u0131 '{{user}}'u engelle",
+    "UnbanParticipantTooltip": "Kat\u0131l\u0131mc\u0131 '{{user}}' engelini kald\u0131r"
+  },
+  "UserRole": {
+    "Owner": "Sahip",
+    "Moderator": "Moderat\u00f6r",
+    "Participant": "Kat\u0131l\u0131mc\u0131"
+  },
+  "Appearance": {
+    "SyncMode": "G\u00f6r\u00fcn\u00fcm modunu sistemle e\u015fitle",
+    "SyncModeDescription": "Aksa, g\u00f6r\u00fcn\u00fcm modunu (koyu/a\u00e7\u0131k) sistem ayarlar\u0131nla e\u015fitler",
+    "AllowNotifications": "Bildirimlere izin ver",
+    "Language": "Dil",
+    "EmojiSkinTone": "Emoji ten rengi",
+    "colorScheme": "Renk d\u00fczeni",
+    "colorSchemeLight": "A\u00e7\u0131k",
+    "colorSchemeDark": "Koyu",
+    "showHotkeyNotifications": "K\u0131sayol bildirimlerini g\u00f6ster",
+    "showBoardReactions": "Pano tepkilerini g\u00f6ster",
+    "showSnowfall": "Kar ya\u011f\u0131\u015f\u0131n\u0131 g\u00f6ster"
+  },
+  "Feedback": {
+    "PraiseInputLabel": "Bize iletmek istedi\u011finiz ba\u015fka bir \u015fey var m\u0131?",
+    "BugReportInputLabel": "Hangi hatay\u0131 bildirmek istersiniz?",
+    "FeatureRequestInputLabel": "Hangi \u00f6zelli\u011fi istersiniz?",
+    "FeedbackInputPlaceholder": "Eklemek istedi\u011finiz her \u015feyi yaz\u0131n!",
+    "ContactInputLabel": "Sizinle ileti\u015fime ge\u00e7memizi isterseniz e-postan\u0131z\u0131 b\u0131rak\u0131n (iste\u011fe ba\u011fl\u0131)",
+    "SubmitButton": "Geri Bildirim G\u00f6nder",
+    "ErrorUndefinedType": "L\u00fctfen geri bildirim t\u00fcr\u00fcn\u00fc se\u00e7in!",
+    "ErrorInvalidEmail": "L\u00fctfen ge\u00e7erli bir e-posta girin!",
+    "ErrorMissingFeatureRequestText": "L\u00fctfen istedi\u011finiz \u00f6zelli\u011fi belirtin!",
+    "ErrorMissingBugReportText": "L\u00fctfen bildirmek istedi\u011finiz hatay\u0131 belirtin!",
+    "SubmitNotification": "Geri bildiriminiz i\u00e7in te\u015fekk\u00fcrler!"
+  },
+  "ProfileSettings": {
+    "Profile": "Profil",
+    "UserName": "Kullan\u0131c\u0131 Ad\u0131"
+  },
+  "Error": {
+    "editBoard": "\u00dczg\u00fcn\u00fcz, pano g\u00fcncellenirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "shareNote": "\u00dczg\u00fcn\u00fcz, not payla\u015f\u0131l\u0131rken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "unshareNote": "\u00dczg\u00fcn\u00fcz, not payla\u015f\u0131m\u0131 durdurulurken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "deleteBoard": "\u00dczg\u00fcn\u00fcz, pano silinirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "editColumn": "\u00dczg\u00fcn\u00fcz, s\u00fctun g\u00fcncellenirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "createColumn": "\u00dczg\u00fcn\u00fcz, s\u00fctun eklenirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "deleteColumn": "\u00dczg\u00fcn\u00fcz, s\u00fctun silinirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "addNote": "\u00dczg\u00fcn\u00fcz, not eklenirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "deleteNote": "\u00dczg\u00fcn\u00fcz, not silinirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "deleteNoteWhenShared": "\u00dczg\u00fcn\u00fcz, payla\u015f\u0131mdayken kart\u0131n\u0131z\u0131 silemezsiniz.",
+    "editNote": "\u00dczg\u00fcn\u00fcz, not g\u00fcncellenirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "unstackNote": "\u00dczg\u00fcn\u00fcz, not y\u0131\u011f\u0131ndan \u00e7\u0131kar\u0131l\u0131rken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "setRaiseHand": "\u00dczg\u00fcn\u00fcz, el kald\u0131r\u0131l\u0131rken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "setUserReady": "\u00dczg\u00fcn\u00fcz, haz\u0131r durumu ayarlan\u0131rken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "setUserBanned": "\u00dczg\u00fcn\u00fcz, kullan\u0131c\u0131 yasaklan\u0131rken/yasa\u011f\u0131 kald\u0131r\u0131l\u0131rken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "setShowHiddenColumns": "\u00dczg\u00fcn\u00fcz, s\u00fctun g\u00f6r\u00fcn\u00fcrl\u00fc\u011f\u00fc de\u011fi\u015ftirilirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "changePermission": "\u00dczg\u00fcn\u00fcz, yetkiler g\u00fcncellenirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "logout": "\u00dczg\u00fcn\u00fcz, \u00e7\u0131k\u0131\u015f yap\u0131l\u0131rken sorun olu\u015ftu.",
+    "serverConnection": "Sunucu ba\u011flant\u0131s\u0131 kurulamad\u0131. L\u00fctfen sayfay\u0131 yeniden y\u00fckleyin.",
+    "retry": "Tekrar dene",
+    "joinBoard": "\u00dczg\u00fcn\u00fcz, panoya kat\u0131l\u0131rken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "boardDeleted": "Pano silindi! Ana sayfaya y\u00f6nlendirildiniz.",
+    "acceptJoinRequests": "\u00dczg\u00fcn\u00fcz, istekler kabul edilirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "rejectJoinRequests": "\u00dczg\u00fcn\u00fcz, istekler reddedilirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "initApplication": "\u00dczg\u00fcn\u00fcz, sunucuya bilgi i\u00e7in ula\u015f\u0131lamad\u0131. L\u00fctfen sayfay\u0131 yeniden y\u00fckleyin.",
+    "addVote": "\u00dczg\u00fcn\u00fcz, oy eklenirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "deleteVote": "\u00dczg\u00fcn\u00fcz, oy silinirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "createVoting": "\u00dczg\u00fcn\u00fcz, yeni oylama ba\u015flat\u0131l\u0131rken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "closeVoting": "\u00dczg\u00fcn\u00fcz, oylama sonland\u0131r\u0131l\u0131rken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "abortVoting": "\u00dczg\u00fcn\u00fcz, oylama iptal edilirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "editSelf": "\u00dczg\u00fcn\u00fcz, bilgileriniz g\u00fcncellenirken sorun olu\u015ftu. L\u00fctfen tekrar deneyin."
+  },
+  "Validation": {
+    "REQUIRED": "zorunlu",
+    "BAD_INPUT": "hatal\u0131 giri\u015f",
+    "PATTERN_MISMATCH": "desen uyu\u015fmazl\u0131\u011f\u0131",
+    "TYPE_MISMATCH": "tip uyu\u015fmazl\u0131\u011f\u0131",
+    "RANGE": "aral\u0131k"
+  },
+  "Avatar": {
+    "random": "Rastgele avatar olu\u015ftur",
+    "prevOption": "\u00d6nceki se\u00e7enek",
+    "nextOption": "Sonraki se\u00e7enek",
+    "groups": {
+      "hair": "\u015eapka ve sa\u00e7",
+      "facialFeatures": "Y\u00fcz \u00f6zellikleri",
+      "clothing": "K\u0131yafet"
+    },
+    "hairColor": {
+      "label": "Sa\u00e7 rengi",
+      "Auburn": "K\u0131z\u0131l kahve",
+      "Black": "Siyah",
+      "Blonde": "Sar\u0131\u015f\u0131n",
+      "BlondeGolden": "Alt\u0131n sar\u0131s\u0131",
+      "Brown": "Kahverengi",
+      "BrownDark": "Koyu kahverengi",
+      "PastelPink": "Pastel pembe",
+      "Blue": "Mavi",
+      "Platinum": "Platin",
+      "Red": "K\u0131z\u0131l",
+      "SilverGray": "G\u00fcm\u00fc\u015f gri"
+    },
+    "eyebrowType": {
+      "label": "Ka\u015f tipi",
+      "Angry": "K\u0131zg\u0131n #1",
+      "AngryNatural": "K\u0131zg\u0131n #2",
+      "Default": "Varsay\u0131lan #1",
+      "DefaultNatural": "Varsay\u0131lan #2",
+      "FlatNatural": "D\u00fcz",
+      "FrownNatural": "\u00c7at\u0131k",
+      "RaisedExcited": "Heyecanl\u0131 #1",
+      "RaisedExcitedNatural": "Heyecanl\u0131 #2",
+      "SadConcerned": "Endi\u015feli #1",
+      "SadConcernedNatural": "Endi\u015feli #2",
+      "UnibrowNatural": "Tek ka\u015f",
+      "UpDown": "Kalk\u0131k #1",
+      "UpDownNatural": "Kalk\u0131k #2"
+    },
+    "facialHairColor": {
+      "label": "Sakal rengi",
+      "Auburn": "K\u0131z\u0131l kahve",
+      "Black": "Siyah",
+      "Blonde": "Sar\u0131\u015f\u0131n",
+      "BlondeGolden": "Alt\u0131n sar\u0131s\u0131",
+      "Brown": "Kahverengi",
+      "BrownDark": "Koyu kahverengi",
+      "Platinum": "Platin",
+      "Red": "K\u0131z\u0131l"
+    },
+    "facialHairType": {
+      "label": "Sakal tipi",
+      "Blank": "Yok",
+      "BeardMedium": "Orta sakal",
+      "BeardLight": "Hafif sakal",
+      "BeardMajestic": "G\u00fcr sakal",
+      "MoustacheFancy": "\u015e\u0131k b\u0131y\u0131k",
+      "MoustacheMagnum": "Magnum b\u0131y\u0131k"
+    },
+    "skinColor": {
+      "label": "Ten rengi",
+      "Tanned": "Bronz",
+      "Yellow": "Sar\u0131",
+      "Pale": "Soluk",
+      "Light": "A\u00e7\u0131k",
+      "Brown": "Kahverengi",
+      "DarkBrown": "Koyu kahverengi",
+      "Black": "Siyah"
+    },
+    "eyeType": {
+      "label": "G\u00f6z tipi",
+      "Close": "Kapal\u0131",
+      "Cry": "A\u011flayan",
+      "Default": "Varsay\u0131lan",
+      "Dizzy": "Ba\u015f\u0131 d\u00f6nm\u00fc\u015f",
+      "EyeRoll": "G\u00f6z devirmesi",
+      "Happy": "Mutlu",
+      "Hearts": "Kalpler",
+      "Side": "Yana bakan",
+      "Squint": "K\u0131s\u0131k g\u00f6z",
+      "Surprised": "\u015ea\u015fk\u0131n",
+      "Wink": "G\u00f6z k\u0131rpan",
+      "WinkWacky": "\u00c7\u0131lg\u0131n g\u00f6z k\u0131rpma"
+    },
+    "mouthType": {
+      "label": "A\u011f\u0131z tipi",
+      "Concerned": "Endi\u015feli",
+      "Default": "Varsay\u0131lan",
+      "Disbelief": "\u015ea\u015fk\u0131n",
+      "Eating": "Yiyen",
+      "Grimace": "Y\u00fcz buru\u015fturan",
+      "Sad": "\u00dczg\u00fcn",
+      "ScreamOpen": "Ba\u011f\u0131ran",
+      "Serious": "Ciddi",
+      "Smile": "G\u00fcl\u00fcmseme",
+      "Tongue": "Dil \u00e7\u0131karan",
+      "Twinkle": "Par\u0131lt\u0131l\u0131",
+      "Vomit": "Kusan"
+    },
+    "topType": {
+      "label": "Sa\u00e7 / ba\u015fl\u0131k tipi",
+      "Eyepatch": "G\u00f6z band\u0131",
+      "Hat": "\u015eapka",
+      "Hijab": "Hicab",
+      "LongHairBigHair": "Uzun dalgal\u0131 sa\u00e7",
+      "LongHairBob": "Bob",
+      "LongHairBun": "Topuz",
+      "LongHairCurly": "Uzun k\u0131v\u0131rc\u0131k sa\u00e7",
+      "LongHairCurvy": "Uzun k\u0131vr\u0131ml\u0131 sa\u00e7",
+      "LongHairDreads": "Rastal\u0131",
+      "LongHairFrida": "Frida Kahlo",
+      "LongHairFro": "Afro",
+      "LongHairFroBand": "Bandanal\u0131 afro",
+      "LongHairMiaWallace": "Mia Wallace",
+      "LongHairNotTooLong": "Orta uzunlukta sa\u00e7",
+      "LongHairShavedSides": "Yanlar\u0131 t\u0131ra\u015fl\u0131 uzun sa\u00e7",
+      "LongHairStraight": "D\u00fcz uzun sa\u00e7 #1",
+      "LongHairStraight2": "D\u00fcz uzun sa\u00e7 #2",
+      "LongHairStraightStrand": "D\u00fcz uzun sa\u00e7 #3",
+      "NoHair": "Sa\u00e7 yok",
+      "ShortHairDreads01": "K\u0131sa rasta #1",
+      "ShortHairDreads02": "K\u0131sa rasta #2",
+      "ShortHairFrizzle": "Kabar\u0131k",
+      "ShortHairShaggyMullet": "Da\u011f\u0131n\u0131k mullet",
+      "ShortHairShortCurly": "K\u0131sa k\u0131v\u0131rc\u0131k sa\u00e7",
+      "ShortHairShortFlat": "K\u0131sa d\u00fcz sa\u00e7",
+      "ShortHairShortRound": "K\u0131sa yuvarlak sa\u00e7",
+      "ShortHairShortWaved": "K\u0131sa dalgal\u0131 sa\u00e7",
+      "ShortHairSides": "Yar\u0131 kel",
+      "ShortHairTheCaesar": "Caesar #1",
+      "ShortHairTheCaesarSidePart": "Caesar #2",
+      "Turban": "T\u00fcrban",
+      "WinterHat1": "K\u0131\u015f \u015fapkas\u0131 #1",
+      "WinterHat2": "K\u0131\u015f \u015fapkas\u0131 #2",
+      "WinterHat3": "K\u0131\u015f \u015fapkas\u0131 #3",
+      "WinterHat4": "K\u0131\u015f \u015fapkas\u0131 #4"
+    },
+    "accessoriesType": {
+      "label": "G\u00f6zl\u00fck",
+      "Blank": "Yok",
+      "Kurt": "Kurt",
+      "Prescription01": "Numaral\u0131 #1",
+      "Prescription02": "Numaral\u0131 #2",
+      "Round": "Yuvarlak g\u00f6zl\u00fck",
+      "Sunglasses": "G\u00fcne\u015f g\u00f6zl\u00fc\u011f\u00fc",
+      "Wayfarers": "Wayfarer"
+    },
+    "clotheColor": {
+      "label": "K\u0131yafet rengi",
+      "Black": "Siyah",
+      "Blue01": "Mavi #1",
+      "Blue02": "Mavi #2",
+      "Blue03": "Mavi #3",
+      "Gray01": "Gri #1",
+      "Gray02": "Gri #2",
+      "Heather": "Heather",
+      "PastelBlue": "Pastel mavi",
+      "PastelGreen": "Pastel ye\u015fil",
+      "PastelOrange": "Pastel turuncu",
+      "PastelRed": "Pastel k\u0131rm\u0131z\u0131",
+      "PastelYellow": "Pastel sar\u0131",
+      "Pink": "Pembe",
+      "Red": "K\u0131rm\u0131z\u0131",
+      "White": "Beyaz"
+    },
+    "clotheType": {
+      "label": "K\u0131yafet tipi",
+      "BlazerShirt": "G\u00f6mlekli blazer",
+      "BlazerSweater": "Kazakl\u0131 blazer",
+      "CollarSweater": "Yakal\u0131 kazak",
+      "GraphicShirt": "Bask\u0131l\u0131 ti\u015f\u00f6rt",
+      "Hoodie": "Kap\u00fc\u015fonlu",
+      "Overall": "Tulum",
+      "ShirtCrewNeck": "Bisiklet yaka ti\u015f\u00f6rt",
+      "ShirtScoopNeck": "Geni\u015f yaka ti\u015f\u00f6rt",
+      "ShirtVNeck": "V yaka ti\u015f\u00f6rt"
+    },
+    "graphicType": {
+      "label": "Bask\u0131 tipi",
+      "Bat": "Yarasa",
+      "Cumbia": "Cumbia!",
+      "Deer": "Geyik",
+      "Diamond": "Elmas",
+      "Hola": "Hola!",
+      "Pizza": "Pizza",
+      "Resist": "Diren!",
+      "Selena": "Selena",
+      "Bear": "Ay\u0131",
+      "SkullOutline": "\u00c7izgili kafatas\u0131",
+      "Skull": "Kafatas\u0131"
+    }
+  },
+  "ToggleButton": {
+    "active": "Aktif",
+    "inactive": "Pasif"
+  },
+  "RejectionPage": {
+    "title": "Ops!",
+    "description": "G\u00f6r\u00fcn\u00fc\u015fe g\u00f6re bu oturumun kap\u0131lar\u0131 \u015fimdilik kapal\u0131. \u0130lginiz i\u00e7in te\u015fekk\u00fcr ederiz, ancak kat\u0131l\u0131m iste\u011finiz reddedildi.",
+    "banned": "\u00dczg\u00fcn\u00fcz, bu oturumdan \u00e7\u0131kar\u0131lm\u0131\u015f g\u00f6r\u00fcn\u00fcyorsunuz.",
+    "button": "Ana sayfaya d\u00f6n"
+  },
+  "Votes": {
+    "AddVote": "Oy ekle",
+    "RemoveVote": "Oy kald\u0131r",
+    "VotesOnNote_one": "{{count}} oy",
+    "VotesOnNote_other": "{{count}} oy",
+    "VoteLimitReached": "Maksimum oy say\u0131s\u0131na ula\u015f\u0131ld\u0131",
+    "MultipleVotesNotAllowed": "Birden fazla oy kullan\u0131lamaz"
+  },
+  "Snowfall": {
+    "toastTitle": "Mutlu Tatiller \uD83C\uDF84",
+    "toastMessage": "Aksa ekibinden mutlu tatiller! Kar animasyonlar\u0131n\u0131 g\u00f6r\u00fcn\u00fcm ayarlar\u0131ndan kapatabilirsiniz."
+  }
+}

@@ -6,7 +6,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 type DB struct {
@@ -208,3 +208,4 @@ func (d *DB) GetOpenVoting(ctx context.Context, board uuid.UUID) (DatabaseVoting
 
 	return voting, err
 }
+

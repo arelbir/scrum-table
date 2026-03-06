@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
 )
 
 type DB struct {
@@ -139,3 +139,4 @@ func (db *DB) Delete(ctx context.Context, board, column uuid.UUID) error {
 
 	return err
 }
+

@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 type DatabaseNote struct {
@@ -51,3 +51,4 @@ type Precondition struct {
 	CallerRole      common.SessionRole
 	Author          uuid.UUID
 }
+

@@ -1,17 +1,17 @@
 {
 	"info": {
 		"_postman_id": "b3a5d336-ce4c-4baa-95e5-0e627cb34253",
-		"name": "scrumlr.io",
-		"description": "This is the documentation for the REST API server of the application [scrumlr.io](https://scrumlr.io). You get in touch with us and send an email to [info@scrumlr.io](https://info@scrumlr.io). The software is [MIT licensed](https://opensource.org/licenses/MIT) so do whatever you want with it. If you want to checkout the progress of our development and take a peek into our backlog you can checkout our [GitHub repository](https://github.com/inovex/scrumlr.io). By the way, this already the third iteration of our server and we're still working on the interface and on further improvements. Since the API is mainly intended for our web client we won't start with API versions at the moment so breaking changes may be incoming. Once it got stable we'll maybe start with that.\n\nIf you're using the postman collection in order to explore the different resources you should also checkout the variables of the collection. Anytime you'll create new resources (e.g. your login or a board) variables will be stored and used for subsequent calls on other resources.\n\nAccess to protected resources will be authorized if a bearer token is sent or it is included in the `jwt` Cookie, which will be automatically set upon login.\n\n## Getting started\n\nLet's try to explain the basic flow of how a new board can will be created and someone tries to join the board as a participant.\n\nFirst you can check whether you are already logged in by a `GET` request on `/user`. See the _User_ section for more information.\n\n1. A user signs into the application (see _Login_ section)\n    \n2. The user creates a new board (`POST` on `/boards`, checkout _Boards_ section)\n    \n3. Another logged in user tries to join the board (`POST` on `/boards/{id}/participants`, checkout _Participants_ section)\n    1. If the boards access policy is set to `PUBLIC` the participant will be added to the board and afterwards all resources will be available\n        \n    2. If the board requires a passphrase and the access policy is set to `BY_PASSPHRASE` a client error will be reported until the user sends the correct passphrase within the payload of the request\n        \n    3. If the boards access policy is set to `BY_INVITE` a session request will be created instead and the user will be redirected to the new resource. The board owner now needs to accept or reject the request until the user can continue\n        \n\nThese are just the basic steps of how sessions can be created. You can also have a look into the section _Realtime_ to see how you can open websockets and listen to live updates on the data.",
+		"name": "Aksa Retrospektif",
+		"description": "This is the documentation for the REST API server of the application [aksa.local](https://aksa.local). You get in touch with us and send an email to [iletisim@aksa.com](https://iletisim@aksa.com). The software is [MIT licensed](https://opensource.org/licenses/MIT) so do whatever you want with it. com/kazanci/aksa.local). By the way, this already the third iteration of our server and we're still working on the interface and on further improvements. Since the API is mainly intended for our web client we won't start with API versions at the moment so breaking changes may be incoming. Once it got stable we'll maybe start with that.\n\nIf you're using the postman collection in order to explore the different resources you should also checkout the variables of the collection. Anytime you'll create new resources (e.g. your login or a board) variables will be stored and used for subsequent calls on other resources.\n\nAccess to protected resources will be authorized if a bearer token is sent or it is included in the `jwt` Cookie, which will be automatically set upon login.\n\n## Getting started\n\nLet's try to explain the basic flow of how a new board can will be created and someone tries to join the board as a participant.\n\nFirst you can check whether you are already logged in by a `GET` request on `/user`. See the _User_ section for more information.\n\n1. A user signs into the application (see _Login_ section)\n    \n2. The user creates a new board (`POST` on `/boards`, checkout _Boards_ section)\n    \n3. Another logged in user tries to join the board (`POST` on `/boards/{id}/participants`, checkout _Participants_ section)\n    1. If the boards access policy is set to `PUBLIC` the participant will be added to the board and afterwards all resources will be available\n        \n    2. If the board requires a passphrase and the access policy is set to `BY_PASSPHRASE` a client error will be reported until the user sends the correct passphrase within the payload of the request\n        \n    3. If the boards access policy is set to `BY_INVITE` a session request will be created instead and the user will be redirected to the new resource. The board owner now needs to accept or reject the request until the user can continue\n        \n\nThese are just the basic steps of how sessions can be created. You can also have a look into the section _Realtime_ to see how you can open websockets and listen to live updates on the data.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "33458987"
 	},
 	"item": [
 		{
-			"name": "Login",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Create anonymous user",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -83,7 +83,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -131,7 +131,7 @@
 					]
 				},
 				{
-					"name": "Sign-in with Google",
+					"name": "Aksa Retrospektif",
 					"protocolProfileBehavior": {
 						"followRedirects": false
 					},
@@ -160,7 +160,7 @@
 					"response": []
 				},
 				{
-					"name": "Sign-in with GitHub",
+					"name": "Aksa Retrospektif",
 					"protocolProfileBehavior": {
 						"followRedirects": false
 					},
@@ -189,7 +189,7 @@
 					"response": []
 				},
 				{
-					"name": "Sign-in with Microsoft",
+					"name": "Aksa Retrospektif",
 					"protocolProfileBehavior": {
 						"followRedirects": false
 					},
@@ -218,7 +218,7 @@
 					"response": []
 				},
 				{
-					"name": "Sign-in with Apple",
+					"name": "Aksa Retrospektif",
 					"protocolProfileBehavior": {
 						"followRedirects": false
 					},
@@ -247,7 +247,7 @@
 					"response": []
 				},
 				{
-					"name": "Sign-in with OIDC",
+					"name": "Aksa Retrospektif",
 					"protocolProfileBehavior": {
 						"followRedirects": false
 					},
@@ -302,10 +302,10 @@
 			]
 		},
 		{
-			"name": "User",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Update user",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -364,7 +364,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -412,7 +412,7 @@
 					]
 				},
 				{
-					"name": "Get user",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -452,7 +452,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -524,13 +524,13 @@
 			]
 		},
 		{
-			"name": "BoardTemplates",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Create Requests",
+					"name": "Aksa Retrospektif",
 					"item": [
 						{
-							"name": "Create a Board Template",
+							"name": "Aksa Retrospektif",
 							"event": [
 								{
 									"listen": "test",
@@ -585,10 +585,10 @@
 					]
 				},
 				{
-					"name": "Update Requests",
+					"name": "Aksa Retrospektif",
 					"item": [
 						{
-							"name": "Update Board Template name",
+							"name": "Aksa Retrospektif",
 							"event": [
 								{
 									"listen": "test",
@@ -643,7 +643,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Board Template description",
+							"name": "Aksa Retrospektif",
 							"event": [
 								{
 									"listen": "test",
@@ -698,7 +698,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Board Template favourite status",
+							"name": "Aksa Retrospektif",
 							"event": [
 								{
 									"listen": "test",
@@ -755,7 +755,7 @@
 					]
 				},
 				{
-					"name": "Get a Board Template",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -797,7 +797,7 @@
 					"response": []
 				},
 				{
-					"name": "Get all Board Templates",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -847,7 +847,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete Board Template",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -882,10 +882,10 @@
 			]
 		},
 		{
-			"name": "ColumnTemplates",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Create column template",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -994,7 +994,7 @@
 					"response": []
 				},
 				{
-					"name": "Get column templates",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1033,7 +1033,7 @@
 					"response": []
 				},
 				{
-					"name": "Get column template",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1077,7 +1077,7 @@
 					"response": []
 				},
 				{
-					"name": "Update column template",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1134,7 +1134,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete column template",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1171,10 +1171,10 @@
 			]
 		},
 		{
-			"name": "Boards",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Create a new board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1226,7 +1226,7 @@
 					},
 					"response": [
 						{
-							"name": "Success PUBLIC",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1276,7 +1276,7 @@
 							"body": "{\n    \"id\": \"a4c93f30-a5ce-4d15-aa5a-92a0ae0831f1\",\n    \"name\": \"My board\",\n    \"description\": \"This is a test description\",\n    \"accessPolicy\": \"PUBLIC\",\n    \"showAuthors\": true,\n    \"showNotesOfOtherUsers\": true,\n    \"allowStacking\": true,\n    \"sharedNote\": null,\n    \"showVoting\": null\n}"
 						},
 						{
-							"name": "Success BY_PASSPHRASE",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1326,7 +1326,7 @@
 							"body": "{\n    \"id\": \"57523db5-39e0-4f9a-9557-9b6fb5330fa3\",\n    \"name\": \"My board\",\n    \"description\": \"This is a test description\",\n    \"accessPolicy\": \"BY_PASSPHRASE\",\n    \"showAuthors\": true,\n    \"showNotesOfOtherUsers\": true,\n    \"allowStacking\": true,\n    \"sharedNote\": null,\n    \"showVoting\": null\n}"
 						},
 						{
-							"name": "Sucess BY_INVITE",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1378,7 +1378,7 @@
 					]
 				},
 				{
-					"name": "Create board with passphrase",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1432,7 +1432,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1519,7 +1519,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
@@ -1555,7 +1555,7 @@
 					]
 				},
 				{
-					"name": "Update name of a board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1612,7 +1612,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -1661,7 +1661,7 @@
 					]
 				},
 				{
-					"name": "Update description of a board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1718,7 +1718,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -1767,7 +1767,7 @@
 					]
 				},
 				{
-					"name": "Update access policy of board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1823,7 +1823,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -1872,7 +1872,7 @@
 					]
 				},
 				{
-					"name": "Get a board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -1915,7 +1915,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -1955,7 +1955,7 @@
 					]
 				},
 				{
-					"name": "Get board overviews",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2044,7 +2044,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -2066,7 +2066,7 @@
 					]
 				},
 				{
-					"name": "Export board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2140,7 +2140,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -2179,7 +2179,7 @@
 							"body": "{\n    \"board\": {\n        \"id\": \"85ec5a10-9788-4df2-9647-0c7260cb07f7\",\n        \"name\": \"My board\",\n        \"description\": \"This is a test description\",\n        \"accessPolicy\": \"PUBLIC\",\n        \"showAuthors\": true,\n        \"showNotesOfOtherUsers\": true,\n        \"allowStacking\": true,\n        \"sharedNote\": null,\n        \"showVoting\": \"71c8556d-5148-41dd-ad50-f96930af2f83\"\n    },\n    \"participants\": [\n        {\n            \"user\": {\n                \"id\": \"0d57fafe-76a4-4ae2-b643-a81af68fe487\",\n                \"name\": \"John Doe\"\n            },\n            \"connected\": false,\n            \"ready\": false,\n            \"raisedHand\": false,\n            \"role\": \"OWNER\"\n        }\n    ],\n    \"columns\": [\n        {\n            \"id\": \"851f600a-77f8-489a-a25b-4e3f8f9a25c3\",\n            \"name\": \"Lean coffee\",\n            \"color\": \"backlog-blue\",\n            \"visible\": true,\n            \"index\": 0\n        },\n        {\n            \"id\": \"b1391083-c333-4963-b6f1-af0b66e6826a\",\n            \"name\": \"My new column\",\n            \"color\": \"online-orange\",\n            \"visible\": false,\n            \"index\": 1\n        },\n        {\n            \"id\": \"4ebae212-80c9-46e4-abd9-e56b320ce937\",\n            \"name\": \"Actions\",\n            \"color\": \"planning-pink\",\n            \"visible\": false,\n            \"index\": 2\n        }\n    ],\n    \"notes\": [\n        {\n            \"id\": \"fdbc5abe-01f1-4a7d-b41d-06cb9915c608\",\n            \"author\": \"0d57fafe-76a4-4ae2-b643-a81af68fe487\",\n            \"text\": \"Just a note\",\n            \"position\": {\n                \"column\": \"b1391083-c333-4963-b6f1-af0b66e6826a\",\n                \"stack\": null,\n                \"rank\": 0\n            }\n        }\n    ],\n    \"votings\": [\n        {\n            \"id\": \"71c8556d-5148-41dd-ad50-f96930af2f83\",\n            \"voteLimit\": 5,\n            \"allowMultipleVotes\": true,\n            \"showVotesOfOthers\": true,\n            \"status\": \"CLOSED\"\n        }\n    ]\n}"
 						},
 						{
-							"name": "Success (CSV)",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -2224,7 +2224,7 @@
 					]
 				},
 				{
-					"name": "Start a 5 minute timer",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2277,7 +2277,7 @@
 					"response": []
 				},
 				{
-					"name": "Increment timer by 1 minute",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2358,7 +2358,7 @@
 					"response": []
 				},
 				{
-					"name": "Create board reaction",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2400,7 +2400,7 @@
 					"response": []
 				},
 				{
-					"name": "Stop timer",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2440,7 +2440,7 @@
 					"response": []
 				},
 				{
-					"name": "Update Board Request",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2506,7 +2506,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -2545,7 +2545,7 @@
 					]
 				},
 				{
-					"name": "Lock Board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2597,7 +2597,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -2668,10 +2668,10 @@
 			]
 		},
 		{
-			"name": "Columns",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Create column",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2734,7 +2734,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -2788,7 +2788,7 @@
 					]
 				},
 				{
-					"name": "Get columns",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2828,7 +2828,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -2869,7 +2869,7 @@
 					]
 				},
 				{
-					"name": "Get column",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -2912,7 +2912,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -2954,7 +2954,7 @@
 					]
 				},
 				{
-					"name": "Update a column",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3006,7 +3006,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -3057,7 +3057,7 @@
 					]
 				},
 				{
-					"name": "Delete column",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3118,7 +3118,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
@@ -3189,10 +3189,10 @@
 			]
 		},
 		{
-			"name": "Notes",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Create note",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3267,7 +3267,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -3321,7 +3321,7 @@
 					]
 				},
 				{
-					"name": "Get notes",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3361,7 +3361,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -3400,7 +3400,7 @@
 					]
 				},
 				{
-					"name": "Get note",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3449,7 +3449,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -3489,7 +3489,7 @@
 					]
 				},
 				{
-					"name": "Update note text",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3538,7 +3538,7 @@
 					"response": []
 				},
 				{
-					"name": "Update note position",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3593,7 +3593,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -3642,7 +3642,7 @@
 					]
 				},
 				{
-					"name": "Delete note",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3721,7 +3721,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
@@ -3789,10 +3789,10 @@
 			]
 		},
 		{
-			"name": "Votings",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Create voting",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3845,7 +3845,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -3897,7 +3897,7 @@
 					]
 				},
 				{
-					"name": "Get votings",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -3935,7 +3935,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -3976,7 +3976,7 @@
 					]
 				},
 				{
-					"name": "Get voting",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4021,7 +4021,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -4061,7 +4061,7 @@
 					]
 				},
 				{
-					"name": "Close voting",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4109,7 +4109,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -4156,7 +4156,7 @@
 							"body": "{\n    \"id\": \"fa7fd5b4-4e3f-43c8-951b-48a692f97e23\",\n    \"voteLimit\": 5,\n    \"allowMultipleVotes\": true,\n    \"showVotesOfOthers\": false,\n    \"status\": \"CLOSED\",\n    \"votes\": {\n        \"total\": 5,\n        \"votesPerNote\": {\n            \"3ab898f7-01d7-477a-93ef-c023074849f5\": {\n                \"total\": 5\n            }\n        }\n    }\n}"
 						},
 						{
-							"name": "Success with details",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -4237,10 +4237,10 @@
 			]
 		},
 		{
-			"name": "Votes",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Add vote",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4325,7 +4325,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -4371,7 +4371,7 @@
 							"body": "{\n    \"voting\": \"fa7fd5b4-4e3f-43c8-951b-48a692f97e23\",\n    \"note\": \"3ab898f7-01d7-477a-93ef-c023074849f5\"\n}"
 						},
 						{
-							"name": "Error",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -4419,7 +4419,7 @@
 					]
 				},
 				{
-					"name": "Get votes",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4459,7 +4459,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -4498,7 +4498,7 @@
 					]
 				},
 				{
-					"name": "Remove vote",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4538,7 +4538,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
@@ -4614,7 +4614,7 @@
 			]
 		},
 		{
-			"name": "Realtime",
+			"name": "Aksa Retrospektif",
 			"item": [],
 			"description": "There are two types of realtime socket connections you can establish.\n\n- **GET /boards/{board}:** Receive updates on all changes related to a specific board\n- **GET /boards/{board}/requests/{user}:** Get updates on status changes for a `PENDING` board session request\n    \n\n## Receiving board updates\n\nIf you have a valid board session you can subscribe to realtime updates for all changes. The message you'll receive will all have a type and the associated data to the type.\n\n``` json\n{\n  // the message type\n  \"type\": \"INIT\"\n  // the data associated with the specified type\n  \"data\": {\n    // ...\n  }\n}\n\n ```\n\nThere are several event types you'll receive upon subscription.\n\n| **type** | **description** |\n| --- | --- |\n| **INIT** | This event will be called once the connection is established and basically includes all data associated with the board. |\n| **BOARD_UPDATED** | You'll receive this message once some board configuration is changed. The data has the same format as the scheme defined in the board response. |\n| **BOARD_DELETED** | You'll receive this message if a board was deleted. The connection will be closed by the server automatically afterwards. |\n| **COLUMNS_UPDATED** | This event will send an array of all columns and will be triggered if any column configuration changes. |\n| **NOTES_UPDATED** | Once a note is created or a note is changed (e.g. the text, the rank or the stack etc.) you'll receive an array of all notes. |\n| **REQUEST_CREATED** | Fired when someone wants to gain access to a board. |\n| **REQUEST_UPDATED** | If a join request was accepted or rejected this event will be fired. |\n| **PARTICIPANT_CREATED** | This event will include a new participant of a board. |\n| **PARTICIPANT_UPDATED** | If a participant changes the `ready` state or goes on or offline (the `connected` attribute changes) this event will be fired. |\n| **PARTICIPANTS_UPDATED** | Since moderators can change settings of all participants at once (e.g. the `ready` state) this message will include an array of all participants with their latest settings. |\n| **VOTING_CREATED** | Fired once a new voting iteration is created. The data includes the voting settings. |\n| **VOTING_UPDATED** | Fired once a voting iteration is closed. In the first case the data will also include the voting results according to the settings of the voting. |",
 			"auth": {
@@ -4642,10 +4642,10 @@
 			]
 		},
 		{
-			"name": "Miscellaneous",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Health state",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4675,7 +4675,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -4708,7 +4708,7 @@
 							"body": ""
 						},
 						{
-							"name": "Error",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -4749,10 +4749,10 @@
 			]
 		},
 		{
-			"name": "Reactions",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Create reaction",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4805,7 +4805,7 @@
 					},
 					"response": [
 						{
-							"name": "Create reaction",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -4858,7 +4858,7 @@
 					]
 				},
 				{
-					"name": "Get reactions",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4897,7 +4897,7 @@
 					},
 					"response": [
 						{
-							"name": "Get reactions",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -4941,7 +4941,7 @@
 					]
 				},
 				{
-					"name": "Get reaction",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -4984,7 +4984,7 @@
 					},
 					"response": [
 						{
-							"name": "Get reaction",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -5028,7 +5028,7 @@
 					]
 				},
 				{
-					"name": "Update reaction",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5077,7 +5077,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete reaction",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5112,10 +5112,10 @@
 			]
 		},
 		{
-			"name": "Participants",
+			"name": "Aksa Retrospektif",
 			"item": [
 				{
-					"name": "Join Board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5154,7 +5154,7 @@
 					"response": []
 				},
 				{
-					"name": "Get board participants",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5196,7 +5196,7 @@
 					"response": []
 				},
 				{
-					"name": "Get board participants filter",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5260,7 +5260,7 @@
 					"response": []
 				},
 				{
-					"name": "Get board participant",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5300,7 +5300,7 @@
 					"response": []
 				},
 				{
-					"name": "Get users from board",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -5350,7 +5350,7 @@
 					"response": []
 				},
 				{
-					"name": "Get user by ID",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5395,7 +5395,7 @@
 					"response": []
 				},
 				{
-					"name": "Update board participants",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5447,7 +5447,7 @@
 					"response": []
 				},
 				{
-					"name": "Update board participant",
+					"name": "Aksa Retrospektif",
 					"event": [
 						{
 							"listen": "test",
@@ -5509,7 +5509,7 @@
 					},
 					"response": [
 						{
-							"name": "Success",
+							"name": "Aksa Retrospektif",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -5668,3 +5668,4 @@
 		}
 	]
 }
+

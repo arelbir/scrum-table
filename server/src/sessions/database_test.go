@@ -6,13 +6,13 @@ import (
 	"log"
 	"testing"
 
-	"scrumlr.io/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 type DatabaseSessionTestSuite struct {
@@ -654,3 +654,4 @@ func checkSessionInList(list []DatabaseBoardSession, boardId uuid.UUID, userId u
 	}
 	return nil
 }
+

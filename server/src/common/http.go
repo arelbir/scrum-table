@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 
 	"github.com/weppos/publicsuffix-go/publicsuffix"
 )
@@ -44,3 +44,4 @@ func GetHostWithoutPort(r *http.Request) string {
 	}
 	return hostname
 }
+

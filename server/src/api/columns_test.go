@@ -11,10 +11,10 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/suite"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 type ColumnTestSuite struct {
@@ -260,3 +260,4 @@ func (suite *ColumnTestSuite) TestGetColumns() {
 		})
 	}
 }
+

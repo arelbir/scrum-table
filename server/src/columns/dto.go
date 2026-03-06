@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 type ColumnSlice []*Column
@@ -116,3 +116,4 @@ func Columns(columns []DatabaseColumn) []*Column {
 		return new(Column).From(column)
 	})
 }
+

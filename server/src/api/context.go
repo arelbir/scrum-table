@@ -10,9 +10,9 @@ import (
 	"github.com/go-chi/httprate"
 	"github.com/google/uuid"
 
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
 )
 
 func (s *Server) BoardCandidateContext(next http.Handler) http.Handler {
@@ -350,3 +350,4 @@ func (s *Server) ColumnTemplateContext(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r.WithContext(columnTemplateContext))
 	})
 }
+

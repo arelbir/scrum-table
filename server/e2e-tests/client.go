@@ -11,16 +11,16 @@ import (
 	"strings"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/boards"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/users"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/boards"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/users"
+	"aksa.local/scrum/server/votings"
 )
 
-// Client is a typed Go client for the scrumlr API.
+// Client is a typed Go client for the aksa API.
 // Uses types from the server module for type safety.
 type Client struct {
 	http    *http.Client
@@ -439,3 +439,5 @@ func (c *Client) UpdateParticipant(boardID, userID uuid.UUID, req sessions.Board
 	}
 	return &session, nil
 }
+
+

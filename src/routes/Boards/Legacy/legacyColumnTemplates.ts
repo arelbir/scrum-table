@@ -5,15 +5,15 @@ export const legacyColumnTemplates: {[id: string]: {name: string; description?: 
     name: "Lean Coffee",
     columns: [
       {name: "Lean Coffee", visible: true, color: "backlog-blue"},
-      {name: "Actions", visible: false, color: "planning-pink"},
+      {name: "Actions", visible: false, color: "poker-purple"},
     ],
   },
   positiveNegative: {
     name: "Positive/Negative",
     columns: [
       {name: "Positive", visible: true, color: "backlog-blue"},
-      {name: "Negative", visible: true, color: "poker-purple"},
-      {name: "Actions", visible: false, color: "planning-pink"},
+      {name: "Negative", visible: true, color: "backlog-blue"},
+      {name: "Actions", visible: false, color: "poker-purple"},
     ],
   },
   startStopContinue: {
@@ -21,25 +21,25 @@ export const legacyColumnTemplates: {[id: string]: {name: string; description?: 
     columns: [
       {name: "Start", visible: true, color: "backlog-blue"},
       {name: "Stop", visible: true, color: "goal-green"},
-      {name: "Continue", visible: true, color: "online-orange"},
-      {name: "Actions", visible: false, color: "planning-pink"},
+      {name: "Continue", visible: true, color: "goal-green"},
+      {name: "Actions", visible: false, color: "poker-purple"},
     ],
   },
   madSadGlad: {
     name: "Mad/Sad/Glad",
     columns: [
       {name: "Mad", visible: true, color: "backlog-blue"},
-      {name: "Sad", visible: true, color: "online-orange"},
-      {name: "Glad", visible: true, color: "poker-purple"},
-      {name: "Actions", visible: false, color: "planning-pink"},
+      {name: "Sad", visible: true, color: "goal-green"},
+      {name: "Glad", visible: true, color: "backlog-blue"},
+      {name: "Actions", visible: false, color: "poker-purple"},
     ],
   },
   plusDelta: {
     name: "Plus/Delta",
     columns: [
       {name: "Plus", visible: true, color: "backlog-blue"},
-      {name: "Delta", visible: true, color: "poker-purple"},
-      {name: "Actions", visible: false, color: "planning-pink"},
+      {name: "Delta", visible: true, color: "backlog-blue"},
+      {name: "Actions", visible: false, color: "poker-purple"},
     ],
   },
   kalm: {
@@ -49,8 +49,8 @@ export const legacyColumnTemplates: {[id: string]: {name: string; description?: 
       {name: "Keep", visible: true, color: "backlog-blue"},
       {name: "Add", visible: true, color: "yielding-yellow"},
       {name: "Less", visible: true, color: "goal-green"},
-      {name: "More", visible: true, color: "poker-purple"},
-      {name: "Actions", visible: false, color: "planning-pink"},
+      {name: "More", visible: true, color: "backlog-blue"},
+      {name: "Actions", visible: false, color: "poker-purple"},
     ],
   },
   fourL: {
@@ -59,9 +59,9 @@ export const legacyColumnTemplates: {[id: string]: {name: string; description?: 
     columns: [
       {name: "Liked", visible: true, color: "backlog-blue"},
       {name: "Learned", visible: true, color: "yielding-yellow"},
-      {name: "Lacked", visible: true, color: "value-violet"},
-      {name: "Longed for", visible: true, color: "poker-purple"},
-      {name: "Actions", visible: false, color: "planning-pink"},
+      {name: "Lacked", visible: true, color: "backlog-blue"},
+      {name: "Longed for", visible: true, color: "backlog-blue"},
+      {name: "Actions", visible: false, color: "poker-purple"},
     ],
   },
   swot: {
@@ -69,10 +69,11 @@ export const legacyColumnTemplates: {[id: string]: {name: string; description?: 
     description: "Strengths, Weaknesses, Opportunities, Threats",
     columns: [
       {name: "Strengths", visible: true, color: "backlog-blue"},
-      {name: "Weaknesses", visible: true, color: "online-orange"},
-      {name: "Opportunities", visible: true, color: "goal-green"},
-      {name: "Threats", visible: true, color: "yielding-yellow"},
+      {name: "Weaknesses", visible: true, color: "goal-green"},
+      {name: "Opportunities", visible: true, color: "yielding-yellow"},
+      {name: "Threats", visible: true, color: "poker-purple"},
       {name: "Actions", visible: false, color: "poker-purple"},
     ],
   },
 };
+

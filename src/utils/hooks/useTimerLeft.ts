@@ -3,7 +3,7 @@ import {Timer as TimerUtils} from "../timer";
 
 /**
  * A hook which calculates the time left based on a provided end Date.
- * Intended for: https://github.com/inovex/scrumlr.io/issues/4217
+ * Intended for internal tracking.
  * @param timerEnd contains the timestamp for when the timer expires
  * @returns The time which is left according to the provided timerEnd
  */
@@ -30,3 +30,4 @@ export const useTimer = (timerEnd?: Date) => {
 
   return timerExpired;
 };
+

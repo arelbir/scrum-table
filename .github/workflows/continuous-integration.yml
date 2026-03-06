@@ -17,7 +17,7 @@ permissions:
   contents: read
 
 env:
-  BASE_URL: https://${{ github.event.pull_request.number || 'main' }}.development.scrumlr.fra.ics.inovex.io
+  BASE_URL: https://${{ github.event.pull_request.number || 'main' }}.development.aksa.fra.ics.kazanci.io
 
 concurrency:
   group: ${{ github.ref }}
@@ -142,7 +142,7 @@ jobs:
         working-directory: ./server
         run: |
           make test
-          sed -i 's|scrumlr.io/server/|server/src/|g' src/coverage.txt
+          sed -i 's|aksa.local/scrum/server/|server/src/|g' src/coverage.txt
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
@@ -256,3 +256,5 @@ jobs:
             yarn run start
           working-directory: ./
           wait-on: 'http://localhost:3000'
+
+

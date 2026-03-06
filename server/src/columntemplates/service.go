@@ -10,12 +10,12 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/columntemplates")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/columntemplates")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/columntemplates")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/columntemplates")
 
 type ColumnTemplateDatabase interface {
 	Create(ctx context.Context, column DatabaseColumnTemplateInsert) (DatabaseColumnTemplate, error)
@@ -39,13 +39,13 @@ func NewColumnTemplateService(db ColumnTemplateDatabase) ColumnTemplateService {
 
 func (service *Service) Create(ctx context.Context, body ColumnTemplateRequest) (*ColumnTemplate, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.column_templates.service.create")
+	ctx, span := tracer.Start(ctx, "aksa.column_templates.service.create")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.column_templates.service.create.boardtemplate", body.BoardTemplate.String()),
-		attribute.String("scrumlr.column_templates.service.create.user", body.User.String()),
-		attribute.String("scrumlr.column_templates.service.create.color", string(body.Color)),
+		attribute.String("aksa.column_templates.service.create.boardtemplate", body.BoardTemplate.String()),
+		attribute.String("aksa.column_templates.service.create.user", body.User.String()),
+		attribute.String("aksa.column_templates.service.create.color", string(body.Color)),
 	)
 
 	index, err := service.database.GetIndex(ctx, body.BoardTemplate)
@@ -85,12 +85,12 @@ func (service *Service) Create(ctx context.Context, body ColumnTemplateRequest) 
 
 func (service *Service) Get(ctx context.Context, boardTemplate, columnTemplate uuid.UUID) (*ColumnTemplate, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.column_templates.service.get")
+	ctx, span := tracer.Start(ctx, "aksa.column_templates.service.get")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.column_templates.service.get.boardtemplate", boardTemplate.String()),
-		attribute.String("scrumlr.column_templates.service.get.columntemplate", columnTemplate.String()),
+		attribute.String("aksa.column_templates.service.get.boardtemplate", boardTemplate.String()),
+		attribute.String("aksa.column_templates.service.get.columntemplate", columnTemplate.String()),
 	)
 
 	column, err := service.database.Get(ctx, boardTemplate, columnTemplate)
@@ -106,11 +106,11 @@ func (service *Service) Get(ctx context.Context, boardTemplate, columnTemplate u
 
 func (service *Service) GetAll(ctx context.Context, boardTemplate uuid.UUID) ([]*ColumnTemplate, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.column_templates.service.get.all")
+	ctx, span := tracer.Start(ctx, "aksa.column_templates.service.get.all")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.column_templates.service.get.all.boardtemplate", boardTemplate.String()),
+		attribute.String("aksa.column_templates.service.get.all.boardtemplate", boardTemplate.String()),
 	)
 
 	columns, err := service.database.GetAll(ctx, boardTemplate)
@@ -126,13 +126,13 @@ func (service *Service) GetAll(ctx context.Context, boardTemplate uuid.UUID) ([]
 
 func (service *Service) Update(ctx context.Context, body ColumnTemplateUpdateRequest) (*ColumnTemplate, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.column_templates.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.column_templates.service.update")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.column_templates.service.update.boardtemplate", body.BoardTemplate.String()),
-		attribute.String("scrumlr.column_templates.service.update.columntemplate", body.ID.String()),
-		attribute.String("scrumlr.column_templates.service.update.color", string(body.Color)),
+		attribute.String("aksa.column_templates.service.update.boardtemplate", body.BoardTemplate.String()),
+		attribute.String("aksa.column_templates.service.update.columntemplate", body.ID.String()),
+		attribute.String("aksa.column_templates.service.update.color", string(body.Color)),
 	)
 
 	if body.Index < 0 {
@@ -162,12 +162,12 @@ func (service *Service) Update(ctx context.Context, body ColumnTemplateUpdateReq
 
 func (service *Service) Delete(ctx context.Context, board, column uuid.UUID) error {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.column_templates.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.column_templates.service.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.column_templates.service.delete.boardtemplate", board.String()),
-		attribute.String("scrumlr.column_templates.service.delete.columntemplate", column.String()),
+		attribute.String("aksa.column_templates.service.delete.boardtemplate", board.String()),
+		attribute.String("aksa.column_templates.service.delete.columntemplate", column.String()),
 	)
 
 	err := service.database.Delete(ctx, board, column)
@@ -181,3 +181,5 @@ func (service *Service) Delete(ctx context.Context, board, column uuid.UUID) err
 	columnTemplatesDeletedCounter.Add(ctx, 1)
 	return err
 }
+
+

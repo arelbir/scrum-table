@@ -9,16 +9,16 @@ import (
 	"testing"
 	"time"
 
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/users"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/uptrace/bun"
-	httpMock "scrumlr.io/server/mocks/net/http"
-	"scrumlr.io/server/realtime"
+	httpMock "aksa.local/scrum/server/mocks/net/http"
+	"aksa.local/scrum/server/realtime"
 )
 
 func TestGetSessionRequest(t *testing.T) {
@@ -381,3 +381,4 @@ func TestSessionOpenBoardSessionRequestSocket(t *testing.T) {
 
 	mockWebSocket.AssertCalled(t, "OpenSocket", mockResponseWriter, mockRequest)
 }
+

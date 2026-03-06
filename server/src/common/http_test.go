@@ -8,46 +8,46 @@ import (
 )
 
 func TestDomainOfSealedCookieWithPort(t *testing.T) {
-	r := http.Request{Host: "beta.scrumlr.io:3000"}
+	r := http.Request{Host: "beta.aksa.local:3000"}
 	c := http.Cookie{}
 
 	SealCookie(&r, &c)
 
-	assert.Equal(t, "scrumlr.io", c.Domain)
+	assert.Equal(t, "aksa.local", c.Domain)
 }
 
 func TestDomainOfSealedCookieWithoutPort(t *testing.T) {
-	r := http.Request{Host: "beta.scrumlr.io"}
+	r := http.Request{Host: "beta.aksa.local"}
 	c := http.Cookie{}
 
 	SealCookie(&r, &c)
 
-	assert.Equal(t, "scrumlr.io", c.Domain)
+	assert.Equal(t, "aksa.local", c.Domain)
 }
 
 func TestGetTopLevelHostnameWithSubdomain(t *testing.T) {
-	r := http.Request{Host: "beta.scrumlr.io"}
-	assert.Equal(t, "scrumlr.io", GetTopLevelHost(&r))
+	r := http.Request{Host: "beta.aksa.local"}
+	assert.Equal(t, "aksa.local", GetTopLevelHost(&r))
 }
 
 func TestGetTopLevelHostnameWithoutSubdomain(t *testing.T) {
-	r := http.Request{Host: "scrumlr.io"}
-	assert.Equal(t, "scrumlr.io", GetTopLevelHost(&r))
+	r := http.Request{Host: "aksa.local"}
+	assert.Equal(t, "aksa.local", GetTopLevelHost(&r))
 }
 
 func TestGetTopLevelHostnameWithSubdomainAndPort(t *testing.T) {
-	r := http.Request{Host: "beta.scrumlr.io:3000"}
-	assert.Equal(t, "scrumlr.io", GetTopLevelHost(&r))
+	r := http.Request{Host: "beta.aksa.local:3000"}
+	assert.Equal(t, "aksa.local", GetTopLevelHost(&r))
 }
 
 func TestGetHostnameWithoutPortWithPort(t *testing.T) {
-	r := http.Request{Host: "beta.scrumlr.io:3000"}
-	assert.Equal(t, "beta.scrumlr.io", GetHostWithoutPort(&r))
+	r := http.Request{Host: "beta.aksa.local:3000"}
+	assert.Equal(t, "beta.aksa.local", GetHostWithoutPort(&r))
 }
 
 func TestGetHostnameWithoutPortWithoutPort(t *testing.T) {
-	r := http.Request{Host: "beta.scrumlr.io"}
-	assert.Equal(t, "beta.scrumlr.io", GetHostWithoutPort(&r))
+	r := http.Request{Host: "beta.aksa.local"}
+	assert.Equal(t, "beta.aksa.local", GetHostWithoutPort(&r))
 }
 func TestGetTopLevelHostnameWithPublicSuffix(t *testing.T) {
 	r := http.Request{Host: "example.stackit.rocks"}
@@ -76,3 +76,4 @@ func TestDomainOfSealedCookieWithPublicSuffixWithoutSubdomain(t *testing.T) {
 
 	assert.Equal(t, "", c.Domain)
 }
+

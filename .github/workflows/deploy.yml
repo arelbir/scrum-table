@@ -19,7 +19,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            registry.kube.com/scrumlr-frontend
+            registry.kube.com/aksa-frontend
           tags: |
             type=ref,event=pr
 
@@ -33,7 +33,7 @@ jobs:
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=registry,ref=registry.kube.com/scrumlr-frontend:latest
+          cache-from: type=registry,ref=registry.kube.com/aksa-frontend:latest
           cache-to: type=inline
 
   build-server:
@@ -47,7 +47,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            registry.kube.com/scrumlr-server
+            registry.kube.com/aksa-server
           tags: |
             type=ref,event=pr
       - name: Set up Docker Buildx
@@ -61,7 +61,7 @@ jobs:
           context: ./server/src
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=registry,ref=registry.kube.com/scrumlr-server:latest
+          cache-from: type=registry,ref=registry.kube.com/aksa-server:latest
           cache-to: type=inline
 
   deploy-pr:
@@ -77,24 +77,24 @@ jobs:
         run: |
           PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
           cat > values-dev.yaml << EOF
-          hostname: $PR_NUMBER.scrumlr.fra.ics.inovex.io
+          hostname: $PR_NUMBER.aksa.fra.ics.kazanci.io
           cert:
             enabled: true
-            name: scrumlr-cert-$PR_NUMBER
+            name: aksa-cert-$PR_NUMBER
           frontend:
-            image: registry.kube.com/scrumlr-frontend:$PR_NUMBER
+            image: registry.kube.com/aksa-frontend:$PR_NUMBER
             imagePullPolicy: Always
           server:
-            image: registry.kube.com/scrumlr-server:$PR_NUMBER
+            image: registry.kube.com/aksa-server:$PR_NUMBER
             imagePullPolicy: Always
           EOF
 
       - name: deploy pr
         run: |
-          kubectl get po -n scrumlr-$PR_NUMBER  | grep 'Running\|Completed' && helm uninstall scrumlr-$PR_NUMBER -n scrumlr-$PR-NUMBER && kubectl delete ns scrumlr-$PR_NUMBER
-          kubectl wait --for=delete namespace/scrumlr-$PR_NUMBER --timeout=60s
+          kubectl get po -n aksa-$PR_NUMBER  | grep 'Running\|Completed' && helm uninstall aksa-$PR_NUMBER -n aksa-$PR-NUMBER && kubectl delete ns aksa-$PR_NUMBER
+          kubectl wait --for=delete namespace/aksa-$PR_NUMBER --timeout=60s
           helm dep up deployment/chart/
-          helm install scrumlr-$PR_NUMBER ./deployment/chart -f values-dev.yaml --namespace scrumlr-$PR_NUMBER --create-namespace
+          helm install aksa-$PR_NUMBER ./deployment/chart -f values-dev.yaml --namespace aksa-$PR_NUMBER --create-namespace
 
   deploy-main:
     name: Deploy Main Branch
@@ -103,6 +103,7 @@ jobs:
     steps:
       - name: deploy main
         run: |
-          helm uninstall scrumlr-main --namespace scrumlr-main --wait
+          helm uninstall aksa-main --namespace aksa-main --wait
           helm dep up deployment/chart/
-          helm install scrumlr-main ./deployment/chart -f ./deployment/chart/env/dev.yaml --namespace scrumlr-main
+          helm install aksa-main ./deployment/chart -f ./deployment/chart/env/dev.yaml --namespace aksa-main
+

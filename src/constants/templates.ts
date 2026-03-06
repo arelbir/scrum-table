@@ -31,7 +31,7 @@ export const DEFAULT_TEMPLATE: TemplateWithColumns = {
       template: DEFAULT_TEMPLATE_ID,
       name: t("Templates.ColumnsConfiguratorColumn.defaultActionsName"),
       description: "",
-      color: "planning-pink",
+      color: "poker-purple",
       visible: false,
       index: 1,
     },

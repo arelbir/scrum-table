@@ -12,14 +12,14 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/realtime"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/votings")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/votings")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/votings")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/votings")
 
 type VotingDatabase interface {
 	Create(ctx context.Context, insert DatabaseVotingInsert) (DatabaseVoting, error)
@@ -47,12 +47,12 @@ func NewVotingService(db VotingDatabase, rt *realtime.Broker) VotingService {
 
 func (service *Service) AddVote(ctx context.Context, body VoteRequest) (*Vote, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.votes.service.add")
+	ctx, span := tracer.Start(ctx, "aksa.votes.service.add")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votes.service.add.board", body.Board.String()),
-		attribute.String("scrumlr.votes.service.add.note", body.Note.String()),
+		attribute.String("aksa.votes.service.add.board", body.Board.String()),
+		attribute.String("aksa.votes.service.add.note", body.Note.String()),
 	)
 
 	vote, err := service.database.AddVote(ctx, body.Board, body.User, body.Note)
@@ -75,13 +75,13 @@ func (service *Service) AddVote(ctx context.Context, body VoteRequest) (*Vote, e
 
 func (service *Service) RemoveVote(ctx context.Context, body VoteRequest) error {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.votes.service.remove")
+	ctx, span := tracer.Start(ctx, "aksa.votes.service.remove")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votes.service.remove.board", body.Board.String()),
-		attribute.String("scrumlr.votes.service.remove.note", body.Note.String()),
-		attribute.String("scrumlr.votes.service.remove.user", body.User.String()),
+		attribute.String("aksa.votes.service.remove.board", body.Board.String()),
+		attribute.String("aksa.votes.service.remove.note", body.Note.String()),
+		attribute.String("aksa.votes.service.remove.user", body.User.String()),
 	)
 
 	err := service.database.RemoveVote(ctx, body.Board, body.User, body.Note)
@@ -97,11 +97,11 @@ func (service *Service) RemoveVote(ctx context.Context, body VoteRequest) error 
 
 func (service *Service) GetVotes(ctx context.Context, board uuid.UUID, f VoteFilter) ([]*Vote, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.votes.service.get.all")
+	ctx, span := tracer.Start(ctx, "aksa.votes.service.get.all")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votes.service.get.all.filter_board", board.String()),
+		attribute.String("aksa.votes.service.get.all.filter_board", board.String()),
 	)
 
 	votes, err := service.database.GetVotes(ctx, board, f)
@@ -117,15 +117,15 @@ func (service *Service) GetVotes(ctx context.Context, board uuid.UUID, f VoteFil
 
 func (service *Service) Create(ctx context.Context, body VotingCreateRequest) (*Voting, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.votings.service.create")
+	ctx, span := tracer.Start(ctx, "aksa.votings.service.create")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votings.service.create.board", body.Board.String()),
-		attribute.Int("scrumlr.votings.service.create.limit", body.VoteLimit),
-		attribute.Bool("scrumlr.votings.service.create.multiple_votes", body.AllowMultipleVotes),
-		attribute.Bool("scrumlr.votings.service.create.anonymous", body.IsAnonymous),
-		attribute.Bool("scrumlr.votings.service.create.show_votes", body.ShowVotesOfOthers),
+		attribute.String("aksa.votings.service.create.board", body.Board.String()),
+		attribute.Int("aksa.votings.service.create.limit", body.VoteLimit),
+		attribute.Bool("aksa.votings.service.create.multiple_votes", body.AllowMultipleVotes),
+		attribute.Bool("aksa.votings.service.create.anonymous", body.IsAnonymous),
+		attribute.Bool("aksa.votings.service.create.show_votes", body.ShowVotesOfOthers),
 	)
 
 	if body.VoteLimit < 0 {
@@ -179,12 +179,12 @@ func (service *Service) Create(ctx context.Context, body VotingCreateRequest) (*
 
 func (service *Service) Close(ctx context.Context, id uuid.UUID, board uuid.UUID, affectedNotes []Note) (*Voting, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.votings.service.close")
+	ctx, span := tracer.Start(ctx, "aksa.votings.service.close")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votings.service.close.voting", id.String()),
-		attribute.String("scrumlr.votings.service.close.board", board.String()),
+		attribute.String("aksa.votings.service.close.voting", id.String()),
+		attribute.String("aksa.votings.service.close.board", board.String()),
 	)
 
 	voting, err := service.database.Close(ctx, DatabaseVotingUpdate{
@@ -220,11 +220,11 @@ func (service *Service) Close(ctx context.Context, id uuid.UUID, board uuid.UUID
 
 func (service *Service) Get(ctx context.Context, boardID, id uuid.UUID) (*Voting, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.votings.service.get")
+	ctx, span := tracer.Start(ctx, "aksa.votings.service.get")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votings.service.get.board", boardID.String()),
+		attribute.String("aksa.votings.service.get.board", boardID.String()),
 	)
 
 	voting, err := service.database.Get(ctx, boardID, id)
@@ -259,11 +259,11 @@ func (service *Service) Get(ctx context.Context, boardID, id uuid.UUID) (*Voting
 
 func (service *Service) GetAll(ctx context.Context, boardID uuid.UUID) ([]*Voting, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.votings.service.get.all")
+	ctx, span := tracer.Start(ctx, "aksa.votings.service.get.all")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votings.service.get.all.board", boardID.String()),
+		attribute.String("aksa.votings.service.get.all.board", boardID.String()),
 	)
 
 	votings, err := service.database.GetAll(ctx, boardID)
@@ -285,11 +285,11 @@ func (service *Service) GetAll(ctx context.Context, boardID uuid.UUID) ([]*Votin
 
 func (service *Service) GetOpen(ctx context.Context, boardID uuid.UUID) (*Voting, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.votings.service.get.open")
+	ctx, span := tracer.Start(ctx, "aksa.votings.service.get.open")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votings.service.get.open.baord", boardID.String()),
+		attribute.String("aksa.votings.service.get.open.baord", boardID.String()),
 	)
 
 	voting, err := service.database.GetOpenVoting(ctx, boardID)
@@ -308,13 +308,13 @@ func (service *Service) GetOpen(ctx context.Context, boardID uuid.UUID) (*Voting
 }
 
 func (service *Service) createdVoting(ctx context.Context, board uuid.UUID, voting DatabaseVoting) {
-	ctx, span := tracer.Start(ctx, "scrumlr.votings.service.create")
+	ctx, span := tracer.Start(ctx, "aksa.votings.service.create")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votings.service.create.board", board.String()),
-		attribute.String("scrumlr.votings.service.create.voting", voting.ID.String()),
+		attribute.String("aksa.votings.service.create.board", board.String()),
+		attribute.String("aksa.votings.service.create.voting", voting.ID.String()),
 	)
 
 	err := service.realtime.BroadcastToBoard(ctx, board, realtime.BoardEvent{
@@ -330,17 +330,17 @@ func (service *Service) createdVoting(ctx context.Context, board uuid.UUID, voti
 }
 
 func (service *Service) updatedVoting(ctx context.Context, board uuid.UUID, voting DatabaseVoting, votes []DatabaseVote, affectedNotes []Note) {
-	ctx, span := tracer.Start(ctx, "scrumlr.votings.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.votings.service.update")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
 	span.SetAttributes(
-		attribute.String("scrumlr.votings.service.update.board", board.String()),
-		attribute.String("scrumlr.votings.service.update.voting", voting.ID.String()),
-		attribute.Int("scrumlr.votings.service.update.vote_limit", voting.VoteLimit),
-		attribute.Bool("scrumlr.votings.service.update.multiple", voting.AllowMultipleVotes),
-		attribute.Bool("scrumlr.votings.service.update.anonymous", voting.IsAnonymous),
-		attribute.Bool("scrumlr.votings.service.update.show_votes", voting.ShowVotesOfOthers),
+		attribute.String("aksa.votings.service.update.board", board.String()),
+		attribute.String("aksa.votings.service.update.voting", voting.ID.String()),
+		attribute.Int("aksa.votings.service.update.vote_limit", voting.VoteLimit),
+		attribute.Bool("aksa.votings.service.update.multiple", voting.AllowMultipleVotes),
+		attribute.Bool("aksa.votings.service.update.anonymous", voting.IsAnonymous),
+		attribute.Bool("aksa.votings.service.update.show_votes", voting.ShowVotesOfOthers),
 	)
 
 	currentVoting := new(Voting).From(voting, votes)
@@ -386,3 +386,5 @@ func (service *Service) updatedVoting(ctx context.Context, board uuid.UUID, voti
 		log.Errorw("unable to send voting update", "err", err)
 	}
 }
+
+

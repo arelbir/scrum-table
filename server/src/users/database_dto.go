@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 // User model of the application
@@ -32,3 +32,4 @@ type DatabaseUserUpdate struct {
 	Name          string
 	Avatar        *common.Avatar `bun:"type:jsonb,nullzero"`
 }
+

@@ -5,18 +5,18 @@ import (
 	"testing"
 	"time"
 
-	"scrumlr.io/server/websocket"
+	"aksa.local/scrum/server/websocket"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/suite"
-	"scrumlr.io/server/boards"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/boards"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessions"
 )
 
 type mockConnection struct{}
@@ -198,3 +198,4 @@ func (suite *BoardsListenIntegrationTestSuite) TestBoardSubscriptionStoresFullBo
 	assert.Equal(suite.T(), testNotes, subscription.boardNotes)
 	assert.Equal(suite.T(), testReactions, subscription.boardReactions)
 }
+

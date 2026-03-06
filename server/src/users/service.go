@@ -12,16 +12,16 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/sessions"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/realtime"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/users")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/users")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/users")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/users")
 
 type UserDatabase interface {
 	CreateAnonymousUser(ctx context.Context, name string) (DatabaseUser, error)
@@ -68,8 +68,8 @@ func (service *Service) CreateAnonymous(ctx context.Context, name string) (*User
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.create.anonymous.type", string(common.Anonymous)),
-		attribute.String("scrumlr.users.service.create.anonymous.name", name),
+		attribute.String("aksa.users.service.create.anonymous.type", string(common.Anonymous)),
+		attribute.String("aksa.users.service.create.anonymous.name", name),
 	)
 
 	user, err := service.database.CreateAnonymousUser(ctx, name)
@@ -85,7 +85,7 @@ func (service *Service) CreateAnonymous(ctx context.Context, name string) (*User
 }
 
 func (service *Service) CreateAppleUser(ctx context.Context, id, name, avatarUrl string) (*User, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.create.apple")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.create.apple")
 	defer span.End()
 
 	err := validateUsername(name)
@@ -96,8 +96,8 @@ func (service *Service) CreateAppleUser(ctx context.Context, id, name, avatarUrl
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.create.apple.type", string(common.Apple)),
-		attribute.String("scrumlr.users.service.create.apple.name", name),
+		attribute.String("aksa.users.service.create.apple.type", string(common.Apple)),
+		attribute.String("aksa.users.service.create.apple.name", name),
 	)
 
 	user, err := service.database.CreateAppleUser(ctx, id, name, avatarUrl)
@@ -113,7 +113,7 @@ func (service *Service) CreateAppleUser(ctx context.Context, id, name, avatarUrl
 }
 
 func (service *Service) CreateAzureAdUser(ctx context.Context, id, name, avatarUrl string) (*User, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.create.azuread")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.create.azuread")
 	defer span.End()
 
 	err := validateUsername(name)
@@ -124,8 +124,8 @@ func (service *Service) CreateAzureAdUser(ctx context.Context, id, name, avatarU
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.create.azuread.type", string(common.AzureAd)),
-		attribute.String("scrumlr.users.service.create.azuread.name", name),
+		attribute.String("aksa.users.service.create.azuread.type", string(common.AzureAd)),
+		attribute.String("aksa.users.service.create.azuread.name", name),
 	)
 
 	user, err := service.database.CreateAzureAdUser(ctx, id, name, avatarUrl)
@@ -141,7 +141,7 @@ func (service *Service) CreateAzureAdUser(ctx context.Context, id, name, avatarU
 }
 
 func (service *Service) CreateGitHubUser(ctx context.Context, id, name, avatarUrl string) (*User, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.create.github")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.create.github")
 	defer span.End()
 
 	err := validateUsername(name)
@@ -152,8 +152,8 @@ func (service *Service) CreateGitHubUser(ctx context.Context, id, name, avatarUr
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.create.github.type", string(common.GitHub)),
-		attribute.String("scrumlr.users.service.create.github.name", name),
+		attribute.String("aksa.users.service.create.github.type", string(common.GitHub)),
+		attribute.String("aksa.users.service.create.github.name", name),
 	)
 
 	user, err := service.database.CreateGitHubUser(ctx, id, name, avatarUrl)
@@ -169,7 +169,7 @@ func (service *Service) CreateGitHubUser(ctx context.Context, id, name, avatarUr
 }
 
 func (service *Service) CreateGoogleUser(ctx context.Context, id, name, avatarUrl string) (*User, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.create.google")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.create.google")
 	defer span.End()
 
 	err := validateUsername(name)
@@ -180,8 +180,8 @@ func (service *Service) CreateGoogleUser(ctx context.Context, id, name, avatarUr
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.create.google.type", string(common.Google)),
-		attribute.String("scrumlr.users.service.create.google.name", name),
+		attribute.String("aksa.users.service.create.google.type", string(common.Google)),
+		attribute.String("aksa.users.service.create.google.name", name),
 	)
 
 	user, err := service.database.CreateGoogleUser(ctx, id, name, avatarUrl)
@@ -197,7 +197,7 @@ func (service *Service) CreateGoogleUser(ctx context.Context, id, name, avatarUr
 }
 
 func (service *Service) CreateMicrosoftUser(ctx context.Context, id, name, avatarUrl string) (*User, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.create.microsoft")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.create.microsoft")
 	defer span.End()
 
 	err := validateUsername(name)
@@ -208,8 +208,8 @@ func (service *Service) CreateMicrosoftUser(ctx context.Context, id, name, avata
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.create.microsoft.type", string(common.Microsoft)),
-		attribute.String("scrumlr.users.service.create.microsoft.name", name),
+		attribute.String("aksa.users.service.create.microsoft.type", string(common.Microsoft)),
+		attribute.String("aksa.users.service.create.microsoft.name", name),
 	)
 
 	user, err := service.database.CreateMicrosoftUser(ctx, id, name, avatarUrl)
@@ -225,7 +225,7 @@ func (service *Service) CreateMicrosoftUser(ctx context.Context, id, name, avata
 }
 
 func (service *Service) CreateOIDCUser(ctx context.Context, id, name, avatarUrl string) (*User, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.create.oidc")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.create.oidc")
 	defer span.End()
 
 	err := validateUsername(name)
@@ -236,8 +236,8 @@ func (service *Service) CreateOIDCUser(ctx context.Context, id, name, avatarUrl 
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.create.oidc.type", string(common.TypeOIDC)),
-		attribute.String("scrumlr.users.service.create.oidc.name", name),
+		attribute.String("aksa.users.service.create.oidc.type", string(common.TypeOIDC)),
+		attribute.String("aksa.users.service.create.oidc.name", name),
 	)
 
 	user, err := service.database.CreateOIDCUser(ctx, id, name, avatarUrl)
@@ -254,7 +254,7 @@ func (service *Service) CreateOIDCUser(ctx context.Context, id, name, avatarUrl 
 
 func (service *Service) Update(ctx context.Context, body UserUpdateRequest) (*User, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.update")
 	defer span.End()
 
 	err := validateUsername(body.Name)
@@ -265,8 +265,8 @@ func (service *Service) Update(ctx context.Context, body UserUpdateRequest) (*Us
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.update.id", body.ID.String()),
-		attribute.String("scrumlr.users.service.update.name", body.Name),
+		attribute.String("aksa.users.service.update.id", body.ID.String()),
+		attribute.String("aksa.users.service.update.name", body.Name),
 	)
 
 	user, err := service.database.UpdateUser(ctx, DatabaseUserUpdate{
@@ -296,11 +296,11 @@ func (service *Service) Update(ctx context.Context, body UserUpdateRequest) (*Us
 
 func (service *Service) Delete(ctx context.Context, id uuid.UUID) error {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.delete.id", id.String()),
+		attribute.String("aksa.users.service.delete.id", id.String()),
 	)
 	connectedBoards, err := service.sessionService.GetUserConnectedBoards(ctx, id)
 	if err != nil {
@@ -323,11 +323,11 @@ func (service *Service) Delete(ctx context.Context, id uuid.UUID) error {
 
 func (service *Service) Get(ctx context.Context, userID uuid.UUID) (*User, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.get")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.get")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.get.id", userID.String()),
+		attribute.String("aksa.users.service.get.id", userID.String()),
 	)
 
 	user, err := service.database.GetUser(ctx, userID)
@@ -349,7 +349,7 @@ func (service *Service) Get(ctx context.Context, userID uuid.UUID) (*User, error
 
 func (service *Service) GetBoardUsers(ctx context.Context, boardID uuid.UUID) ([]*User, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.multiple")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.multiple")
 	defer span.End()
 
 	users, err := service.database.GetUsers(ctx, boardID)
@@ -364,22 +364,22 @@ func (service *Service) GetBoardUsers(ctx context.Context, boardID uuid.UUID) ([
 }
 
 func (service *Service) IsUserAvailableForKeyMigration(ctx context.Context, id uuid.UUID) (bool, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.available_key_migration")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.available_key_migration")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.available_key_migration.id", id.String()),
+		attribute.String("aksa.users.service.available_key_migration.id", id.String()),
 	)
 
 	return service.database.IsUserAvailableForKeyMigration(ctx, id)
 }
 
 func (service *Service) SetKeyMigration(ctx context.Context, id uuid.UUID) (*User, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.set_key_migration")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.set_key_migration")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.set_key_migration.id", id.String()),
+		attribute.String("aksa.users.service.set_key_migration.id", id.String()),
 	)
 
 	user, err := service.database.SetKeyMigration(ctx, id)
@@ -393,13 +393,13 @@ func (service *Service) SetKeyMigration(ctx context.Context, id uuid.UUID) (*Use
 }
 
 func (service *Service) updatedUser(ctx context.Context, user DatabaseUser) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.update")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.update.id", user.ID.String()),
-		attribute.String("scrumlr.users.service.update.name", user.Name),
-		attribute.String("scrumlr.users.service.update.type", string(user.AccountType)),
+		attribute.String("aksa.users.service.update.id", user.ID.String()),
+		attribute.String("aksa.users.service.update.name", user.Name),
+		attribute.String("aksa.users.service.update.type", string(user.AccountType)),
 	)
 
 	connectedBoards, err := service.sessionService.GetUserConnectedBoards(ctx, user.ID)
@@ -424,11 +424,11 @@ func (service *Service) updatedUser(ctx context.Context, user DatabaseUser) {
 }
 
 func (service *Service) deletedUser(ctx context.Context, userId uuid.UUID, connectedBoards []*sessions.BoardSession) {
-	ctx, span := tracer.Start(ctx, "scrumlr.users.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.users.service.update")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.users.service.update.id", userId.String()),
+		attribute.String("aksa.users.service.update.id", userId.String()),
 	)
 
 	for _, session := range connectedBoards {
@@ -450,3 +450,5 @@ func validateUsername(name string) error {
 
 	return nil
 }
+
+

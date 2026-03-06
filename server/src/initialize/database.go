@@ -18,7 +18,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
 //go:embed migrations/sql
@@ -79,3 +79,4 @@ func InitializeBun(db *sql.DB, logLevel zapcore.Level) *bun.DB {
 
 	return d
 }
+

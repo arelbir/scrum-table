@@ -1,75 +1,75 @@
 // primary
 // blue
-$blue--800: #002366;
-$blue--700: #003499;
-$blue--600: #0046cc;
-$blue--500: #0057ff; // primary light
-$blue--400: #3379ff; // primary dark
-$blue--300: #669aff;
-$blue--200: #99bcff;
-$blue--100: #ccddff;
-$blue--50: #dde8ff;
+$blue--800: #003a70;
+$blue--700: #004785;
+$blue--600: #00539b;
+$blue--500: #005eb8; // primary light (Pantone 2935 CVC approx)
+$blue--400: #1e6ec2; // primary dark
+$blue--300: #4b86d1;
+$blue--200: #7da5e0;
+$blue--100: #b3c9f0;
+$blue--50: #d7e5f8;
 
-// pink
-$pink--800: #66002a;
-$pink--700: #99003f;
-$pink--600: #cc0054;
-$pink--500: #ff0069; // primary light
-$pink--400: #ff3387; // primary dark
-$pink--300: #ff66a5;
-$pink--200: #ff99c3;
-$pink--100: #ffcce1;
+// pink (re-mapped to Aksa blue spectrum)
+$pink--800: #004070;
+$pink--700: #00518d;
+$pink--600: #0061a8;
+$pink--500: #0071c4; // primary light
+$pink--400: #1f82cd; // primary dark
+$pink--300: #4b9ad8;
+$pink--200: #80b6e6;
+$pink--100: #b6d6f2;
 
-// purple
-$purple--800: #500e66;
-$purple--700: #791599;
-$purple--600: #a11ccc;
-$purple--500: #c923ff; // primary light
-$purple--400: #d44fff; // primary dark
-$purple--300: #df7bff;
-$purple--200: #e9a7ff;
-$purple--100: #f4d3ff;
+// purple (re-mapped to deep Aksa navy)
+$purple--800: #0b1e33;
+$purple--700: #0f2741;
+$purple--600: #13304f;
+$purple--500: #16395e; // primary light
+$purple--400: #2b4b72; // primary dark
+$purple--300: #4d6b8a;
+$purple--200: #7c99b0;
+$purple--100: #b9cdd9;
 
-// violet
-$violet--800: #250062;
-$violet--700: #380094;
-$violet--600: #4a00c5;
-$violet--500: #5d00f6; // primary light
-$violet--400: #7d33f8; // primary dark
-$violet--300: #9e66fa;
-$violet--200: #be99fb;
-$violet--100: #dfccfd;
+// violet (re-mapped to Aksa cyan/blue)
+$violet--800: #00485a;
+$violet--700: #005e73;
+$violet--600: #00748c;
+$violet--500: #008ba6; // primary light
+$violet--400: #1e9bb3; // primary dark
+$violet--300: #4db2c4;
+$violet--200: #80c9d6;
+$violet--100: #b8e0e8;
 
 // secondary
 // green
-$green--800: #0b5532;
-$green--700: #107f4c;
-$green--600: #16aa65;
-$green--500: #1bd47e; // primary light
-$green--400: #49dd98; // primary dark
-$green--300: #76e5b2;
-$green--200: #a4eecb;
-$green--100: #d1f6e5;
+$green--800: #3c6a1f;
+$green--700: #4b7f26;
+$green--600: #5d9630;
+$green--500: #97d700; // primary light (Pantone 375 CVC approx)
+$green--400: #a6de33; // primary dark
+$green--300: #b9e65c;
+$green--200: #d2f09a;
+$green--100: #e9f8cf;
 
-// yellow
-$yellow--800: #9f7b00;
-$yellow--700: #bf9400;
-$yellow--600: #dfad00;
-$yellow--500: #fbd40c; // primary light
-$yellow--400: #fcde48; // primary dark
-$yellow--300: #fde985;
-$yellow--200: #fef4c2;
-$yellow--100: #fef9e0;
+// yellow (re-mapped to Aksa green spectrum)
+$yellow--800: #2f5e1b;
+$yellow--700: #3d7121;
+$yellow--600: #4d8728;
+$yellow--500: #63a82f; // primary light
+$yellow--400: #79b84f; // primary dark
+$yellow--300: #92c96d;
+$yellow--200: #b6dda1;
+$yellow--100: #dbf0d0;
 
-// orange
-$orange--800: #664300;
-$orange--700: #996500;
-$orange--600: #cc8600;
-$orange--500: #ffa800; // primary light
-$orange--400: #ffb933; // primary dark
-$orange--300: #ffcb66;
-$orange--200: #ffdc99;
-$orange--100: #ffeecc;
+// orange (re-mapped to Aksa green spectrum)
+$orange--800: #2f5e1b;
+$orange--700: #3d7121;
+$orange--600: #4d8728;
+$orange--500: #63a82f; // primary light
+$orange--400: #79b84f; // primary dark
+$orange--300: #92c96d;
+$orange--200: #b6dda1;
+$orange--100: #dbf0d0;
 
 // base
 // navy
@@ -93,6 +93,43 @@ $gray--300: #eeeff1; // e.g. input field
 $gray--200: #f4f4f6; // e.g. background column 1
 $gray--100: #f9fafa; // e.g. background column 2
 $gray--000: #ffffff;
+
+// corporate (RAL approximations)
+$ral-5017--800: #00466e;
+$ral-5017--700: #00527f;
+$ral-5017--600: #005b8c;
+$ral-5017--500: #00679d;
+$ral-5017--400: #1b77aa;
+$ral-5017--300: #4a94bd;
+$ral-5017--200: #80b3d2;
+$ral-5017--100: #b5d3e6;
+
+$ral-6018--800: #2e6f2a;
+$ral-6018--700: #378233;
+$ral-6018--600: #3f933a;
+$ral-6018--500: #48a43f;
+$ral-6018--400: #63b85a;
+$ral-6018--300: #83c97e;
+$ral-6018--200: #b0ddb0;
+$ral-6018--100: #d9efd7;
+
+$ral-9005--800: #0a0a0a;
+$ral-9005--700: #1a1a1a;
+$ral-9005--600: #2a2a2a;
+$ral-9005--500: #3a3a3a;
+$ral-9005--400: #4a4a4a;
+$ral-9005--300: #5b5b5b;
+$ral-9005--200: #7a7a7a;
+$ral-9005--100: #a5a5a5;
+
+$ral-1003--800: #a46b00;
+$ral-1003--700: #c38100;
+$ral-1003--600: #e19700;
+$ral-1003--500: #f7ba0b;
+$ral-1003--400: #f8c643;
+$ral-1003--300: #f9d472;
+$ral-1003--200: #fbe3a8;
+$ral-1003--100: #fdf1d6;
 
 // info states
 // error
@@ -150,6 +187,36 @@ $primary-colors: (
     200: $violet--200,
     100: $violet--100,
   ),
+  aksa-blue-ral: (
+    800: $ral-5017--800,
+    700: $ral-5017--700,
+    600: $ral-5017--600,
+    500: $ral-5017--500,
+    400: $ral-5017--400,
+    300: $ral-5017--300,
+    200: $ral-5017--200,
+    100: $ral-5017--100,
+  ),
+  aksa-green-ral: (
+    800: $ral-6018--800,
+    700: $ral-6018--700,
+    600: $ral-6018--600,
+    500: $ral-6018--500,
+    400: $ral-6018--400,
+    300: $ral-6018--300,
+    200: $ral-6018--200,
+    100: $ral-6018--100,
+  ),
+  aksa-black: (
+    800: $ral-9005--800,
+    700: $ral-9005--700,
+    600: $ral-9005--600,
+    500: $ral-9005--500,
+    400: $ral-9005--400,
+    300: $ral-9005--300,
+    200: $ral-9005--200,
+    100: $ral-9005--100,
+  ),
 );
 
 $secondary-colors: (
@@ -182,6 +249,16 @@ $secondary-colors: (
     300: $orange--300,
     200: $orange--200,
     100: $orange--100,
+  ),
+  aksa-yellow-ral: (
+    800: $ral-1003--800,
+    700: $ral-1003--700,
+    600: $ral-1003--600,
+    500: $ral-1003--500,
+    400: $ral-1003--400,
+    300: $ral-1003--300,
+    200: $ral-1003--200,
+    100: $ral-1003--100,
   ),
 );
 

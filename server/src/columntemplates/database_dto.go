@@ -3,7 +3,7 @@ package columntemplates
 import (
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/columns"
+	"aksa.local/scrum/server/columns"
 )
 
 // ColumnTemplate the model for a column template of a board template
@@ -40,3 +40,4 @@ type DatabaseColumnTemplateUpdate struct {
 	Visible       bool
 	Index         int
 }
+

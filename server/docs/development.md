@@ -7,7 +7,7 @@
 
 ## Run required services
 
-To run the scrumlr backend localy for development, you first need to run the needed service (postgres database and nats).
+To run the aksa backend localy for development, you first need to run the needed service (postgres database and nats).
 For that you can use the provided docker compose files.
 To start the docker containers either run
 
@@ -21,13 +21,13 @@ or
 docker compose --profile dev up
 ```
 
-## Run scrumlr backend
+## Run aksa backend
 
-To start the scrumlr backend run
+To start the aksa backend run
 
 ```bash
 cd src/
-go run . --database "postgres://admin:supersecret@localhost:5432/scrumlr?sslmode=disable" --disable-check-origin --insecure
+go run . --database "postgres://admin:supersecret@localhost:5432/aksa?sslmode=disable" --disable-check-origin --insecure
 ```
 
 This will start the backend and connect it to the postgres database and nats.
@@ -54,3 +54,4 @@ go run . --config config_example.toml
 ```
 
 To see all values that can be set and what purpose they serve, take a look at the provided [config_example.toml](./../config_example.toml) file.
+

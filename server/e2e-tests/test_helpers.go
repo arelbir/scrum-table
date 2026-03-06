@@ -2,8 +2,8 @@ package e2e
 
 import (
 	"github.com/stretchr/testify/require"
-	"scrumlr.io/server/boards"
-	"scrumlr.io/server/columns"
+	"aksa.local/scrum/server/boards"
+	"aksa.local/scrum/server/columns"
 	"testing"
 )
 
@@ -96,3 +96,4 @@ func SetupTestBoard(t *testing.T, client *Client, name string) *TestBoard {
 		T:      t,
 	}
 }
+

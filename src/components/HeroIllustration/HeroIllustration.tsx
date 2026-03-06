@@ -1,17 +1,17 @@
-import Panel01 from "assets/hero/scrumlr-lp-01.svg";
-import Panel02 from "assets/hero/scrumlr-lp-02.svg";
-import Panel03 from "assets/hero/scrumlr-lp-03.svg";
-import Panel04 from "assets/hero/scrumlr-lp-04.svg";
-import Panel05 from "assets/hero/scrumlr-lp-05.svg";
-import Panel06 from "assets/hero/scrumlr-lp-06.svg";
-import Panel07 from "assets/hero/scrumlr-lp-07.svg";
-import Panel08 from "assets/hero/scrumlr-lp-08.svg";
-import Panel09 from "assets/hero/scrumlr-lp-09.svg";
-import Panel10 from "assets/hero/scrumlr-lp-10.svg";
-import Panel11 from "assets/hero/scrumlr-lp-11.svg";
-import Panel12 from "assets/hero/scrumlr-lp-12.svg";
-import ActionbarUser from "assets/hero/scrumlr_actionbar_user.svg";
-import ActionbarModerator from "assets/hero/scrumlr_actionbar_mod.svg";
+import Panel01 from "assets/hero/aksa-lp-01.svg";
+import Panel02 from "assets/hero/aksa-lp-02.svg";
+import Panel03 from "assets/hero/aksa-lp-03.svg";
+import Panel04 from "assets/hero/aksa-lp-04.svg";
+import Panel05 from "assets/hero/aksa-lp-05.svg";
+import Panel06 from "assets/hero/aksa-lp-06.svg";
+import Panel07 from "assets/hero/aksa-lp-07.svg";
+import Panel08 from "assets/hero/aksa-lp-08.svg";
+import Panel09 from "assets/hero/aksa-lp-09.svg";
+import Panel10 from "assets/hero/aksa-lp-10.svg";
+import Panel11 from "assets/hero/aksa-lp-11.svg";
+import Panel12 from "assets/hero/aksa-lp-12.svg";
+import ActionbarUser from "assets/hero/aksa_actionbar_user.svg";
+import ActionbarModerator from "assets/hero/aksa_actionbar_mod.svg";
 import {FC} from "react";
 import classNames from "classnames";
 import "./HeroIllustration.scss";
@@ -70,3 +70,4 @@ export const HeroIllustration: FC<HeroIllustrationProps> = ({className}) => (
     </div>
   </aside>
 );
+

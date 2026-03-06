@@ -4,21 +4,21 @@ import (
 	"math/rand"
 	"testing"
 
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/users"
 
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/sessions"
 
-	"scrumlr.io/server/boards"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/boards"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/votings"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessionrequests"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessionrequests"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 var (
@@ -793,3 +793,4 @@ func randSeq(n int) *string {
 	s := string(b)
 	return &s
 }
+

@@ -2,7 +2,7 @@ package boardtemplates
 
 import (
 	"github.com/google/uuid"
-	"scrumlr.io/server/columntemplates"
+	"aksa.local/scrum/server/columntemplates"
 )
 
 type BoardTemplate struct {
@@ -78,3 +78,4 @@ type BoardTemplateUpdateRequest struct {
 	// The favourite status of the template
 	Favourite *bool `json:"favourite"`
 }
+

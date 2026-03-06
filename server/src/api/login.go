@@ -8,15 +8,15 @@ import (
 	"time"
 
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/users"
 
 	"github.com/go-chi/render"
 	"github.com/markbates/goth/gothic"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
 )
 
-//var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+//var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 // AnonymousSignUpRequest represents the request to create a new anonymous user.
 type AnonymousSignUpRequest struct {
@@ -26,7 +26,7 @@ type AnonymousSignUpRequest struct {
 
 // signInAnonymously create a new anonymous user
 func (s *Server) signInAnonymously(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.login.api.signin.anonymous")
+	ctx, span := tracer.Start(r.Context(), "aksa.login.api.signin.anonymous")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -65,7 +65,7 @@ func (s *Server) signInAnonymously(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) logout(w http.ResponseWriter, r *http.Request) {
-	_, span := tracer.Start(r.Context(), "scrumlr.login.api.logout")
+	_, span := tracer.Start(r.Context(), "aksa.login.api.logout")
 	defer span.End()
 
 	cookie := http.Cookie{Name: "jwt", Value: "deleted", Path: "/", MaxAge: -1, Expires: time.UnixMilli(0)}
@@ -90,7 +90,7 @@ func (s *Server) beginAuthProviderVerification(w http.ResponseWriter, r *http.Re
 
 // verifyAuthProviderCallback will verify the auth provider call, create or update a user and redirect to the page provider with the state
 func (s *Server) verifyAuthProviderCallback(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.login.api.verify_auth_provider")
+	ctx, span := tracer.Start(r.Context(), "aksa.login.api.verify_auth_provider")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -162,3 +162,5 @@ func (s *Server) verifyAuthProviderCallback(w http.ResponseWriter, r *http.Reque
 	}
 	w.WriteHeader(http.StatusSeeOther)
 }
+
+

@@ -1,0 +1,76 @@
+---
+suite: test frontend configmap
+templates:
+  - /frontend/configmap.yaml
+tests:
+  - it: should set name, namespace, apiVersion and kind
+    release:
+      name: aksa
+      namespace: aksa
+    asserts:
+      - containsDocument:
+          kind: ConfigMap
+          apiVersion: v1
+          name: aksa-frontend-configmap
+          namespace: aksa
+
+  - it: should set default listen port
+    release:
+      name: aksa
+      namespace: aksa
+    asserts:
+      - equal:
+          path: data.AKSA_LISTEN_PORT
+          value: "8080"
+
+  - it: should set listen port
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      frontend.config.listenPort: 9000
+    asserts:
+      - equal:
+          path: data.AKSA_LISTEN_PORT
+          value: "9000"
+
+  - it: should set default server url
+    release:
+      name: aksa
+      namespace: aksa
+    asserts:
+      - equal:
+          path: data.AKSA_SERVER_URL
+          value: /api
+
+  - it: should set base path
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      frontend.config.serverUrl: /aksa/api/
+    asserts:
+      - equal:
+          path: data.AKSA_SERVER_URL
+          value: /aksa/api/
+
+  - it: should set extra config
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      frontend.extraConfig.AKSA_SHOW_LEGAL_DOCUMENTS: false
+      frontend.extraConfig.Aksa_Websocket_Url: ws://aksa.websocket
+    asserts:
+      - exists:
+          path: data.AKSA_SHOW_LEGAL_DOCUMENTS
+      - equal:
+          path: data.AKSA_SHOW_LEGAL_DOCUMENTS
+          value: "false"
+      - exists:
+          path: data.AKSA_WEBSOCKET_URL
+      - equal:
+          path: data.AKSA_WEBSOCKET_URL
+          value: ws://aksa.websocket
+
+

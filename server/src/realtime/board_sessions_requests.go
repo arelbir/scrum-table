@@ -7,7 +7,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/codes"
 
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
 type BoardSessionRequestEventType string
@@ -44,3 +44,4 @@ func (b *Broker) GetBoardSessionRequestChannel(ctx context.Context, board, user 
 func requestSubject(board, user uuid.UUID) string {
 	return fmt.Sprintf("request.%s.%s", board, user)
 }
+

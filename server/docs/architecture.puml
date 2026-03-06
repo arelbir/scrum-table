@@ -3,8 +3,8 @@
 database "SQL database" as db
 queue nats.io as nats
 actor "Web-Client" as client
-collections "scrumlr.io server" as server
-usecase "Board on scrumlr.io" as board
+collections "aksa.local server" as server
+usecase "Board on aksa.local" as board
 
 client -down-> board: participates on
 

@@ -2,7 +2,6 @@ import React, {Suspense} from "react";
 import {createRoot} from "react-dom/client";
 import {Provider} from "react-redux";
 import "index.scss";
-import {CookieNotice} from "components/CookieNotice";
 import {store} from "store";
 import Router from "routes/Router";
 import {I18nextProvider} from "react-i18next";
@@ -14,7 +13,7 @@ import {Tooltip} from "components/Tooltip";
 import {APP_VERSION_STORAGE_KEY} from "constants/storage";
 import {saveToStorage} from "utils/storage";
 import Plausible from "plausible-tracker";
-import {SHOW_LEGAL_DOCUMENTS, ANALYTICS_DATA_DOMAIN, ANALYTICS_SRC, CLARITY_ID} from "./config";
+import {ANALYTICS_DATA_DOMAIN, ANALYTICS_SRC, CLARITY_ID} from "./config";
 import {initAuth} from "./store/features";
 import "react-tooltip/dist/react-tooltip.css";
 
@@ -60,13 +59,15 @@ root.render(
       <Provider store={store}>
         <Html />
         <Suspense fallback={<LoadingScreen />}>
-          <Tooltip id="scrumlr-tooltip" />
+          <Tooltip id="aksa-tooltip" />
           <ToastContainer limit={2} />
           <Router />
-          {SHOW_LEGAL_DOCUMENTS && <CookieNotice />}
         </Suspense>
       </Provider>
     </I18nextProvider>
   </React.StrictMode>
 );
 store.dispatch(initAuth());
+
+
+

@@ -57,14 +57,14 @@ if [ -z "$DB_URL" ]; then
 fi
 
 # Create namespace
-kubectl create namespace scrumlr || true
+kubectl create namespace aksa || true
 
 # Install Traefik
-if ! helm_release_exists traefik scrumlr; then
+if ! helm_release_exists traefik aksa; then
   helm repo add traefik https://traefik.github.io/charts
   helm repo update
-  helm install traefik traefik/traefik --namespace scrumlr
-  wait_for_deployment scrumlr traefik
+  helm install traefik traefik/traefik --namespace aksa
+  wait_for_deployment aksa traefik
 else
   echo "Traefik is already installed, skipping installation."
 fi
@@ -72,7 +72,7 @@ fi
 # Wait for Traefik load balancer to get a public IP
 echo "Waiting for Traefik load balancer to get a public IP..."
 while true; do
-  LB_IP=$(kubectl get svc -n scrumlr traefik -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+  LB_IP=$(kubectl get svc -n aksa traefik -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
   if [ -n "$LB_IP" ]; then
     echo "Traefik load balancer IP: $LB_IP"
     break
@@ -83,14 +83,14 @@ done
 
 # Prompt user to set up DNS records and input deployment domain
 echo "Please set up your DNS records to point to the Traefik load balancer IP: $LB_IP"
-read -rp "Enter your deployment domain (e.g., scrumlr.stackit.rocks): " DEPLOYMENT_DOMAIN
+read -rp "Enter your deployment domain (e.g., aksa.stackit.rocks): " DEPLOYMENT_DOMAIN
 
 if [ -z "$DEPLOYMENT_DOMAIN" ]; then
   echo "Error: Deployment domain is required."
   exit 1
 fi
 
-export SCRUMLR_DEPLOYMENT_DOMAIN="$DEPLOYMENT_DOMAIN"
+export AKSA_DEPLOYMENT_DOMAIN="$DEPLOYMENT_DOMAIN"
 
 # Install Cert-Manager
 if ! helm_release_exists cert-manager cert-manager; then
@@ -103,24 +103,24 @@ else
 fi
 
 # Deploy NATS
-if ! helm_release_exists nats scrumlr; then
+if ! helm_release_exists nats aksa; then
   helm repo add nats https://nats-io.github.io/k8s/helm/charts/
   helm repo update
-  helm install nats nats/nats --set cluster.enabled=true --set cluster.replicas=3 --namespace scrumlr
-  wait_for_deployment scrumlr nats-box
+  helm install nats nats/nats --set cluster.enabled=true --set cluster.replicas=3 --namespace aksa
+  wait_for_deployment aksa nats-box
 else
   echo "NATS is already installed, skipping installation."
 fi
 
 # Create secrets
 # replace /stackit with correct db path
-DB_URL_SCRUMLR=$(echo "$DB_URL" | sed 's/\/stackit/\/scrumlr/')
-kubectl -n scrumlr create secret generic postgresql-creds --from-literal=url="$DB_URL_SCRUMLR" --dry-run=client -o yaml | kubectl apply -f -
+DB_URL_AKSA=$(echo "$DB_URL" | sed 's/\/stackit/\/aksa/')
+kubectl -n aksa create secret generic postgresql-creds --from-literal=url="$DB_URL_AKSA" --dry-run=client -o yaml | kubectl apply -f -
 
 # Check if ECDSA key already exists
-if ! kubectl -n scrumlr get secret scrumlr-ecdsa-key >/dev/null 2>&1; then
-  openssl ecparam -genkey -name secp521r1 -noout -out scrumlr-ecdsa-key.pem
-  kubectl -n scrumlr create secret generic scrumlr-ecdsa-key --from-file=private_key=scrumlr-ecdsa-key.pem --dry-run=client -o yaml | kubectl apply -f -
+if ! kubectl -n aksa get secret aksa-ecdsa-key >/dev/null 2>&1; then
+  openssl ecparam -genkey -name secp521r1 -noout -out aksa-ecdsa-key.pem
+  kubectl -n aksa create secret generic aksa-ecdsa-key --from-file=private_key=aksa-ecdsa-key.pem --dry-run=client -o yaml | kubectl apply -f -
 else
   echo "ECDSA key already exists, skipping key generation."
 fi
@@ -130,17 +130,18 @@ export DB_URL="$DB_URL"
 envsubst < create_db_job.yaml | kubectl apply -f -
 
 # Wait for the job to complete
-kubectl -n scrumlr wait --for=condition=complete job/create-db-job
+kubectl -n aksa wait --for=condition=complete job/create-db-job
 
 # Apply cluster issuer
 kubectl apply -f cluster_issuer.yaml
 
 # Apply frontend and backend deployments
-envsubst < scrumlr_frontend.yaml | kubectl apply -f -
-envsubst < scrumlr_backend.yaml | kubectl apply -f -
+envsubst < aksa_frontend.yaml | kubectl apply -f -
+envsubst < aksa_backend.yaml | kubectl apply -f -
 
 # Wait for deployments to complete
-wait_for_deployment scrumlr scrumlr-deployment
-wait_for_deployment scrumlr frontend-deployment
+wait_for_deployment aksa aksa-deployment
+wait_for_deployment aksa frontend-deployment
 
 echo "Deployment completed successfully."
+

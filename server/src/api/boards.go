@@ -9,29 +9,29 @@ import (
 	"strconv"
 
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/hash"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/hash"
+	"aksa.local/scrum/server/sessions"
 
-	"scrumlr.io/server/boards"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/boards"
+	"aksa.local/scrum/server/votings"
 
-	"scrumlr.io/server/notes"
+	"aksa.local/scrum/server/notes"
 
-	"scrumlr.io/server/identifiers"
+	"aksa.local/scrum/server/identifiers"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
 	"github.com/google/uuid"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
 )
 
-//var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+//var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 // createBoard creates a new board
 func (s *Server) createBoard(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.create")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.create")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -69,7 +69,7 @@ func (s *Server) createBoard(w http.ResponseWriter, r *http.Request) {
 
 // deleteBoard deletes a board
 func (s *Server) deleteBoard(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.delete")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.delete")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -89,7 +89,7 @@ func (s *Server) deleteBoard(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getBoards(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.get.all")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.get.all")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -118,7 +118,7 @@ func (s *Server) getBoards(w http.ResponseWriter, r *http.Request) {
 
 // getBoard get a board
 func (s *Server) getBoard(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.get")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -158,7 +158,7 @@ type JoinBoardRequest struct {
 
 // joinBoard create a new participant
 func (s *Server) joinBoard(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.join")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.join")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -316,7 +316,7 @@ func (s *Server) joinBoard(w http.ResponseWriter, r *http.Request) {
 
 // updateBoard updates a board
 func (s *Server) updateBoard(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.get.all")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.get.all")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -346,7 +346,7 @@ func (s *Server) updateBoard(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) setTimer(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.timer.set")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.timer.set")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -375,7 +375,7 @@ func (s *Server) setTimer(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) deleteTimer(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.timer.delete")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.timer.delete")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -395,7 +395,7 @@ func (s *Server) deleteTimer(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) incrementTimer(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.timer.increment")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.timer.increment")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -415,7 +415,7 @@ func (s *Server) incrementTimer(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) exportBoard(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.export")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.export")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -533,7 +533,7 @@ func (s *Server) exportBoard(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) importBoard(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.boards.api.import")
+	ctx, span := tracer.Start(r.Context(), "aksa.boards.api.import")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -657,3 +657,5 @@ func (s *Server) importBoard(w http.ResponseWriter, r *http.Request) {
 	render.Status(r, http.StatusCreated)
 	render.Respond(w, r, b)
 }
+
+

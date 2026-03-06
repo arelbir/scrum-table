@@ -6,14 +6,14 @@ import (
 	"github.com/go-chi/render"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/feedback"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/feedback"
+	"aksa.local/scrum/server/logger"
 )
 
-//var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+//var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 func (s *Server) createFeedback(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.feedback.api.create")
+	ctx, span := tracer.Start(r.Context(), "aksa.feedback.api.create")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -55,3 +55,5 @@ func (s *Server) createFeedback(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusCreated)
 }
+
+

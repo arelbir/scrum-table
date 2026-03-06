@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/columns"
+	"aksa.local/scrum/server/columns"
 )
 
 // ColumnTemplate is the response for all column template requests.
@@ -100,3 +100,4 @@ func ColumnTemplates(columns []DatabaseColumnTemplate) []*ColumnTemplate {
 func (*ColumnTemplate) Render(_ http.ResponseWriter, _ *http.Request) error {
 	return nil
 }
+

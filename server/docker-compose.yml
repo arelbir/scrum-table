@@ -1,5 +1,5 @@
 ---
-name: scrumlr
+name: aksa
 services:
   nats:
     image: nats:2.12.3-alpine
@@ -22,7 +22,7 @@ services:
     environment:
       POSTGRES_USER: &db_user "admin"
       POSTGRES_PASSWORD: "supersecret"
-      POSTGRES_DB: &db_name "scrumlr"
+      POSTGRES_DB: &db_name "aksa"
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     healthcheck:
       test: [ "CMD", "pg_isready", "-q", "-d", *db_name, "-U", *db_user ]
@@ -34,7 +34,7 @@ services:
       - dev
       - build
 
-  scrumlr:
+  aksa:
     build: ./src
     command:
       - "--disable-check-origin"
@@ -42,11 +42,11 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SCRUMLR_SERVER_PORT: 8080
-      SCRUMLR_SERVER_NATS_URL: "nats://nats:4222"
-      SCRUMLR_SERVER_DATABASE_URL: "postgres://admin:supersecret@database:5432/scrumlr?sslmode=disable"
-      SCRUMLR_ALLOW_ANONYMOUS_CUSTOM_TEMPLATES: true
-      SCRUMLR_ALLOW_ANONYMOUS_BOARD_CREATION: true
+      AKSA_SERVER_PORT: 8080
+      AKSA_SERVER_NATS_URL: "nats://nats:4222"
+      AKSA_SERVER_DATABASE_URL: "postgres://admin:supersecret@database:5432/aksa?sslmode=disable"
+      AKSA_ALLOW_ANONYMOUS_CUSTOM_TEMPLATES: true
+      AKSA_ALLOW_ANONYMOUS_BOARD_CREATION: true
     depends_on:
       database:
         condition: service_healthy
@@ -54,3 +54,5 @@ services:
         condition: service_healthy
     profiles:
       - build
+
+

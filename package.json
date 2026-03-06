@@ -1,10 +1,10 @@
 {
-  "name": "scrumlr.io",
-  "description": "Client sources for the collaborative webapp scrumlr.io",
-  "homepage": "https://github.com/inovex/scrumlr.io#readme",
+  "name": "aksa-scrum",
+  "description": "Client sources for the Aksa retrospective web app",
+  "homepage": "https://aksa.local/scrum",
   "bugs": {
-    "url": "https://github.com/inovex/scrumlr.io/issues",
-    "email": "info@scrumlr.io"
+    "url": "https://aksa.local/scrum/support",
+    "email": "iletisim@aksa.com"
   },
   "version": "4.5.0",
   "private": true,
@@ -138,3 +138,4 @@
     ]
   }
 }
+

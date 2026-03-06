@@ -1,7 +1,7 @@
 // external
 import {useState} from "react";
-import {Link, useLocation, useNavigate} from "react-router";
-import {Trans, useTranslation} from "react-i18next";
+import {useLocation, useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 import classNames from "classnames";
 // internal
 import {useAppSelector} from "store";
@@ -27,16 +27,7 @@ interface LocationState {
   from: {pathname: string};
 }
 
-const FEATURE_KEYS = [
-  "LoginBoard.loginFeature1",
-  "LoginBoard.loginFeature2",
-  // ...
-];
-
-const TERMS_LINKS = {
-  terms: <Link to="/legal/termsAndConditions" target="_blank" />,
-  privacy: <Link to="/legal/privacyPolicy" target="_blank" />,
-};
+const FEATURE_KEYS = ["LoginBoard.loginFeature1", "LoginBoard.loginFeature2"] as const;
 
 export const LoginBoard = () => {
   const {t} = useTranslation();
@@ -186,10 +177,6 @@ export const LoginBoard = () => {
                 <div className="login-board__anonymous-section">{renderAnonymousSectionContent()}</div>
               </div>
 
-              {/* Footer Terms */}
-              <span className="login-board__terms-label">
-                <Trans i18nKey="LoginBoard.acceptTerms" components={TERMS_LINKS} />
-              </span>
             </div>
           </div>
         </div>
@@ -197,3 +184,7 @@ export const LoginBoard = () => {
     </Background>
   );
 };
+
+
+
+

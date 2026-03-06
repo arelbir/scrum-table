@@ -7,7 +7,7 @@ package sessionrequests
 import (
 	"net/http"
 
-	"scrumlr.io/server/websocket"
+	"aksa.local/scrum/server/websocket"
 
 	"github.com/google/uuid"
 	mock "github.com/stretchr/testify/mock"
@@ -177,3 +177,4 @@ func (_c *MockSessionRequestWebsocket_listenOnBoardSessionRequest_Call) RunAndRe
 	_c.Run(run)
 	return _c
 }
+

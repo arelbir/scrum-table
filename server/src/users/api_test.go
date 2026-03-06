@@ -12,11 +12,11 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 func TestGetUser_api(t *testing.T) {
@@ -426,3 +426,4 @@ func Test_AnonymousCustomTemplateCreationContext_NotAllowed(t *testing.T) {
 	assert.Equal(t, http.StatusForbidden, rr.Result().StatusCode)
 	assert.Error(t, common.ForbiddenError(errors.New("not authorized to create custom templates anonymous")))
 }
+

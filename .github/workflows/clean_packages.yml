@@ -1,31 +1,32 @@
 ---
-name: Remove old unused scrumlr packages
+name: Remove old unused aksa packages
 
 on:
   schedule:
     - cron: "0 7 * * 1-5"  # every monday through friday at 7 am
 
 jobs:
-  clean_scrumlr_server_packages:
-    name: "clean scrumlr server packages"
+  clean_aksa_server_packages:
+    name: "clean aksa server packages"
     runs-on: ubuntu-latest
     steps:
       - if: false
         uses: actions/delete-package-versions@v5
         with:
-          package-name: "scrumlr.io/scrumlr-server"
+          package-name: "aksa.local/aksa-server"
           package-type: "container"
           min-versions-to-keep: 256
           delete-only-untagged-versions: "true"
 
-  clean_scrumlr_frontend_packages:
-    name: "clean scrumlr frontend packages"
+  clean_aksa_frontend_packages:
+    name: "clean aksa frontend packages"
     runs-on: ubuntu-latest
     steps:
       - if: false
         uses: actions/delete-package-versions@v5
         with:
-          package-name: "scrumlr.io/scrumlr-frontend"
+          package-name: "aksa.local/aksa-frontend"
           package-type: "container"
           min-versions-to-keep: 256
           delete-only-untagged-versions: "true"
+

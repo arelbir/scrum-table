@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/initialize"
-	"scrumlr.io/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/initialize"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
 
 	"github.com/stretchr/testify/require"
 
@@ -16,9 +16,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"github.com/testcontainers/testcontainers-go/modules/nats"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 type UpdateVoting struct {
@@ -388,3 +388,4 @@ func (suite *VotingServiceIntegrationTestSuite) seedVotingTestData(db *bun.DB) {
 		}
 	}
 }
+

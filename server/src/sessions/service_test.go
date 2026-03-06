@@ -11,10 +11,10 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	mock "github.com/stretchr/testify/mock"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/realtime"
 )
 
 func TestGetSession(t *testing.T) {
@@ -1211,3 +1211,4 @@ func TestCheckSessionRole_NoUser(t *testing.T) {
 
 	assert.False(t, check)
 }
+

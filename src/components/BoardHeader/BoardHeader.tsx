@@ -2,7 +2,7 @@ import {useState, VFC} from "react";
 import {LockClosed, Open as Globe, KeyProtected, Logout} from "components/Icon";
 import {BoardUsers} from "components/BoardUsers";
 import {useAppDispatch, useAppSelector} from "store";
-import {ScrumlrLogo} from "components/ScrumlrLogo";
+import {AksaLogo} from "components/AksaLogo";
 import {HeaderMenu} from "components/BoardHeader/HeaderMenu";
 import {useTranslation} from "react-i18next";
 import {ConfirmationDialog} from "components/ConfirmationDialog";
@@ -46,7 +46,7 @@ export const BoardHeader: VFC<BoardHeaderProps> = (props) => {
       )}
       <header className="board-header">
         <button className="board-header__link" onClick={() => setShowConfirmationDialog(true)} aria-label={t("BoardHeader.returnToHomepage")}>
-          <ScrumlrLogo className="board-header__logo" />
+          <AksaLogo className="board-header__logo" />
         </button>
 
         <button
@@ -93,3 +93,4 @@ export const BoardHeader: VFC<BoardHeaderProps> = (props) => {
     </>
   );
 };
+

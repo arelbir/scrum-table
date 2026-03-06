@@ -53,21 +53,21 @@ jobs:
       - name: Deploy to dev cluster
         uses: Azure/k8s-deploy@v5
         with:
-          namespace: scrumlr-dev-deployments
+          namespace: aksa-dev-deployments
           force: true
           pull-images: false
           manifests: |
             k8s/deployment.yaml
           images: |
-            ghcr.io/inovex/scrumlr.io/scrumlr-frontend:${{ inputs.frontend_image_tag }}
-            ghcr.io/inovex/scrumlr.io/scrumlr-server:${{ inputs.server_image_tag }}
+            registry.aksa.local/aksa/aksa-frontend:${{ inputs.frontend_image_tag }}
+            registry.aksa.local/aksa/aksa-server:${{ inputs.server_image_tag }}
 
       - name: send_github_message
         if: github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            The deployment to the dev cluster was successful. You can find the deployment here: https://${{ github.event.pull_request.number }}.development.scrumlr.fra.ics.inovex.io
+            The deployment to the dev cluster was successful. You can find the deployment here: https://${{ github.event.pull_request.number }}.development.aksa.fra.ics.kazanci.io
             This deployment is only for testing purposes and will be deleted after 1 week.
             To redeploy rerun the workflow.
             <strong>DO NOT STORE IMPORTANT DATA ON THIS DEPLOYMENT</strong>
@@ -75,10 +75,12 @@ jobs:
             <details>
             <summary>Deployed Images</summary>
 
-            - ghcr.io/inovex/scrumlr.io/scrumlr-frontend:${{ inputs.frontend_image_tag }}
+            - registry.aksa.local/aksa/aksa-frontend:${{ inputs.frontend_image_tag }}
 
-            - ghcr.io/inovex/scrumlr.io/scrumlr-server:${{ inputs.server_image_tag }}
+            - registry.aksa.local/aksa/aksa-server:${{ inputs.server_image_tag }}
 
             </details>
           comment_tag: dev-deployment
           mode: recreate
+
+

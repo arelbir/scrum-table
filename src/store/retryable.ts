@@ -4,7 +4,7 @@ import i18n, {resources} from "i18n";
 import {ApplicationState} from "store";
 import {Toast} from "utils/Toast";
 
-type ErrorKey = keyof (typeof resources.en.translation)["Error"];
+type ErrorKey = keyof (typeof resources.tr.translation)["Error"];
 
 /**
  * function which tries the API call, and if it fails shows a toast,

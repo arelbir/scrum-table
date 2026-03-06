@@ -589,7 +589,7 @@ exports[`Column should have correct style show column with correct style 1`] = `
                 >
                   <button
                     class="dot-button vote-button-remove"
-                    data-tooltip-id="scrumlr-tooltip"
+                    data-tooltip-id="aksa-tooltip"
                   >
                     <span
                       class="vote-button-remove__folded-corner"
@@ -609,7 +609,7 @@ exports[`Column should have correct style show column with correct style 1`] = `
                     aria-label="Multiple votes are not allowed"
                     class="dot-button vote-button-add"
                     data-tooltip-content="Multiple votes are not allowed"
-                    data-tooltip-id="scrumlr-tooltip"
+                    data-tooltip-id="aksa-tooltip"
                     disabled=""
                   >
                     <svg
@@ -1174,7 +1174,7 @@ exports[`Column should have correct style show column with correct style 1`] = `
                     aria-label="Add vote"
                     class="dot-button vote-button-add"
                     data-tooltip-content="Add vote"
-                    data-tooltip-id="scrumlr-tooltip"
+                    data-tooltip-id="aksa-tooltip"
                   >
                     <svg
                       class="vote-button-add__icon"
@@ -1834,7 +1834,7 @@ exports[`Column should render correctly column has correct accent-color 1`] = `
                   >
                     <button
                       class="dot-button vote-button-remove"
-                      data-tooltip-id="scrumlr-tooltip"
+                      data-tooltip-id="aksa-tooltip"
                     >
                       <span
                         class="vote-button-remove__folded-corner"
@@ -1854,7 +1854,7 @@ exports[`Column should render correctly column has correct accent-color 1`] = `
                       aria-label="Multiple votes are not allowed"
                       class="dot-button vote-button-add"
                       data-tooltip-content="Multiple votes are not allowed"
-                      data-tooltip-id="scrumlr-tooltip"
+                      data-tooltip-id="aksa-tooltip"
                       disabled=""
                     >
                       <svg
@@ -2419,7 +2419,7 @@ exports[`Column should render correctly column has correct accent-color 1`] = `
                       aria-label="Add vote"
                       class="dot-button vote-button-add"
                       data-tooltip-content="Add vote"
-                      data-tooltip-id="scrumlr-tooltip"
+                      data-tooltip-id="aksa-tooltip"
                     >
                       <svg
                         class="vote-button-add__icon"
@@ -2506,3 +2506,4 @@ exports[`Column should render correctly column has correct accent-color 1`] = `
   />
 </div>
 `;
+

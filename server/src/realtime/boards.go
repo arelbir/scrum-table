@@ -7,7 +7,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/codes"
 
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
 type BoardEventType string
@@ -43,7 +43,7 @@ type BoardEvent struct {
 }
 
 func (b *Broker) BroadcastToBoard(ctx context.Context, boardID uuid.UUID, msg BoardEvent) error {
-	ctx, span := tracer.Start(ctx, "scrumlr.realtime.board.broadcast")
+	ctx, span := tracer.Start(ctx, "aksa.realtime.board.broadcast")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -52,7 +52,7 @@ func (b *Broker) BroadcastToBoard(ctx context.Context, boardID uuid.UUID, msg Bo
 }
 
 func (b *Broker) GetBoardChannel(ctx context.Context, boardID uuid.UUID) chan *BoardEvent {
-	ctx, span := tracer.Start(ctx, "scrumlr.realtime.board.subscribe")
+	ctx, span := tracer.Start(ctx, "aksa.realtime.board.subscribe")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -69,3 +69,5 @@ func (b *Broker) GetBoardChannel(ctx context.Context, boardID uuid.UUID) chan *B
 func boardsSubject(boardID uuid.UUID) string {
 	return fmt.Sprintf("board.%s", boardID)
 }
+
+

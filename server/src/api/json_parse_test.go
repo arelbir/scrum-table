@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/technical_helper"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/suite"
@@ -93,3 +93,4 @@ func (suite *JSONErrTestSuite) TestJSONErrs() {
 	}
 
 }
+

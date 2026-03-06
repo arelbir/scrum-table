@@ -3,7 +3,6 @@ import {useTranslation} from "react-i18next";
 import {getColorClassName} from "constants/colors";
 import {MenuItemConfig} from "constants/settings";
 import {useOutletContext} from "react-router";
-import {LanguageSettingsDropdown} from "../Components/LanguageSettingsDropdown";
 import "../SettingsDialog.scss";
 import {ThemeSettings} from "../Components/ThemeSettings";
 import {NotificationSettings} from "../Components/NotificationSettings";
@@ -31,9 +30,9 @@ export const Appearance = () => {
         {isDecemberOrJanuary && <SnowfallSettings />}
         <NotificationSettings />
         <BoardReactionsSettings />
-        <SkinToneSelector />
-        <LanguageSettingsDropdown />
+        <SkinToneSelector />
       </div>
     </div>
   );
 };
+

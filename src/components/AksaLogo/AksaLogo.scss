@@ -1,0 +1,24 @@
+.aksa-logo {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+.aksa-logo--mobile {
+  min-width: 44px;
+}
+
+.aksa-logo--desktop {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .aksa-logo--desktop {
+    display: initial;
+  }
+
+  .aksa-logo--mobile {
+    display: none;
+  }
+}
+

@@ -1,4 +1,4 @@
-module scrumlr.io/server/e2e-tests
+module aksa.local/scrum/server/e2e-tests
 
 go 1.25.1
 
@@ -6,10 +6,10 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/spf13/viper v1.21.0
 	github.com/stretchr/testify v1.11.1
-	scrumlr.io/server v0.0.0-00010101000000-000000000000
+	aksa.local/scrum/server v0.0.0-00010101000000-000000000000
 )
 
-replace scrumlr.io/server => ../src
+replace aksa.local/scrum/server => ../src
 
 require (
 	github.com/ajg/form v1.6.1 // indirect
@@ -60,3 +60,4 @@ require (
 	golang.org/x/text v0.33.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+

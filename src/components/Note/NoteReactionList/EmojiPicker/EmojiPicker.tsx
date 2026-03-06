@@ -23,7 +23,9 @@ const EmojiPicker = ({onEmojiClick, ...props}: EmojiPickerProps) => {
   const autoTheme = useAutoTheme(theme);
 
   const lang = i18n.resolvedLanguage as AppLanguage;
-  const dataSourceUrl = `${process.env.PUBLIC_URL}/emoji-data/${lang}.json`;
+  const supportedEmojiLocales: AppLanguage[] = ["tr"];
+  const safeLang = supportedEmojiLocales.includes(lang) ? lang : "en";
+  const dataSourceUrl = `${process.env.PUBLIC_URL}/emoji-data/${safeLang}.json`;
   const skinToneMapping = Object.keys(skinTones) as SkinToneName[];
   const skinToneIndex = Math.max(0, skinToneMapping.indexOf(currentSkinTone));
 
@@ -43,9 +45,16 @@ const EmojiPicker = ({onEmojiClick, ...props}: EmojiPickerProps) => {
     const element = ref.current;
 
     if (element) {
-      import(`emoji-picker-element/i18n/${lang}.js`) // .js suffix required because of bundling of dynamic import resolution
+      import(`emoji-picker-element/i18n/${safeLang}.js`) // .js suffix required because of bundling of dynamic import resolution
         .then(({default: i18ndefault}: {default: I18n}) => {
           element.i18n = i18ndefault;
+        })
+        .catch(() => {
+          if (safeLang !== "en") {
+            import(`emoji-picker-element/i18n/en.js`).then(({default: i18ndefault}: {default: I18n}) => {
+              element.i18n = i18ndefault;
+            });
+          }
         });
     }
 
@@ -74,7 +83,7 @@ const EmojiPicker = ({onEmojiClick, ...props}: EmojiPickerProps) => {
         element.removeEventListener("skin-tone-change", handleSkinToneChange);
       }
     };
-  }, [onEmojiClick, dispatch, isReady, lang, skinToneMapping]);
+  }, [onEmojiClick, dispatch, isReady, safeLang, skinToneMapping]);
 
   // Manually overriding the emoji-picker base styles (via shadow dom)
   useEffect(() => {
@@ -132,7 +141,7 @@ const EmojiPicker = ({onEmojiClick, ...props}: EmojiPickerProps) => {
     return null;
   }
 
-  return <emoji-picker ref={ref} class={(theme === "auto" ? autoTheme : theme) as string} data-source={dataSourceUrl} locale={lang} {...props} />;
+  return <emoji-picker ref={ref} class={(theme === "auto" ? autoTheme : theme) as string} data-source={dataSourceUrl} locale={safeLang} {...props} />;
 };
 
 export default EmojiPicker;

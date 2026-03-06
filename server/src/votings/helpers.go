@@ -2,7 +2,7 @@ package votings
 
 import (
 	"github.com/google/uuid"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 func Votings(votings []DatabaseVoting, votes []DatabaseVote) []*Voting {
@@ -124,3 +124,4 @@ func (v *Voting) calculateTotalVoteCount(notes []Note) *VotingResults {
 func (v *Voting) hasNoResults() bool {
 	return v.VotingResults == nil
 }
+

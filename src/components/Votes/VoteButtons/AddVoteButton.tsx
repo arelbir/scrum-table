@@ -23,10 +23,11 @@ export const AddVoteButton: FC<AddVoteProps> = ({noteId, disabled, disabledReaso
       className={classNames("vote-button-add", {"vote-button-add--high-contrast": needsHighContrast(colorClassName)})}
       onClick={dispatchAddVote}
       disabled={disabled}
-      dataTooltipId="scrumlr-tooltip"
+      dataTooltipId="aksa-tooltip"
       dataTooltipContent={!disabled ? t("Votes.AddVote") : disabledReason}
     >
       <Plus className="vote-button-add__icon" />
     </DotButton>
   );
 };
+

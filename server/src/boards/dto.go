@@ -5,12 +5,12 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/sessionrequests"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/sessionrequests"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/votings"
 )
 
 // Board is the response for all board requests.
@@ -176,3 +176,4 @@ func (dtoFullBoard *FullBoard) From(dbFullBoard DatabaseFullBoard) *FullBoard {
 	dtoFullBoard.Votes = votings.Votes(dbFullBoard.Votes)
 	return dtoFullBoard
 }
+

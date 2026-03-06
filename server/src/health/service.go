@@ -3,7 +3,7 @@ package health
 import (
 	"context"
 
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/realtime"
 )
 
 type HealthDatabase interface {
@@ -30,3 +30,4 @@ func (service *Service) IsDatabaseHealthy(ctx context.Context) bool {
 func (service *Service) IsRealtimeHealthy(ctx context.Context) bool {
 	return service.realtime.IsHealthy(ctx)
 }
+

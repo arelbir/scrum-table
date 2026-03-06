@@ -3,7 +3,7 @@ package sessionrequests
 import (
 	"net/http"
 
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/users"
 
 	"github.com/google/uuid"
 )
@@ -43,3 +43,4 @@ func BoardSessionRequests(requests []DatabaseBoardSessionRequest) []*BoardSessio
 	}
 	return list
 }
+

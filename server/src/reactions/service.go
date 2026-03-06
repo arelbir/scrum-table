@@ -11,13 +11,13 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/realtime"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/reactions")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/reactions")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/reactions")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/reactions")
 
 type ReactionDatabase interface {
 	Get(ctx context.Context, id uuid.UUID) (DatabaseReaction, error)
@@ -43,11 +43,11 @@ func NewReactionService(db ReactionDatabase, rt *realtime.Broker) ReactionServic
 
 func (service *Service) Get(ctx context.Context, id uuid.UUID) (*Reaction, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.reactions.service.get")
+	ctx, span := tracer.Start(ctx, "aksa.reactions.service.get")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.reactions.service.get.reaction", id.String()),
+		attribute.String("aksa.reactions.service.get.reaction", id.String()),
 	)
 
 	reaction, err := service.database.Get(ctx, id)
@@ -69,11 +69,11 @@ func (service *Service) Get(ctx context.Context, id uuid.UUID) (*Reaction, error
 
 func (service *Service) GetAll(ctx context.Context, boardId uuid.UUID) ([]*Reaction, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.reactions.service.get.all")
+	ctx, span := tracer.Start(ctx, "aksa.reactions.service.get.all")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.reactions.service.get.all.board", boardId.String()),
+		attribute.String("aksa.reactions.service.get.all.board", boardId.String()),
 	)
 
 	reactions, err := service.database.GetAll(ctx, boardId)
@@ -89,13 +89,13 @@ func (service *Service) GetAll(ctx context.Context, boardId uuid.UUID) ([]*React
 
 func (service *Service) Create(ctx context.Context, body ReactionCreateRequest) (*Reaction, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.reactions.service.create")
+	ctx, span := tracer.Start(ctx, "aksa.reactions.service.create")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.reactions.service.create.user", body.User.String()),
-		attribute.String("scrumlr.reactions.service.create.board", body.Board.String()),
-		attribute.String("scrumlr.reactions.service.create.reaction.type", string(body.ReactionType)),
+		attribute.String("aksa.reactions.service.create.user", body.User.String()),
+		attribute.String("aksa.reactions.service.create.board", body.Board.String()),
+		attribute.String("aksa.reactions.service.create.reaction.type", string(body.ReactionType)),
 	)
 
 	currentReactions, err := service.database.GetAllForNote(ctx, body.Note)
@@ -135,13 +135,13 @@ func (service *Service) Create(ctx context.Context, body ReactionCreateRequest) 
 
 func (service *Service) Delete(ctx context.Context, board, user, id uuid.UUID) error {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.reactions.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.reactions.service.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.reactions.service.delete.user", user.String()),
-		attribute.String("scrumlr.reactions.service.deleteboard", board.String()),
-		attribute.String("scrumlr.reactions.service.delete.reaction", id.String()),
+		attribute.String("aksa.reactions.service.delete.user", user.String()),
+		attribute.String("aksa.reactions.service.deleteboard", board.String()),
+		attribute.String("aksa.reactions.service.delete.reaction", id.String()),
 	)
 
 	reaction, err := service.Get(ctx, id)
@@ -173,14 +173,14 @@ func (service *Service) Delete(ctx context.Context, board, user, id uuid.UUID) e
 
 func (service *Service) Update(ctx context.Context, board, user, id uuid.UUID, body ReactionUpdateTypeRequest) (*Reaction, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.reactions.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.reactions.service.update")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.reactions.service.update.user", user.String()),
-		attribute.String("scrumlr.reactions.service.update.board", board.String()),
-		attribute.String("scrumlr.reactions.service.update.reaction", id.String()),
-		attribute.String("scrumlr.reactions.service.update.reaction.type", string(body.ReactionType)),
+		attribute.String("aksa.reactions.service.update.user", user.String()),
+		attribute.String("aksa.reactions.service.update.board", board.String()),
+		attribute.String("aksa.reactions.service.update.reaction", id.String()),
+		attribute.String("aksa.reactions.service.update.reaction.type", string(body.ReactionType)),
 	)
 
 	currentReaction, err := service.Get(ctx, id)
@@ -211,7 +211,7 @@ func (service *Service) Update(ctx context.Context, board, user, id uuid.UUID, b
 }
 
 func (service *Service) addReaction(ctx context.Context, board uuid.UUID, reaction DatabaseReaction) {
-	ctx, span := tracer.Start(ctx, "scrumlr.reactions.service.add")
+	ctx, span := tracer.Start(ctx, "aksa.reactions.service.add")
 	defer span.End()
 
 	eventReaction := *new(Reaction).From(reaction)
@@ -232,7 +232,7 @@ func (service *Service) addReaction(ctx context.Context, board uuid.UUID, reacti
 }
 
 func (service *Service) deleteReaction(ctx context.Context, board, reaction uuid.UUID) {
-	ctx, span := tracer.Start(ctx, "scrumlr.reactions.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.reactions.service.delete")
 	defer span.End()
 
 	err := service.realtime.BroadcastToBoard(
@@ -251,7 +251,7 @@ func (service *Service) deleteReaction(ctx context.Context, board, reaction uuid
 }
 
 func (service *Service) updateReaction(ctx context.Context, board uuid.UUID, reaction DatabaseReaction) {
-	ctx, span := tracer.Start(ctx, "scrumlr.reactions.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.reactions.service.update")
 	defer span.End()
 
 	eventReaction := *new(Reaction).From(reaction)
@@ -270,3 +270,5 @@ func (service *Service) updateReaction(ctx context.Context, board uuid.UUID, rea
 		span.RecordError(err)
 	}
 }
+
+

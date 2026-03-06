@@ -36,7 +36,7 @@ jobs:
       - name: Log in to GitHub container registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: registry.aksa.local
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -48,19 +48,19 @@ jobs:
           platforms: ${{ matrix.build_info.platform }}
           push: true
           tags: |
-            ghcr.io/inovex/scrumlr.io/scrumlr-frontend:${{ steps.prep_tags.outputs.tag }}
-            ghcr.io/inovex/scrumlr.io/scrumlr-frontend:latest
+            registry.aksa.local/aksa/aksa-frontend:${{ steps.prep_tags.outputs.tag }}
+            registry.aksa.local/aksa/aksa-frontend:latest
           labels: |
-            org.opencontainers.image.authors=info@scrumlr.io
-            org.opencontainers.image.url=https://github.com/inovex/scrumlr.io/pkgs/container/scrumlr.io%2Fscrumlr-frontend
-            org.opencontainers.image.source=https://github.com/inovex/scrumlr.io
-            org.opencontainers.image.vendor=inovex
+            org.opencontainers.image.authors=iletisim@aksa.com
+            org.opencontainers.image.url=https://registry.aksa.local/aksa/aksa-frontend
+            org.opencontainers.image.source=https://aksa.local/scrum
+            org.opencontainers.image.vendor=kazanci
             org.opencontainers.image.licenses=MIT
-            org.opencontainers.image.title=scrumlr.io Frontend
-            org.opencontainers.image.description=The web client for scrumlr.io
+            org.opencontainers.image.title=aksa.local Frontend
+            org.opencontainers.image.description=The web client for aksa.local
             org.opencontainers.image.version=${{ steps.prep_tags.outputs.tag }}
-          cache-from: type=registry,ref=ghcr.io/inovex/scrumlr.io/scrumlr-frontend:cache
-          cache-to: type=registry,ref=ghcr.io/inovex/scrumlr.io/scrumlr-frontend:cache,mode=max
+          cache-from: type=registry,ref=registry.aksa.local/aksa/aksa-frontend:cache
+          cache-to: type=registry,ref=registry.aksa.local/aksa/aksa-frontend:cache,mode=max
 
       - name: Set outputs
         id: outputs
@@ -99,7 +99,7 @@ jobs:
       - name: Log in to GitHub container registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: registry.aksa.local
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -111,16 +111,16 @@ jobs:
           platforms: ${{ matrix.build_info.platform }}
           push: true
           tags: |
-            ghcr.io/inovex/scrumlr.io/scrumlr-server:${{ steps.prep_tags.outputs.tag }}
-            ghcr.io/inovex/scrumlr.io/scrumlr-server:latest
+            registry.aksa.local/aksa/aksa-server:${{ steps.prep_tags.outputs.tag }}
+            registry.aksa.local/aksa/aksa-server:latest
           labels: |
-            org.opencontainers.image.authors=info@scrumlr.io
-            org.opencontainers.image.url=https://github.com/inovex/scrumlr.io/pkgs/container/scrumlr.io%2Fscrumlr-server
-            org.opencontainers.image.source=https://github.com/inovex/scrumlr.io
-            org.opencontainers.image.vendor=inovex
+            org.opencontainers.image.authors=iletisim@aksa.com
+            org.opencontainers.image.url=https://registry.aksa.local/aksa/aksa-server
+            org.opencontainers.image.source=https://aksa.local/scrum
+            org.opencontainers.image.vendor=kazanci
             org.opencontainers.image.licenses=MIT
-            org.opencontainers.image.title=scrumlr.io Server
-            org.opencontainers.image.description=The server for scrumlr.io
+            org.opencontainers.image.title=aksa.local Server
+            org.opencontainers.image.description=The server for aksa.local
             org.opencontainers.image.version=${{ steps.prep_tags.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -129,3 +129,8 @@ jobs:
         id: outputs
         run: |
           echo "server-image-tag=${{ steps.prep_tags.outputs.tag }}" >> "$GITHUB_OUTPUT"
+
+
+
+
+

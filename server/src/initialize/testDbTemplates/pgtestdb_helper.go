@@ -6,7 +6,7 @@ import (
 	"sync"
 	"testing"
 
-	"scrumlr.io/server/initialize"
+	"aksa.local/scrum/server/initialize"
 
 	"github.com/peterldowns/pgtestdb"
 	"github.com/testcontainers/testcontainers-go/modules/postgres"
@@ -15,9 +15,9 @@ import (
 )
 
 const POSTGRES_IMAGE = "postgres:18.1-alpine"
-const DATABASE_NAME = "scrumlr_test"
+const DATABASE_NAME = "aksa_test"
 const DATABASE_USERNAME = "stan"
-const DATABASE_PASSWORD = "scrumlr"
+const DATABASE_PASSWORD = "aksa"
 
 var (
 	testDBConfig  pgtestdb.Config
@@ -125,3 +125,5 @@ func NewBaseTestDB(t *testing.T, includeBaseSeed bool, additionalSeeds ...Additi
 
 	return db
 }
+
+

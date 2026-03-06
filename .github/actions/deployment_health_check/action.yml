@@ -12,7 +12,7 @@ runs:
   steps:
     - name: Change DNS Server
       run: |
-        sudo sed -i 's/#DNS=/DNS=ns2.fra.cloud.inovex.io/' /etc/systemd/resolved.conf
+        sudo sed -i 's/#DNS=/DNS=ns2.fra.cloud.kazanci.io/' /etc/systemd/resolved.conf
         sudo systemctl daemon-reload
         sudo systemctl restart systemd-networkd
         sudo systemctl restart systemd-resolved

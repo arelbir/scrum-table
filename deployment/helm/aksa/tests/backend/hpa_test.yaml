@@ -1,0 +1,195 @@
+---
+suite: test backend hpa
+templates:
+  - /backend/hpa.yaml
+tests:
+  - it: should set name, namespace, apiVersion and kind
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+    asserts:
+      - containsDocument:
+          kind: HorizontalPodAutoscaler
+          apiVersion: autoscaling/v2
+          name: aksa-backend-autoscaling
+          namespace: aksa
+
+  - it: should not set hpa if not enabled
+    release:
+      name: aksa
+      namespace: aksa
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: should set scale target
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+    asserts:
+      - equal:
+          path: spec.scaletargetRef.apiVersion
+          value: apps/v1
+      - equal:
+          path: spec.scaletargetRef.kind
+          value: Deployment
+      - equal:
+          path: spec.scaletargetRef.name
+          value: aksa-deployment-backend
+
+  - it: should set default replicas
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+    asserts:
+      - equal:
+          path: spec.minReplicas
+          value: 1
+      - equal:
+          path: spec.maxReplicas
+          value: 3
+
+  - it: should set replicas
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+      backend.autoscaling.minReplicas: 3
+      backend.autoscaling.maxReplicas: 6
+    asserts:
+      - equal:
+          path: spec.minReplicas
+          value: 3
+      - equal:
+          path: spec.maxReplicas
+          value: 6
+
+  - it: should set default cpu metrics
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+    asserts:
+      - equal:
+          path: spec.metrics[0].type
+          value: Resource
+      - equal:
+          path: spec.metrics[0].resource.name
+          value: cpu
+      - equal:
+          path: spec.metrics[0].resource.target.type
+          value: Utilization
+      - equal:
+          path: spec.metrics[0].resource.target.averageUtilization
+          value: 60
+
+  - it: should set default memory metrics
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+    asserts:
+      - equal:
+          path: spec.metrics[1].type
+          value: Resource
+      - equal:
+          path: spec.metrics[1].resource.name
+          value: memory
+      - equal:
+          path: spec.metrics[1].resource.target.type
+          value: Utilization
+      - equal:
+          path: spec.metrics[1].resource.target.averageUtilization
+          value: 60
+
+  - it: should set default cpu metrics
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+      backend.autoscaling.cpuUtilization: 90
+    asserts:
+      - equal:
+          path: spec.metrics[0].type
+          value: Resource
+      - equal:
+          path: spec.metrics[0].resource.name
+          value: cpu
+      - equal:
+          path: spec.metrics[0].resource.target.type
+          value: Utilization
+      - equal:
+          path: spec.metrics[0].resource.target.averageUtilization
+          value: 90
+
+  - it: should set default memory metrics
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+      backend.autoscaling.memoryUtilization: 90
+    asserts:
+      - equal:
+          path: spec.metrics[1].type
+          value: Resource
+      - equal:
+          path: spec.metrics[1].resource.name
+          value: memory
+      - equal:
+          path: spec.metrics[1].resource.target.type
+          value: Utilization
+      - equal:
+          path: spec.metrics[1].resource.target.averageUtilization
+          value: 90
+
+  - it: should set scale down behavior
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+    asserts:
+      - equal:
+          path: spec.behavior.scaleDown.stabilizationWindowSeconds
+          value: 0
+      - equal:
+          path: spec.behavior.scaleDown.policies[0].type
+          value: Pods
+      - equal:
+          path: spec.behavior.scaleDown.policies[0].value
+          value: 1
+      - equal:
+          path: spec.behavior.scaleDown.policies[0].periodSeconds
+          value: 60
+
+  - it: should set scale up behavior
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.autoscaling.enabled: true
+    asserts:
+      - equal:
+          path: spec.behavior.scaleUp.stabilizationWindowSeconds
+          value: 60
+      - equal:
+          path: spec.behavior.scaleUp.policies[0].type
+          value: Pods
+      - equal:
+          path: spec.behavior.scaleUp.policies[0].value
+          value: 1
+      - equal:
+          path: spec.behavior.scaleUp.policies[0].periodSeconds
+          value: 60
+

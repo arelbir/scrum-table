@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/columntemplates"
+	"aksa.local/scrum/server/columntemplates"
 )
 
 type DatabaseBoardTemplate struct {
@@ -39,3 +39,4 @@ type DatabaseBoardTemplateUpdate struct {
 	Description   *string
 	Favourite     *bool
 }
+

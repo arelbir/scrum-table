@@ -10,7 +10,7 @@ exports[`Votes should render correctly with no votes and active voting 1`] = `
       aria-label="Add vote"
       class="dot-button vote-button-add"
       data-tooltip-content="Add vote"
-      data-tooltip-id="scrumlr-tooltip"
+      data-tooltip-id="aksa-tooltip"
     >
       <svg
         class="vote-button-add__icon"
@@ -32,7 +32,7 @@ exports[`Votes should render correctly with votes and active voting 1`] = `
   >
     <button
       class="dot-button vote-button-remove"
-      data-tooltip-id="scrumlr-tooltip"
+      data-tooltip-id="aksa-tooltip"
     >
       <span
         class="vote-button-remove__folded-corner"
@@ -52,7 +52,7 @@ exports[`Votes should render correctly with votes and active voting 1`] = `
       aria-label="Multiple votes are not allowed"
       class="dot-button vote-button-add"
       data-tooltip-content="Multiple votes are not allowed"
-      data-tooltip-id="scrumlr-tooltip"
+      data-tooltip-id="aksa-tooltip"
       disabled=""
     >
       <svg
@@ -75,7 +75,7 @@ exports[`Votes should render correctly with votes and disabled voting 1`] = `
       aria-label="1 vote"
       class="dot-button vote-button-remove"
       data-tooltip-content="1 vote"
-      data-tooltip-id="scrumlr-tooltip"
+      data-tooltip-id="aksa-tooltip"
       disabled=""
     >
       <span
@@ -95,3 +95,4 @@ exports[`Votes should render correctly with votes and disabled voting 1`] = `
   </div>
 </div>
 `;
+

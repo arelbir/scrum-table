@@ -4,12 +4,12 @@ import (
 	"context"
 	"net/http"
 
-	"scrumlr.io/server/websocket"
+	"aksa.local/scrum/server/websocket"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/realtime"
 )
 
 type BoardSessionRequestSubscription struct {
@@ -94,3 +94,4 @@ func (socket *sessionRequestWebsocket) closeSocket(conn websocket.Connection) {
 	_ = conn.Close("")
 	websocketClosedCounter.Add(context.Background(), 1)
 }
+

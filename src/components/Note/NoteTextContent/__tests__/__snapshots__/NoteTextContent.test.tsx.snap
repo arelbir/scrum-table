@@ -5,12 +5,13 @@ exports[`NoteTextContent should render correctly 1`] = `
   hello 
   <a
     class="note-text-content-url"
-    href="https://scrumlr.io"
+    href="https://aksa.local"
     rel="noopener noreferrer"
     target="_blank"
-    title="https://scrumlr.io"
+    title="https://aksa.local"
   >
-    https://scrumlr.io
+    https://aksa.local
   </a>
 </div>
 `;
+

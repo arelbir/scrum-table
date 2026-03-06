@@ -33,7 +33,7 @@ tar -C /usr/local/bin -xzf <mockery.tar.gz>
 
 ### Run
 
-After you installed mockery you can run it in the `src` directory of the scrumlr server.
+After you installed mockery you can run it in the `src` directory of the aksa server.
 
 ```bash
 # switch to src directory of the server
@@ -58,7 +58,7 @@ Each package has its own tests for the service and the database.
 
 *Note*: All database tests are currently in the database package which will be changed in the future.
 
-We also provide a postman collection to test the scrumlr backend.
+We also provide a postman collection to test the aksa backend.
 
 ### Requirements
 
@@ -104,7 +104,7 @@ This will run all tests and produce the coverage report.
 
 ### E2E Tests / old Postman tests
 
-There is an [e2e test folder](scrumlr.io/server/e2e-tests), which contains tests for the backend. These are the old postman tests in go code.
+There is an [e2e test folder](aksa.local/scrum/server/e2e-tests), which contains tests for the backend. These are the old postman tests in go code.
 
 To run them, start a docker container:
 
@@ -148,8 +148,10 @@ make run-docker
 or
 
 ```bash
-docker compose up --build scrumlr
+docker compose up --build aksa
 ```
 
-These commands will start a postgres database, nats and the scrumlr backend through docker.
-The scrumlr backend is first build with the [Dockerfile](./../src/Dockerfile) in the `src` directory.
+These commands will start a postgres database, nats and the aksa backend through docker.
+The aksa backend is first build with the [Dockerfile](./../src/Dockerfile) in the `src` directory.
+
+

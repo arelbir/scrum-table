@@ -4,18 +4,18 @@ import (
 	"context"
 	"net/http"
 
-	"scrumlr.io/server/websocket"
+	"aksa.local/scrum/server/websocket"
 
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/boards"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/boards"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessions"
 )
 
 type BoardSubscription struct {
@@ -34,7 +34,7 @@ type InitEvent struct {
 }
 
 func (s *Server) openBoardSocket(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.listen.api.socket.open")
+	ctx, span := tracer.Start(r.Context(), "aksa.listen.api.socket.open")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -138,7 +138,7 @@ func (bs *BoardSubscription) startListeningOnBoard() {
 }
 
 func (s *Server) closeBoardSocket(ctx context.Context, board, user uuid.UUID, conn websocket.Connection, reason string) {
-	ctx, span := tracer.Start(ctx, "scrumlr.listen.api.socket.close")
+	ctx, span := tracer.Start(ctx, "aksa.listen.api.socket.close")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -150,3 +150,5 @@ func (s *Server) closeBoardSocket(ctx context.Context, board, user uuid.UUID, co
 		log.Warnw("failed to disconnected session", "board", board, "user", user, "err", err)
 	}
 }
+
+

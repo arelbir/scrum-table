@@ -10,17 +10,17 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/notes"
+	"aksa.local/scrum/server/notes"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
 
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/realtime"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/columns")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/columns")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/columns")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/columns")
 
 type ColumnDatabase interface {
 	Create(ctx context.Context, column DatabaseColumnInsert) (DatabaseColumn, error)
@@ -49,13 +49,13 @@ func NewColumnService(db ColumnDatabase, rt *realtime.Broker, noteService notes.
 
 func (service *Service) Create(ctx context.Context, body ColumnRequest) (*Column, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.create")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.create")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.columns.service.create.board", body.Board.String()),
-		attribute.String("scrumlr.columns.service.create.user", body.User.String()),
-		attribute.String("scrumlr.columns.service.create.color", string(body.Color)),
+		attribute.String("aksa.columns.service.create.board", body.Board.String()),
+		attribute.String("aksa.columns.service.create.user", body.User.String()),
+		attribute.String("aksa.columns.service.create.color", string(body.Color)),
 	)
 
 	index, err := service.database.GetIndex(ctx, body.Board)
@@ -99,13 +99,13 @@ func (service *Service) Create(ctx context.Context, body ColumnRequest) (*Column
 
 func (service *Service) Delete(ctx context.Context, board, column, user uuid.UUID) error {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.columns.service.delete.board", board.String()),
-		attribute.String("scrumlr.columns.service.delete.column", column.String()),
-		attribute.String("scrumlr.columns.service.delete.user", user.String()),
+		attribute.String("aksa.columns.service.delete.board", board.String()),
+		attribute.String("aksa.columns.service.delete.column", column.String()),
+		attribute.String("aksa.columns.service.delete.user", user.String()),
 	)
 	// notes and votes are deleted cascading from the database
 	// get all notes that are effected to send the delete event
@@ -137,14 +137,14 @@ func (service *Service) Delete(ctx context.Context, board, column, user uuid.UUI
 
 func (service *Service) Update(ctx context.Context, body ColumnUpdateRequest) (*Column, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.update")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.columns.service.update.board", body.Board.String()),
-		attribute.String("scrumlr.columns.service.update.column", body.ID.String()),
-		attribute.String("scrumlr.columns.service.update.color", string(body.Color)),
-		attribute.Bool("scrumlr.columns.service.update.visible", body.Visible),
+		attribute.String("aksa.columns.service.update.board", body.Board.String()),
+		attribute.String("aksa.columns.service.update.column", body.ID.String()),
+		attribute.String("aksa.columns.service.update.color", string(body.Color)),
+		attribute.Bool("aksa.columns.service.update.visible", body.Visible),
 	)
 
 	if body.Index < 0 {
@@ -177,12 +177,12 @@ func (service *Service) Update(ctx context.Context, body ColumnUpdateRequest) (*
 
 func (service *Service) Get(ctx context.Context, boardID, columnID uuid.UUID) (*Column, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.get")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.get")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.columns.service.get.board", boardID.String()),
-		attribute.String("scrumlr.columns.service.get.column", columnID.String()),
+		attribute.String("aksa.columns.service.get.board", boardID.String()),
+		attribute.String("aksa.columns.service.get.column", columnID.String()),
 	)
 	column, err := service.database.Get(ctx, boardID, columnID)
 	if err != nil {
@@ -203,11 +203,11 @@ func (service *Service) Get(ctx context.Context, boardID, columnID uuid.UUID) (*
 
 func (service *Service) GetAll(ctx context.Context, boardID uuid.UUID) ([]*Column, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.get.all")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.get.all")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.columns.service.get.all.board", boardID.String()),
+		attribute.String("aksa.columns.service.get.all.board", boardID.String()),
 	)
 
 	columns, err := service.database.GetAll(ctx, boardID)
@@ -223,11 +223,11 @@ func (service *Service) GetAll(ctx context.Context, boardID uuid.UUID) ([]*Colum
 
 func (service *Service) GetCount(ctx context.Context, boardID uuid.UUID) (int, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.get.count")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.get.count")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.columns.service.get.count.board", boardID.String()),
+		attribute.String("aksa.columns.service.get.count.board", boardID.String()),
 	)
 
 	count, err := service.database.Count(ctx, boardID)
@@ -243,7 +243,7 @@ func (service *Service) GetCount(ctx context.Context, boardID uuid.UUID) (int, e
 
 func (service *Service) updatedColumns(ctx context.Context, board uuid.UUID) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.update")
 	defer span.End()
 
 	columns, err := service.database.GetAll(ctx, board)
@@ -274,7 +274,7 @@ func (service *Service) updatedColumns(ctx context.Context, board uuid.UUID) {
 }
 
 func (service *Service) syncNotesOnColumnChange(ctx context.Context, boardID uuid.UUID, columnIds []uuid.UUID) (string, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.sync")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.sync")
 	defer span.End()
 
 	notes, err := service.noteService.GetAll(ctx, boardID, columnIds...)
@@ -301,7 +301,7 @@ func (service *Service) syncNotesOnColumnChange(ctx context.Context, boardID uui
 }
 
 func (service *Service) deletedColumn(ctx context.Context, board, column uuid.UUID, notes []uuid.UUID) {
-	ctx, span := tracer.Start(ctx, "scrumlr.columns.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.columns.service.delete")
 	defer span.End()
 
 	_ = service.realtime.BroadcastToBoard(ctx, board, realtime.BoardEvent{
@@ -315,3 +315,5 @@ func (service *Service) deletedColumn(ctx context.Context, board, column uuid.UU
 		},
 	})
 }
+
+

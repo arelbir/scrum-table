@@ -54,7 +54,7 @@ exports[`ColumnConfiguratorColumnNameDetails render should render correctly (des
           class="mini-menu-item--cancel mini-menu__item"
           data-cy="undefined-item-Cancel"
           data-tooltip-content="Cancel"
-          data-tooltip-id="scrumlr-tooltip"
+          data-tooltip-id="aksa-tooltip"
           id="mini-menu-Cancel5"
         >
           <svg>
@@ -66,7 +66,7 @@ exports[`ColumnConfiguratorColumnNameDetails render should render correctly (des
           class="mini-menu-item--save mini-menu__item"
           data-cy="undefined-item-Save"
           data-tooltip-content="Save"
-          data-tooltip-id="scrumlr-tooltip"
+          data-tooltip-id="aksa-tooltip"
           id="mini-menu-Save6"
         >
           <svg>
@@ -111,7 +111,7 @@ exports[`ColumnConfiguratorColumnNameDetails render should render correctly (nam
           class="mini-menu-item--cancel mini-menu__item"
           data-cy="undefined-item-Cancel"
           data-tooltip-content="Cancel"
-          data-tooltip-id="scrumlr-tooltip"
+          data-tooltip-id="aksa-tooltip"
           id="mini-menu-Cancel3"
         >
           <svg>
@@ -123,7 +123,7 @@ exports[`ColumnConfiguratorColumnNameDetails render should render correctly (nam
           class="mini-menu-item--save mini-menu__item"
           data-cy="undefined-item-Save"
           data-tooltip-content="Save"
-          data-tooltip-id="scrumlr-tooltip"
+          data-tooltip-id="aksa-tooltip"
           id="mini-menu-Save4"
         >
           <svg>
@@ -157,3 +157,4 @@ exports[`ColumnConfiguratorColumnNameDetails render should render correctly (vis
   </div>
 </div>
 `;
+

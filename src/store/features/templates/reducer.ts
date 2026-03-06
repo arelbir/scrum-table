@@ -17,7 +17,7 @@ const generateRecommendedTemplates = (): Template[] => {
     const id = `recommended-${idx}`;
     return {
       id,
-      creator: "scrumlr",
+      creator: "aksa",
       name: tpl.name,
       description: tpl.description,
       favourite: favIds.includes(id),
@@ -52,3 +52,4 @@ export const templatesReducer = createReducer(initialState, (builder) => {
       return newState;
     });
 });
+

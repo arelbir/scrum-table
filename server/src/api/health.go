@@ -6,13 +6,13 @@ import (
 	"github.com/go-chi/render"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
-//var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+//var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 func (s *Server) healthCheck(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.health.api")
+	ctx, span := tracer.Start(r.Context(), "aksa.health.api")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -20,8 +20,8 @@ func (s *Server) healthCheck(w http.ResponseWriter, r *http.Request) {
 	databaseHealthy := s.health.IsDatabaseHealthy(ctx)
 
 	span.SetAttributes(
-		attribute.Bool("scrumlr.health.api.database.healthy", databaseHealthy),
-		attribute.Bool("scrumlr.health.api.realtime.healthy", realtimeHealthy),
+		attribute.Bool("aksa.health.api.database.healthy", databaseHealthy),
+		attribute.Bool("aksa.health.api.realtime.healthy", realtimeHealthy),
 	)
 
 	if realtimeHealthy && databaseHealthy {
@@ -35,3 +35,5 @@ func (s *Server) healthCheck(w http.ResponseWriter, r *http.Request) {
 	render.Status(r, http.StatusServiceUnavailable)
 	render.Respond(w, r, nil)
 }
+
+

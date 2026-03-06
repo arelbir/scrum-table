@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 // User is the response for all user requests.
@@ -51,3 +51,4 @@ func UserSlice(users []DatabaseUser) []*User {
 func (*User) Render(_ http.ResponseWriter, _ *http.Request) error {
 	return nil
 }
+

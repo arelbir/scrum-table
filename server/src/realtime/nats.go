@@ -8,7 +8,7 @@ import (
 	"github.com/nats-io/nats.go"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
 type natsClient struct {
@@ -30,12 +30,12 @@ func NewNats(url string) (*Broker, error) {
 
 // Publish the given event to the given subject
 func (n *natsClient) Publish(ctx context.Context, subject string, event interface{}) error {
-	ctx, span := tracer.Start(ctx, "scrumlr.realtime.nats.publish")
+	ctx, span := tracer.Start(ctx, "aksa.realtime.nats.publish")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
 	span.SetAttributes(
-		attribute.String("scrumlr.realtime.nats.publish.subject", subject),
+		attribute.String("aksa.realtime.nats.publish.subject", subject),
 	)
 
 	data, err := json.Marshal(event)
@@ -50,12 +50,12 @@ func (n *natsClient) Publish(ctx context.Context, subject string, event interfac
 
 // SubscribeToBoardSessionEvents subscribes to the given subject
 func (n *natsClient) SubscribeToBoardSessionEvents(ctx context.Context, subject string) (chan *BoardSessionRequestEventType, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.realtime.nats.subscribe.session")
+	ctx, span := tracer.Start(ctx, "aksa.realtime.nats.subscribe.session")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
 	span.SetAttributes(
-		attribute.String("scrumlr.realtime.nats.subscribe.session.sbject", subject),
+		attribute.String("aksa.realtime.nats.subscribe.session.sbject", subject),
 	)
 
 	receiverChan := make(chan *BoardSessionRequestEventType)
@@ -80,12 +80,12 @@ func (n *natsClient) SubscribeToBoardSessionEvents(ctx context.Context, subject 
 
 // SubscribeToBoardEvents subscribes to the given subject
 func (n *natsClient) SubscribeToBoardEvents(ctx context.Context, subject string) (chan *BoardEvent, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.realtime.nats.subscribe.board")
+	ctx, span := tracer.Start(ctx, "aksa.realtime.nats.subscribe.board")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
 	span.SetAttributes(
-		attribute.String("scrumlr.realtime.nats.subscribe.board.sbject", subject),
+		attribute.String("aksa.realtime.nats.subscribe.board.sbject", subject),
 	)
 
 	receiverChan := make(chan *BoardEvent)
@@ -106,3 +106,5 @@ func (n *natsClient) SubscribeToBoardEvents(ctx context.Context, subject string)
 	}
 	return receiverChan, nil
 }
+
+

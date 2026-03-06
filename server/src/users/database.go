@@ -10,7 +10,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 type DB struct {
@@ -204,3 +204,4 @@ func (db *DB) DeleteUser(ctx context.Context, id uuid.UUID) error {
 
 	return err
 }
+

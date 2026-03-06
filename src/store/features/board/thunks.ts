@@ -26,6 +26,8 @@ const redirectToBoardDeletedPage = () => {
 
 let socket: Socket | null = null;
 
+const tTemplate = (key: string) => i18n.t(key as any, {ns: "templates"} as any) as string;
+
 // creates a board from a template and returns board id if successful
 export const createBoardFromTemplate = createAsyncThunk<
   string,
@@ -38,13 +40,13 @@ export const createBoardFromTemplate = createAsyncThunk<
   const translateRecommendedTemplate = (toBeTranslated: TemplateWithColumns): TemplateWithColumns => ({
     template: {
       ...toBeTranslated.template,
-      name: i18n.t(toBeTranslated.template.name, {ns: "templates"}),
-      description: i18n.t(toBeTranslated.template.description, {ns: "templates"}),
+      name: tTemplate(toBeTranslated.template.name),
+      description: tTemplate(toBeTranslated.template.description),
     },
     columns: toBeTranslated.columns.map((toBeTranslatedColumn) => ({
       ...toBeTranslatedColumn,
-      name: i18n.t(toBeTranslatedColumn.name, {ns: "templates"}),
-      description: i18n.t(toBeTranslatedColumn.description, {ns: "templates"}),
+      name: tTemplate(toBeTranslatedColumn.name),
+      description: tTemplate(toBeTranslatedColumn.description),
     })),
   });
 

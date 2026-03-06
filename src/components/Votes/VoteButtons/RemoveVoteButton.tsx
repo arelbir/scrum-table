@@ -45,7 +45,7 @@ export const RemoveVoteButton: FC<RemoveVoteProps> = ({noteId, disabled, numberO
       onAnimationEnd={() => {
         setDoBump(false);
       }}
-      dataTooltipId="scrumlr-tooltip"
+      dataTooltipId="aksa-tooltip"
       dataTooltipContent={isAnonymous ? t("Votes.VotesOnNote", {count: numberOfVotes}) : participantNames}
     >
       <span className="vote-button-remove__folded-corner" />
@@ -54,3 +54,4 @@ export const RemoveVoteButton: FC<RemoveVoteProps> = ({noteId, disabled, numberO
     </DotButton>
   );
 };
+

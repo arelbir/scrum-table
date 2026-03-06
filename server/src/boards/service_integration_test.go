@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"scrumlr.io/server/websocket"
+	"aksa.local/scrum/server/websocket"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
@@ -15,19 +15,19 @@ import (
 	"github.com/stretchr/testify/suite"
 	"github.com/testcontainers/testcontainers-go/modules/nats"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/hash"
-	"scrumlr.io/server/initialize"
-	"scrumlr.io/server/initialize/testDbTemplates"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessionrequests"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/technical_helper"
-	"scrumlr.io/server/timeprovider"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/hash"
+	"aksa.local/scrum/server/initialize"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessionrequests"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/technical_helper"
+	"aksa.local/scrum/server/timeprovider"
+	"aksa.local/scrum/server/votings"
 )
 
 type testSession struct {
@@ -693,3 +693,4 @@ func checkBoardInList(list []uuid.UUID, id uuid.UUID) *uuid.UUID {
 	}
 	return nil
 }
+

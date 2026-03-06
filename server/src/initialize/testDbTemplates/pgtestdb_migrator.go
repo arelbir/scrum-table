@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"scrumlr.io/server/initialize"
+	"aksa.local/scrum/server/initialize"
 
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/source/httpfs"
@@ -80,3 +80,4 @@ func (m *SeededMigrator) Migrate(_ context.Context, db *sql.DB, config pgtestdb.
 
 	return nil
 }
+

@@ -26,7 +26,7 @@ export const EmojiSuggestions = ({suggestions, keyboardFocusedIndex, acceptSugge
     suggestionsRef.current = suggestionsRef.current.slice(0, suggestions.length);
 
     // scroll the currently selected element into view
-    // can't use scrollIntoView directly because it scrolls the whole container horizontally on firefox (see https://github.com/inovex/scrumlr.io/pull/4274)
+    // can't use scrollIntoView directly because it scrolls the whole container horizontally on firefox
     const focusedElementRect = suggestionsRef.current[keyboardFocusedIndex]?.getBoundingClientRect();
     if (!focusedElementRect || !containerRect || !containerRef.current) return;
 
@@ -83,3 +83,4 @@ export const EmojiSuggestions = ({suggestions, keyboardFocusedIndex, acceptSugge
     </div>
   );
 };
+

@@ -12,24 +12,24 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/sessions"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/hash"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessionrequests"
-	"scrumlr.io/server/timeprovider"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/hash"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessionrequests"
+	"aksa.local/scrum/server/timeprovider"
+	"aksa.local/scrum/server/votings"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/boards")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/boards")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/boards")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/boards")
 
 type Service struct {
 	clock    timeprovider.TimeProvider
@@ -72,11 +72,11 @@ func NewBoardService(db BoardDatabase, rt *realtime.Broker, sessionRequestServic
 
 func (service *Service) Get(ctx context.Context, id uuid.UUID) (*Board, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.get")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.get")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.get.board", id.String()),
+		attribute.String("aksa.boards.service.get.board", id.String()),
 	)
 
 	board, err := service.database.GetBoard(ctx, id)
@@ -93,11 +93,11 @@ func (service *Service) Get(ctx context.Context, id uuid.UUID) (*Board, error) {
 // GetBoards get all associated boards of a given user
 func (service *Service) GetBoards(ctx context.Context, userID uuid.UUID) ([]uuid.UUID, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.get.all")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.get.all")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.get.all.user", userID.String()),
+		attribute.String("aksa.boards.service.get.all.user", userID.String()),
 	)
 
 	boards, err := service.database.GetBoards(ctx, userID)
@@ -118,13 +118,13 @@ func (service *Service) GetBoards(ctx context.Context, userID uuid.UUID) ([]uuid
 
 func (service *Service) Create(ctx context.Context, body CreateBoardRequest) (*Board, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.create")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.create")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.create.user", body.Owner.String()),
-		attribute.String("scrumlr.boards.service.create.access_policy", string(body.AccessPolicy)),
-		attribute.Int("scrumlr.boards.service.crete.columns.count", len(body.Columns)),
+		attribute.String("aksa.boards.service.create.user", body.Owner.String()),
+		attribute.String("aksa.boards.service.create.access_policy", string(body.AccessPolicy)),
+		attribute.Int("aksa.boards.service.crete.columns.count", len(body.Columns)),
 	)
 
 	// map request on board object to insert into database
@@ -193,11 +193,11 @@ func (service *Service) Create(ctx context.Context, body CreateBoardRequest) (*B
 
 func (service *Service) FullBoard(ctx context.Context, boardID uuid.UUID) (*FullBoard, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.get.full")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.get.full")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.get.full.board", boardID.String()),
+		attribute.String("aksa.boards.service.board.get.full.board", boardID.String()),
 	)
 
 	board, err := service.Get(ctx, boardID)
@@ -278,11 +278,11 @@ func (service *Service) FullBoard(ctx context.Context, boardID uuid.UUID) (*Full
 
 func (service *Service) BoardOverview(ctx context.Context, boardIDs []uuid.UUID, user uuid.UUID) ([]*BoardOverview, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.get.overview")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.get.overview")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.get.overview.user", user.String()),
+		attribute.String("aksa.boards.service.board.get.overview.user", user.String()),
 	)
 
 	overviewBoards := make([]*BoardOverview, 0, len(boardIDs))
@@ -329,11 +329,11 @@ func (service *Service) BoardOverview(ctx context.Context, boardIDs []uuid.UUID,
 
 func (service *Service) Delete(ctx context.Context, id uuid.UUID) error {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.delete")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.delete.board", id.String()),
+		attribute.String("aksa.boards.service.board.delete.board", id.String()),
 	)
 
 	err := service.database.DeleteBoard(ctx, id)
@@ -352,11 +352,11 @@ func (service *Service) Delete(ctx context.Context, id uuid.UUID) error {
 
 func (service *Service) Update(ctx context.Context, body BoardUpdateRequest) (*Board, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.update")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.update")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.update.board", body.ID.String()),
+		attribute.String("aksa.boards.service.board.update.board", body.ID.String()),
 	)
 
 	if body.Name != nil {
@@ -428,12 +428,12 @@ func (service *Service) Update(ctx context.Context, body BoardUpdateRequest) (*B
 
 func (service *Service) SetTimer(ctx context.Context, id uuid.UUID, minutes uint8) (*Board, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.timer.set")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.timer.set")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.timer.set.board", id.String()),
-		attribute.Int("scrumlr.boards.service.board.timer.set.minutes", int(minutes)),
+		attribute.String("aksa.boards.service.board.timer.set.board", id.String()),
+		attribute.Int("aksa.boards.service.board.timer.set.minutes", int(minutes)),
 	)
 
 	timerStart := service.clock.Now().Local()
@@ -460,11 +460,11 @@ func (service *Service) SetTimer(ctx context.Context, id uuid.UUID, minutes uint
 
 func (service *Service) DeleteTimer(ctx context.Context, id uuid.UUID) (*Board, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.timer.delete")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.timer.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.timer.delete.board", id.String()),
+		attribute.String("aksa.boards.service.board.timer.delete.board", id.String()),
 	)
 
 	update := DatabaseBoardTimerUpdate{
@@ -489,11 +489,11 @@ func (service *Service) DeleteTimer(ctx context.Context, id uuid.UUID) (*Board, 
 
 func (service *Service) IncrementTimer(ctx context.Context, id uuid.UUID) (*Board, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.timer.increment")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.timer.increment")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.timer.increment.board", id.String()),
+		attribute.String("aksa.boards.service.board.timer.increment.board", id.String()),
 	)
 
 	board, err := service.database.GetBoard(ctx, id)
@@ -556,11 +556,11 @@ func (service *Service) UpdatedBoard(ctx context.Context, board DatabaseBoard) {
 }
 
 func (service *Service) SyncBoardSettingChange(ctx context.Context, boardID uuid.UUID) (string, error) {
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.sync")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.sync")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.sync.board", boardID.String()),
+		attribute.String("aksa.boards.service.board.sync.board", boardID.String()),
 	)
 
 	var err_msg string
@@ -601,11 +601,11 @@ func (service *Service) SyncBoardSettingChange(ctx context.Context, boardID uuid
 }
 
 func (service *Service) DeletedBoard(ctx context.Context, board uuid.UUID) {
-	ctx, span := tracer.Start(ctx, "scrumlr.boards.service.board.delete")
+	ctx, span := tracer.Start(ctx, "aksa.boards.service.board.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.boards.service.board.delete.board", board.String()),
+		attribute.String("aksa.boards.service.board.delete.board", board.String()),
 	)
 
 	_ = service.realtime.BroadcastToBoard(ctx, board, realtime.BoardEvent{
@@ -615,7 +615,7 @@ func (service *Service) DeletedBoard(ctx context.Context, board uuid.UUID) {
 
 func (service *Service) BoardEditableContext(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := tracer.Start(r.Context(), "scrumlr.boards.service.board.editable")
+		ctx, span := tracer.Start(r.Context(), "aksa.boards.service.board.editable")
 		defer span.End()
 		log := logger.FromContext(ctx)
 
@@ -623,8 +623,8 @@ func (service *Service) BoardEditableContext(next http.Handler) http.Handler {
 		user := ctx.Value(identifiers.UserIdentifier).(uuid.UUID)
 
 		span.SetAttributes(
-			attribute.String("scrumlr.sessions.service.context.editable.board", board.String()),
-			attribute.String("scrumlr.sessions.service.context.editable.user", user.String()),
+			attribute.String("aksa.sessions.service.context.editable.board", board.String()),
+			attribute.String("aksa.sessions.service.context.editable.user", user.String()),
 		)
 
 		isMod, err := service.sessionService.ModeratorSessionExists(ctx, board, user)
@@ -657,3 +657,5 @@ func (service *Service) BoardEditableContext(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r.WithContext(boardEditable))
 	})
 }
+
+

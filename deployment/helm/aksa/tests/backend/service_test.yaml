@@ -1,0 +1,45 @@
+---
+suite: test backend service
+templates:
+  - /backend/service.yaml
+tests:
+  - it: should set name, namespace, apiVersion, kind and app selector
+    release:
+      name: aksa
+      namespace: aksa
+    asserts:
+      - containsDocument:
+          kind: Service
+          apiVersion: v1
+          name: aksa-backend
+          namespace: aksa
+      - equal:
+          path: spec.selector.app
+          value: aksa-backend
+
+  - it: should set default target port
+    release:
+      name: aksa
+      namespace: aksa
+    asserts:
+      - equal:
+          path: spec.ports[0].port
+          value: 80
+      - equal:
+          path: spec.ports[0].targetPort
+          value: 8080
+
+  - it: should set target port
+    release:
+      name: aksa
+      namespace: aksa
+    set:
+      backend.config.serverPort: 9090
+    asserts:
+      - equal:
+          path: spec.ports[0].port
+          value: 80
+      - equal:
+          path: spec.ports[0].targetPort
+          value: 9090
+

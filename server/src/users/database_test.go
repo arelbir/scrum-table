@@ -10,10 +10,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/common/avatar"
-	"scrumlr.io/server/initialize/testDbTemplates"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/common/avatar"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/sessions"
 )
 
 type testBoard struct {
@@ -389,3 +389,4 @@ func (suite *DatabaseUserTestSuite) seedData(db *bun.DB) {
 		}
 	}
 }
+

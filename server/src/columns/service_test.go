@@ -9,9 +9,9 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/realtime"
 )
 
 func TestCreateColumn(t *testing.T) {
@@ -431,3 +431,4 @@ func TestGetCount_DatabaseError(t *testing.T) {
 	assert.Equal(t, common.InternalServerError, err)
 	assert.Equal(t, count, columnCount)
 }
+

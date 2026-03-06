@@ -28,11 +28,11 @@ export const CookieNotice = () => {
     window.clarity("consent");
   }
 
-  // prevents cookie notice from being shown if scrumlrCookieName is set in localStorage
+  // prevents cookie notice from being shown if aksaCookieName is set in localStorage
   if (cookieConsentValue != null || !showCookieNotice) return null;
 
   /**
-   * Sets cookie consent value i.e. scrumlrCookieName true.
+   * Sets cookie consent value i.e. aksaCookieName true.
    */
   const accept = () => {
     if (cookieConsentValue == null) {
@@ -42,7 +42,7 @@ export const CookieNotice = () => {
   };
 
   /**
-   * Sets cookie consent value i.e. scrumlrCookieName false.
+   * Sets cookie consent value i.e. aksaCookieName false.
    */
   const decline = () => {
     if (cookieConsentValue == null) {
@@ -89,3 +89,4 @@ export const CookieNotice = () => {
     </Portal>
   );
 };
+

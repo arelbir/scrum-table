@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/go-chi/render"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 type Info struct {
@@ -57,3 +57,4 @@ func (s *Server) getServerInfo(w http.ResponseWriter, r *http.Request) {
 	render.Status(r, http.StatusOK)
 	render.Respond(w, r, info)
 }
+

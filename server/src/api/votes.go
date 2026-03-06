@@ -4,10 +4,10 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/votings"
 
 	"github.com/go-chi/render"
 	"github.com/google/uuid"
@@ -15,7 +15,7 @@ import (
 
 // addVote adds a vote to the currently open voting session
 func (s *Server) addVote(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.votes.api.add")
+	ctx, span := tracer.Start(r.Context(), "aksa.votes.api.add")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -49,7 +49,7 @@ func (s *Server) addVote(w http.ResponseWriter, r *http.Request) {
 
 // removeVote removes a vote
 func (s *Server) removeVote(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.votes.api.remove")
+	ctx, span := tracer.Start(r.Context(), "aksa.votes.api.remove")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -82,7 +82,7 @@ func (s *Server) removeVote(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getVotes(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.votes.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.votes.api.get")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -130,3 +130,5 @@ func (s *Server) getVotes(w http.ResponseWriter, r *http.Request) {
 	render.Status(r, http.StatusOK)
 	render.Respond(w, r, votes)
 }
+
+

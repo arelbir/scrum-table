@@ -1,7 +1,7 @@
 package api
 
 import (
-	"scrumlr.io/server/boards"
+	"aksa.local/scrum/server/boards"
 )
 
 type TestParameterBundle struct {
@@ -81,3 +81,4 @@ func (t *TestParameterBundleBuilder) build() TestParameterBundle {
 		board:                t.board,
 	}
 }
+

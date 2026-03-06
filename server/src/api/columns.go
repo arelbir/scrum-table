@@ -7,17 +7,17 @@ import (
 	"github.com/go-chi/render"
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
 )
 
-//var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+//var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 // createColumn creates a new column
 func (s *Server) createColumn(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.columns.api.create")
+	ctx, span := tracer.Start(r.Context(), "aksa.columns.api.create")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -54,7 +54,7 @@ func (s *Server) createColumn(w http.ResponseWriter, r *http.Request) {
 
 // deleteColumn deletes a column
 func (s *Server) deleteColumn(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.columns.api.delete")
+	ctx, span := tracer.Start(r.Context(), "aksa.columns.api.delete")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -76,7 +76,7 @@ func (s *Server) deleteColumn(w http.ResponseWriter, r *http.Request) {
 
 // updateColumn updates a column
 func (s *Server) updateColumn(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.columns.api.update")
+	ctx, span := tracer.Start(r.Context(), "aksa.columns.api.update")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -110,7 +110,7 @@ func (s *Server) updateColumn(w http.ResponseWriter, r *http.Request) {
 
 // getColumn get a column
 func (s *Server) getColumn(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.columns.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.columns.api.get")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -132,7 +132,7 @@ func (s *Server) getColumn(w http.ResponseWriter, r *http.Request) {
 
 // getColumns get all columns
 func (s *Server) getColumns(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.columns.api.get.all")
+	ctx, span := tracer.Start(r.Context(), "aksa.columns.api.get.all")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -150,3 +150,5 @@ func (s *Server) getColumns(w http.ResponseWriter, r *http.Request) {
 	render.Status(r, http.StatusOK)
 	render.Respond(w, r, columns)
 }
+
+

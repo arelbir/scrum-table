@@ -9,9 +9,9 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/realtime"
 )
 
 func TestAddVote(t *testing.T) {
@@ -605,3 +605,4 @@ func TestGetOpenVoting_FailedToGetVoting(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Equal(t, errors.New(dbError), err)
 }
+

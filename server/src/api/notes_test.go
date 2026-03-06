@@ -10,20 +10,20 @@ import (
 	"strings"
 	"testing"
 
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/technical_helper"
 
-	"scrumlr.io/server/boards"
+	"aksa.local/scrum/server/boards"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/suite"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/votings"
 )
 
 type NotesTestSuite struct {
@@ -268,3 +268,4 @@ func (suite *NotesTestSuite) TestEditNote() {
 		})
 	}
 }
+

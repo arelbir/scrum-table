@@ -32,7 +32,7 @@ export const BoardGuard = ({printViewEnabled}: BoardGuardProps) => {
   }, [boardId, dispatch]);
 
   if (printViewEnabled && boardId) {
-    return <PrintView boardId={boardId} boardName={boardName ?? "scrumlr.io"} />;
+    return <PrintView boardId={boardId} boardName={boardName ?? "Aksa"} />;
   }
 
   if (boardStatus === "accepted" || boardStatus === "ready") {

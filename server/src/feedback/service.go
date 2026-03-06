@@ -10,11 +10,11 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/feedback")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/feedback")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/feedback")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/feedback")
 
 type Service struct {
 	client     *http.Client
@@ -31,13 +31,13 @@ func NewFeedbackService(client *http.Client, webhookUrl string) FeedbackService 
 
 func (service *Service) Create(ctx context.Context, feedbackType string, contact string, text string) error {
 	log := logger.FromContext(ctx)
-	_, span := tracer.Start(ctx, "scrumlr.feedback.service.create")
+	_, span := tracer.Start(ctx, "aksa.feedback.service.create")
 	defer span.End()
 
 	log.Info("Webhook URL", service.webhookUrl)
 
 	var jsonData = []byte(fmt.Sprintf(`{
-    "text": "Scrumlr hat neues Feedback erhalten!",
+    "text": "Aksa hat neues Feedback erhalten!",
     "blocks": [
       {
         "type": "header",
@@ -65,3 +65,5 @@ func (service *Service) Create(ctx context.Context, feedbackType string, contact
 func (service *Service) Enabled() bool {
 	return service.webhookUrl != ""
 }
+
+

@@ -7,22 +7,22 @@ import (
 	"testing"
 	"time"
 
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/hash"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/hash"
+	"aksa.local/scrum/server/sessions"
 
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/reactions"
-	"scrumlr.io/server/sessionrequests"
-	"scrumlr.io/server/timeprovider"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/reactions"
+	"aksa.local/scrum/server/sessionrequests"
+	"aksa.local/scrum/server/timeprovider"
+	"aksa.local/scrum/server/votings"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/realtime"
 )
 
 func TestGet(t *testing.T) {
@@ -717,3 +717,4 @@ func TestDelete_BroadcastsCorrectEvent(t *testing.T) {
 	// Verify that all expectations were met (including the Publish call)
 	mockBroker.AssertExpectations(t)
 }
+

@@ -20,7 +20,7 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
 func SetupOTelSDK(ctx context.Context, otelGrpcEndpoint string, otelHttpEndpoint string) (shutdown func(context.Context) error, err error) {
@@ -255,8 +255,10 @@ func newResource() (*resource.Resource, error) {
 		resource.Default(),
 		resource.NewWithAttributes(
 			semconv.SchemaURL,
-			semconv.ServiceName("scrumlr"),
+			semconv.ServiceName("aksa"),
 			semconv.ServiceVersion("4.5.0"),
 		),
 	)
 }
+
+

@@ -6,7 +6,7 @@ import (
 	"log"
 	"testing"
 
-	"scrumlr.io/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
@@ -476,3 +476,4 @@ func (suite *DatabaseColumnTestSuite) seedData(db *bun.DB) {
 		}
 	}
 }
+

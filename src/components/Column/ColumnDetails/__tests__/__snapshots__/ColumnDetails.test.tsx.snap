@@ -54,7 +54,7 @@ exports[`ColumnDetails should render correctly (edit) 1`] = `
           class="mini-menu-item--cancel mini-menu__item"
           data-cy="undefined-item-Cancel"
           data-tooltip-content="Cancel"
-          data-tooltip-id="scrumlr-tooltip"
+          data-tooltip-id="aksa-tooltip"
           id="mini-menu-Cancel5"
         >
           <svg>
@@ -66,7 +66,7 @@ exports[`ColumnDetails should render correctly (edit) 1`] = `
           class="mini-menu-item--save mini-menu__item"
           data-cy="undefined-item-Save"
           data-tooltip-content="Save"
-          data-tooltip-id="scrumlr-tooltip"
+          data-tooltip-id="aksa-tooltip"
           id="mini-menu-Save6"
         >
           <svg>
@@ -146,3 +146,4 @@ exports[`ColumnDetails should render correctly (view) 1`] = `
   </div>
 </div>
 `;
+

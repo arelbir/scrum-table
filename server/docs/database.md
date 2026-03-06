@@ -1,7 +1,9 @@
-# Scrumlr database
+# Aksa database
 
-The following diagramm shows the scrumlr database layout.
+The following diagramm shows the aksa database layout.
 
-![Database](./scrumlr-db.png)
+![Database](./aksa-db.png)
 
 The diagramm was created with [ChartDB](https://github.com/chartdb/chartdb)
+
+

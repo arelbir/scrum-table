@@ -1,11 +1,8 @@
-import {ScrumlrLogo} from "components/ScrumlrLogo";
+import {AksaLogo} from "components/AksaLogo";
 import "./Homepage.scss";
 import {Trans, useTranslation, withTranslation} from "react-i18next";
-import {ReactComponent as German} from "assets/flags/DE.svg";
-import {ReactComponent as English} from "assets/flags/US.svg";
-import {ReactComponent as French} from "assets/flags/FR.svg";
 import {ArrowRight, Logout} from "components/Icon";
-import {Link, useHref} from "react-router";
+import {useHref} from "react-router";
 import {AppInfo} from "components/AppInfo";
 import {HeroIllustration} from "components/HeroIllustration";
 import {LegacyButton} from "components/Button";
@@ -13,23 +10,17 @@ import {useAppDispatch, useAppSelector} from "store";
 import {Toast} from "utils/Toast";
 import {useEffect} from "react";
 import {signOut} from "store/features";
-import {InovexAnchor} from "./InovexAnchor";
-import {SHOW_LEGAL_DOCUMENTS} from "../../config";
+import {KazanciAnchor} from "./KazanciAnchor";
 
 export const Homepage = withTranslation()(() => {
-  const {i18n} = useTranslation();
+  const {t, i18n} = useTranslation();
   const newHref = useHref("/new");
   const {user} = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   const currentYear = new Date().getFullYear();
 
-  const changeLanguage = (language: string) => () => {
-    i18n.changeLanguage(language).then(() => {
-      document.documentElement.lang = i18n.language;
-    });
-  };
-
+  
   const onLogout = () => {
     dispatch(signOut());
   };
@@ -55,30 +46,24 @@ export const Homepage = withTranslation()(() => {
   return (
     <div className="homepage">
       <div className="homepage__hero">
+        <div className="homepage__background">
+          <div className="homepage__orb homepage__orb--blue" />
+          <div className="homepage__orb homepage__orb--green" />
+          <div className="homepage__mesh" />
+          <div className="homepage__scanlines" />
+        </div>
+
         <header className="homepage__header">
-          <ScrumlrLogo className="homepage__logo" />
+          <div className="homepage__brand">
+            <AksaLogo className="homepage__logo" />
+            <span className="homepage__brand-text">Kazancı Holding</span>
+          </div>
 
           <ul className="homepage__settings">
-            <li>
-              <LegacyButton leftIcon={<German />} className="homepage__language" hideLabel onClick={changeLanguage("de")}>
-                Deutsch
-              </LegacyButton>
-            </li>
-            <li>
-              <LegacyButton leftIcon={<English />} className="homepage__language" hideLabel onClick={changeLanguage("en")}>
-                English
-              </LegacyButton>
-            </li>
-            <li>
-              <LegacyButton leftIcon={<French />} className="homepage__language" hideLabel onClick={changeLanguage("fr")}>
-                Français
-              </LegacyButton>
-            </li>
-
             {!!user && (
               <li>
                 <LegacyButton variant="text-link" onClick={onLogout} leftIcon={<Logout className="homepage__logout-button-icon" />} className="homepage__logout-button">
-                  Logout
+                  {t("SettingsDialog.Logout")}
                 </LegacyButton>
               </li>
             )}
@@ -88,6 +73,7 @@ export const Homepage = withTranslation()(() => {
         <div className="homepage__hero-content-wrapper">
           <div className="homepage__hero-content">
             <main className="homepage__main">
+              <div className="homepage__eyebrow">Kurumsal retrospektif alanı</div>
               <h1 className="homepage__hero-title">
                 <Trans
                   i18nKey="Homepage.teaserTitle"
@@ -98,12 +84,30 @@ export const Homepage = withTranslation()(() => {
                 <Trans i18nKey="Homepage.teaserText" />
               </p>
 
-              <LegacyButton href={newHref} color="primary" className="homepage__start-button" rightIcon={<ArrowRight className="homepage__proceed-icon" />}>
-                <Trans i18nKey="Homepage.startButton" />
-              </LegacyButton>
+              <div className="homepage__cta-row">
+                <LegacyButton href={newHref} color="primary" className="homepage__start-button" rightIcon={<ArrowRight className="homepage__proceed-icon" />}>
+                  <Trans i18nKey="Homepage.startButton" />
+                </LegacyButton>
+                <span className="homepage__cta-note">Aksa ekipleri için güvenli, hızlı ve sade.</span>
+              </div>
+
+              <div className="homepage__chips">
+                <span className="homepage__chip">Şablonlu başlangıç</span>
+                <span className="homepage__chip">Oylama + Zamanlayıcı</span>
+                <span className="homepage__chip">PDF / CSV / JSON dışa aktarım</span>
+              </div>
             </main>
 
-            <HeroIllustration className="homepage__illustration" />
+            <div className="homepage__visual">
+              <HeroIllustration className="homepage__illustration" />
+              <div className="homepage__accent-card">
+                <div className="homepage__accent-title">Aksa Standartları</div>
+                <div className="homepage__accent-text">Kurumsal renkler, tutarlı deneyim, tek dil.</div>
+                <div className="homepage__accent-bar">
+                  <span />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -116,33 +120,25 @@ export const Homepage = withTranslation()(() => {
             <Trans
               i18nKey="Homepage.developers"
               components={{
-                inovex: <InovexAnchor />,
+                kazanci: <KazanciAnchor />,
               }}
               values={{currentYear}}
             />
           </span>
         </div>
-
-        {SHOW_LEGAL_DOCUMENTS && (
-          <ul className="homepage__footer-links">
-            <li className="homepage__footer-link">
-              <Link to="/legal/privacyPolicy" target="_blank">
-                <Trans i18nKey="Homepage.privacyPolicy" />
-              </Link>
-            </li>
-            <li className="homepage__footer-link">
-              <Link to="/legal/cookiePolicy" target="_blank">
-                <Trans i18nKey="Homepage.cookiePolicy" />
-              </Link>
-            </li>
-            <li className="homepage__footer-link">
-              <Link to="/legal/termsAndConditions" target="_blank">
-                <Trans i18nKey="Homepage.terms" />
-              </Link>
-            </li>
-          </ul>
-        )}
       </footer>
     </div>
   );
 });
+
+
+
+
+
+
+
+
+
+
+
+

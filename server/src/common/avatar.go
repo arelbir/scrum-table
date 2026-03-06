@@ -1,6 +1,6 @@
 package common
 
-import "scrumlr.io/server/common/avatar"
+import "aksa.local/scrum/server/common/avatar"
 
 type Avatar struct {
 	AccentColorClass string                 `json:"accentColorClass,omitempty"`
@@ -17,3 +17,4 @@ type Avatar struct {
 	SkinColor        avatar.SkinColor       `json:"skinColor,omitempty"`
 	TopType          avatar.TopType         `json:"topType,omitempty"`
 }
+

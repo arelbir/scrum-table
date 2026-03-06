@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 // BoardSession is the response for all participant requests.
@@ -120,3 +120,4 @@ type BoardSessionFilter struct {
 	RaisedHand *bool
 	Role       *common.SessionRole
 }
+

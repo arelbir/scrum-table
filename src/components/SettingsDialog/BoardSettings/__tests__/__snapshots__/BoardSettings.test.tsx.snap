@@ -28,7 +28,7 @@ exports[`BoardSettings should match snapshot 1`] = `
           class="settings-input__input"
           id="boardSettingsBoardName"
           maxlength="128"
-          placeholder="scrumlr.io"
+          placeholder="aksa.local"
           type="text"
           value="test-board-name"
         />
@@ -299,3 +299,4 @@ exports[`BoardSettings should match snapshot 1`] = `
   </div>
 </div>
 `;
+

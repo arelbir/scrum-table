@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import {ScrumlrLogo} from "components/ScrumlrLogo/ScrumlrLogo";
+import {AksaLogo} from "components/AksaLogo/AksaLogo";
 import {UserPill} from "components/UserPill/UserPill";
 import "./HeaderBar.scss";
 
@@ -17,10 +17,10 @@ export const HeaderBar = (props: HeaderBarProps) => {
     <div className="header-bar">
       <div className="header-bar__top-row">
         {/* logo - - - profile */}
-        <div className="header-bar__scrumlr-logo-container">
+        <div className="header-bar__aksa-logo-container">
           {/* this still needs fixing bc that uses other styles */}
-          <a className="new-board__scrumlr-logo-href" href="/" aria-label={t("BoardHeader.returnToHomepage")}>
-            <ScrumlrLogo className="new-board__scrumlr-logo" />
+          <a className="new-board__aksa-logo-href" href="/" aria-label={t("BoardHeader.returnToHomepage")}>
+            <AksaLogo className="new-board__aksa-logo" />
           </a>
         </div>
 
@@ -32,3 +32,4 @@ export const HeaderBar = (props: HeaderBarProps) => {
     </div>
   );
 };
+

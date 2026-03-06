@@ -10,72 +10,73 @@ packages:
     interfaces:
       ResponseWriter:
 
-  scrumlr.io/server/timeprovider:
+  aksa.local/scrum/server/timeprovider:
     interfaces:
       TimeProvider:
 
-  scrumlr.io/server/boards:
+  aksa.local/scrum/server/boards:
     interfaces:
       BoardService:
       BoardDatabase:
 
-  scrumlr.io/server/realtime:
+  aksa.local/scrum/server/realtime:
     interfaces:
       Client:
 
-  scrumlr.io/server/reactions:
+  aksa.local/scrum/server/reactions:
     interfaces:
       ReactionService:
       ReactionDatabase:
 
-  scrumlr.io/server/hash:
+  aksa.local/scrum/server/hash:
     interfaces:
       Hash:
 
-  scrumlr.io/server/health:
+  aksa.local/scrum/server/health:
     interfaces:
       HealthService:
       HealthDatabase:
 
-  scrumlr.io/server/sessions:
+  aksa.local/scrum/server/sessions:
     interfaces:
       SessionService:
       SessionDatabase:
       SessionApi:
 
-  scrumlr.io/server/sessionrequests:
+  aksa.local/scrum/server/sessionrequests:
     interfaces:
       SessionRequestService:
       SessionRequestDatabase:
       Websocket:
 
-  scrumlr.io/server/users:
+  aksa.local/scrum/server/users:
     interfaces:
       UserService:
       UserDatabase:
       UsersApi:
 
-  scrumlr.io/server/notes:
+  aksa.local/scrum/server/notes:
     interfaces:
       NotesService:
       NotesDatabase:
 
-  scrumlr.io/server/votings:
+  aksa.local/scrum/server/votings:
     interfaces:
       VotingService:
       VotingDatabase:
 
-  scrumlr.io/server/columntemplates:
+  aksa.local/scrum/server/columntemplates:
     interfaces:
       ColumnTemplateService:
       ColumnTemplateDatabase:
 
-  scrumlr.io/server/boardtemplates:
+  aksa.local/scrum/server/boardtemplates:
     interfaces:
       BoardTemplateService:
       BoardTemplateDatabase:
 
-  scrumlr.io/server/columns:
+  aksa.local/scrum/server/columns:
     interfaces:
       ColumnService:
       ColumnDatabase:
+

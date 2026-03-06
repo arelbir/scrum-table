@@ -1,4 +1,4 @@
-export const CLIENT_STORAGE_PREFIX = "scrumlr/";
+export const CLIENT_STORAGE_PREFIX = "aksa/";
 export const APP_VERSION_STORAGE_KEY = `${CLIENT_STORAGE_PREFIX}app_version`;
 export const COOKIE_CONSENT_STORAGE_KEY = `${CLIENT_STORAGE_PREFIX}cookie_consent`;
 export const LOCALE_STORAGE_KEY = `${CLIENT_STORAGE_PREFIX}locale`;
@@ -13,3 +13,4 @@ export const RECENT_EMOJIS_STORAGE_KEY = `${CLIENT_STORAGE_PREFIX}recentEmojis`;
 export const SNOWFALL_STORAGE_KEY = `${CLIENT_STORAGE_PREFIX}snowfall`;
 export const SNOWFALL_NOTIFICATION_STORAGE_KEY = `${CLIENT_STORAGE_PREFIX}snowfall_notification`;
 export const RECOMMENDED_FAVOURITES_KEY = `${CLIENT_STORAGE_PREFIX}recommendedTemplateFavourites`;
+

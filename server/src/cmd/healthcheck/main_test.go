@@ -21,7 +21,7 @@ func TestRunHealthcheck_DefaultPath(t *testing.T) {
 	t.Cleanup(server.Close)
 
 	setServerEnv(t, server.URL)
-	t.Setenv("SCRUMLR_BASE_PATH", "")
+	t.Setenv("AKSA_BASE_PATH", "")
 
 	err := run()
 
@@ -39,7 +39,7 @@ func TestRunHealthcheck_BasePath(t *testing.T) {
 	t.Cleanup(server.Close)
 
 	setServerEnv(t, server.URL)
-	t.Setenv("SCRUMLR_BASE_PATH", "/api/")
+	t.Setenv("AKSA_BASE_PATH", "/api/")
 
 	err := run()
 
@@ -47,15 +47,15 @@ func TestRunHealthcheck_BasePath(t *testing.T) {
 }
 
 func TestRunHealthcheck_InvalidPort(t *testing.T) {
-	t.Setenv("SCRUMLR_SERVER_PORT", "not-a-number")
+	t.Setenv("AKSA_SERVER_PORT", "not-a-number")
 
 	err := run()
 
-	assert.ErrorContains(t, err, "invalid SCRUMLR_SERVER_PORT")
+	assert.ErrorContains(t, err, "invalid AKSA_SERVER_PORT")
 }
 
 func TestRunHealthcheck_InvalidBasePath(t *testing.T) {
-	t.Setenv("SCRUMLR_BASE_PATH", "api")
+	t.Setenv("AKSA_BASE_PATH", "api")
 
 	err := run()
 
@@ -76,37 +76,37 @@ func TestRunHealthcheck_NonOK(t *testing.T) {
 }
 
 func TestGetEnvString_DefaultAndTrim(t *testing.T) {
-	t.Setenv("SCRUMLR_SERVER_LISTEN_ADDRESS", "")
-	assert.Equal(t, "127.0.0.1", getEnvString("SCRUMLR_SERVER_LISTEN_ADDRESS", "127.0.0.1"))
+	t.Setenv("AKSA_SERVER_LISTEN_ADDRESS", "")
+	assert.Equal(t, "127.0.0.1", getEnvString("AKSA_SERVER_LISTEN_ADDRESS", "127.0.0.1"))
 
-	t.Setenv("SCRUMLR_SERVER_LISTEN_ADDRESS", " 0.0.0.0 ")
-	assert.Equal(t, "0.0.0.0", getEnvString("SCRUMLR_SERVER_LISTEN_ADDRESS", "127.0.0.1"))
+	t.Setenv("AKSA_SERVER_LISTEN_ADDRESS", " 0.0.0.0 ")
+	assert.Equal(t, "0.0.0.0", getEnvString("AKSA_SERVER_LISTEN_ADDRESS", "127.0.0.1"))
 }
 
 func TestGetEnvInt_DefaultAndParse(t *testing.T) {
-	t.Setenv("SCRUMLR_SERVER_PORT", "")
-	value, err := getEnvInt("SCRUMLR_SERVER_PORT", 8080)
+	t.Setenv("AKSA_SERVER_PORT", "")
+	value, err := getEnvInt("AKSA_SERVER_PORT", 8080)
 	assert.NoError(t, err)
 	assert.Equal(t, 8080, value)
 
-	t.Setenv("SCRUMLR_SERVER_PORT", " 9090 ")
-	value, err = getEnvInt("SCRUMLR_SERVER_PORT", 8080)
+	t.Setenv("AKSA_SERVER_PORT", " 9090 ")
+	value, err = getEnvInt("AKSA_SERVER_PORT", 8080)
 	assert.NoError(t, err)
 	assert.Equal(t, 9090, value)
 }
 
 func TestGetEnvInt_Invalid(t *testing.T) {
-	t.Setenv("SCRUMLR_SERVER_PORT", "nope")
-	_, err := getEnvInt("SCRUMLR_SERVER_PORT", 8080)
-	assert.ErrorContains(t, err, "invalid SCRUMLR_SERVER_PORT")
+	t.Setenv("AKSA_SERVER_PORT", "nope")
+	_, err := getEnvInt("AKSA_SERVER_PORT", 8080)
+	assert.ErrorContains(t, err, "invalid AKSA_SERVER_PORT")
 }
 
 func setServerEnv(t *testing.T, serverURL string) {
 	t.Helper()
 
 	host, port := splitServerURL(t, serverURL)
-	t.Setenv("SCRUMLR_SERVER_LISTEN_ADDRESS", host)
-	t.Setenv("SCRUMLR_SERVER_PORT", port)
+	t.Setenv("AKSA_SERVER_LISTEN_ADDRESS", host)
+	t.Setenv("AKSA_SERVER_PORT", port)
 }
 
 func splitServerURL(t *testing.T, serverURL string) (string, string) {
@@ -119,3 +119,4 @@ func splitServerURL(t *testing.T, serverURL string) (string, string) {
 	}
 	return host, port
 }
+

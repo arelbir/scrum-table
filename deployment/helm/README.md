@@ -13,14 +13,14 @@
 
 ### Development
 
-We provide a [Makefile](./scrumlr/Makefile) with the most common commands you need to develop the helm chart
+We provide a [Makefile](./aksa/Makefile) with the most common commands you need to develop the helm chart
 
 - `make render`: renders the helm chart in the `.render` folder
 - `make clean`: removes the `.render` folder
 - `make debug`: debugs the helm chart
 - `make lint`: runs linting for the helm chart
 - `make readme`: generates the Readme for the values file
-- `make tilt-up`: starts tilt to deploy scrumlr to a test cluster
+- `make tilt-up`: starts tilt to deploy aksa to a test cluster
 - `make tilt-down`: cleans the tilt deployment
 - `make test`: runs the helm unittests
 
@@ -36,7 +36,7 @@ make test
 or
 
 ```bash
-helm unittest --file 'tests/**/*.yaml' ../scrumlr
+helm unittest --file 'tests/**/*.yaml' ../aksa
 ```
 
 to execute the tests.
@@ -45,14 +45,15 @@ to execute the tests.
 
 For the development of the helm chart we provide a [Tiltfile](./tilt/Tiltfile) that deploys all needed requirements to a
 cluster.
-The tiltfile deploys a minimal deployment for scrumlr, which consist out of a namespace, a postgresql database, nats and
-the scrumlr helm chart.
-*Note*: For the scrumlr helm chart you need to provide a private key.
+The tiltfile deploys a minimal deployment for aksa, which consist out of a namespace, a postgresql database, nats and
+the aksa helm chart.
+*Note*: For the aksa helm chart you need to provide a private key.
 
-*Note*: Before you start tilt make sure to set the right kube config for the cluster you want to test the scrumlr helm chart.
+*Note*: Before you start tilt make sure to set the right kube config for the cluster you want to test the aksa helm chart.
 To start tilt change the directory and use
 
 ```bash
 cd tilt
 tilt up
 ```
+

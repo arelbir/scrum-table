@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/realtime"
 )
 
 func TestDatabaseHealthy(t *testing.T) {
@@ -65,3 +65,4 @@ func TestRealtimeNotHealthy(t *testing.T) {
 
 	assert.False(t, healthRealTime)
 }
+

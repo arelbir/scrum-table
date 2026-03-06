@@ -30,21 +30,21 @@ const MENU_ITEM_CONFIG: Record<MenuItemKey, MenuItemConfig> = {
     localizationKey: "Participants",
     location: "participants",
     isModeratorOnly: false,
-    color: "value-violet",
+    color: "backlog-blue",
     icon: Participants,
   },
   appearance: {
     localizationKey: "Appearance",
     location: "appearance",
     isModeratorOnly: false,
-    color: "poker-purple",
+    color: "backlog-blue",
     icon: SettingsAppearance,
   },
   share: {
     localizationKey: "ShareSession",
     location: "share",
     isModeratorOnly: false,
-    color: "planning-pink",
+    color: "backlog-blue",
     icon: Share,
   },
   export: {
@@ -58,14 +58,14 @@ const MENU_ITEM_CONFIG: Record<MenuItemKey, MenuItemConfig> = {
     localizationKey: "Feedback",
     location: "feedback",
     isModeratorOnly: false,
-    color: "value-violet",
+    color: "backlog-blue",
     icon: SettingsFeedback,
   },
   profile: {
     localizationKey: "Profile",
     location: "profile",
     isModeratorOnly: false,
-    color: "poker-purple",
+    color: "backlog-blue",
     icon: "profile",
   },
 };
@@ -82,3 +82,4 @@ export const ENABLE_ALL: Record<MenuItemKey, boolean> = {
   feedback: true,
   profile: true,
 };
+

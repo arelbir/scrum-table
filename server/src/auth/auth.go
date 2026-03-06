@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"strings"
 
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/users"
 
 	"github.com/uptrace/bun"
 
@@ -28,9 +28,9 @@ import (
 	"github.com/markbates/goth/providers/microsoftonline"
 	oidc "github.com/markbates/goth/providers/openidConnect"
 	"golang.org/x/crypto/ssh"
-	"scrumlr.io/server/auth/devkeys"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/auth/devkeys"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
 )
 
 type Auth interface {
@@ -296,3 +296,4 @@ func (a *AuthConfiguration) initializeJWTAuth() error {
 	a.auth = jwtauth.New("ES512", privateKey, privateKey.PublicKey)
 	return nil
 }
+

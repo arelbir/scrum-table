@@ -9,9 +9,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	"github.com/testcontainers/testcontainers-go/modules/nats"
-	"scrumlr.io/server/initialize"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/initialize"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 type BoardReactionServiceIntegrationTestSuite struct {
@@ -62,3 +62,4 @@ func (suite *BoardReactionServiceIntegrationTestSuite) Test_Create() {
 	assert.Nil(t, err)
 	assert.Equal(t, Applause, boardReaction.ReactionType)
 }
+

@@ -17,7 +17,7 @@ describe("Images", () => {
   });
 
   describe("isImageUrl", () => {
-    const notURL = "scrumlrIs.Awesome";
+    const notURL = "aksaIs.Awesome";
     const urlWithImageExtension = "https://www.example.com/image.jpg";
 
     it("should return true if the url ends with an image extension", async () => {
@@ -33,3 +33,4 @@ describe("Images", () => {
     });
   });
 });
+

@@ -10,7 +10,7 @@ import {ReactComponent as BackgroundFreeFormDark} from "assets/pages/404/404_Bac
 import {ReactComponent as BackgroundDetails} from "assets/pages/404/Details.svg";
 
 import {useTranslation} from "react-i18next";
-import {ScrumlrLogo} from "../../components/ScrumlrLogo";
+import {AksaLogo} from "../../components/AksaLogo";
 
 export const NotFound = () => {
   const {t} = useTranslation();
@@ -23,7 +23,7 @@ export const NotFound = () => {
       </div>
       <header className="not-found__header">
         <div className="not-found__logo-container">
-          <ScrumlrLogo className="not-found__scrumlr-logo" />
+          <AksaLogo className="not-found__aksa-logo" />
         </div>
       </header>
       <main className="not-found__main">
@@ -53,3 +53,4 @@ export const NotFound = () => {
     </div>
   );
 };
+

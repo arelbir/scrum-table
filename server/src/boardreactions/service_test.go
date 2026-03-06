@@ -6,7 +6,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/realtime"
 )
 
 func TestCreateBoardReaction(t *testing.T) {
@@ -18,3 +18,4 @@ func TestCreateBoardReaction(t *testing.T) {
 	boardReactionService := NewBoardReactionService(broker)
 	boardReactionService.Create(context.Background(), uuid.New(), BoardReactionCreateRequest{User: uuid.New(), ReactionType: Heart})
 }
+

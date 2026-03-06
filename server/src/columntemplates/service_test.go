@@ -9,7 +9,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/columns"
+	"aksa.local/scrum/server/columns"
 )
 
 func TestCreateColumnTemplate(t *testing.T) {
@@ -451,3 +451,4 @@ func TestDeleteColumnTemplate_DatabaseError(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Equal(t, dbError, err)
 }
+

@@ -6,24 +6,24 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"scrumlr.io/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
 
-	"scrumlr.io/server/websocket"
+	"aksa.local/scrum/server/websocket"
 
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/users"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"github.com/testcontainers/testcontainers-go/modules/nats"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/initialize"
-	"scrumlr.io/server/notes"
-	"scrumlr.io/server/realtime"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/technical_helper"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/initialize"
+	"aksa.local/scrum/server/notes"
+	"aksa.local/scrum/server/realtime"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/technical_helper"
 )
 
 type SessionRequestServiceIntegrationTestSuite struct {
@@ -222,3 +222,4 @@ func (suite *SessionRequestServiceIntegrationTestSuite) seedSessionRequestTestDa
 		}
 	}
 }
+

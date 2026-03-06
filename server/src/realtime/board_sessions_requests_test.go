@@ -10,7 +10,7 @@ import (
 	"github.com/testcontainers/testcontainers-go/modules/nats"
 	"github.com/testcontainers/testcontainers-go/modules/redis"
 
-	"scrumlr.io/server/initialize"
+	"aksa.local/scrum/server/initialize"
 )
 
 type RealtimeBoardSessionRequestTestSuite struct {
@@ -165,3 +165,4 @@ func (suite *RealtimeBoardSessionRequestTestSuite) Test_Redis_BoardSessionReques
 	assert.NotNil(t, event)
 	assert.Equal(t, &eventType, event)
 }
+

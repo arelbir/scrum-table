@@ -12,7 +12,7 @@
       {
         "name": "Actions",
         "description": "",
-        "color": "planning-pink",
+        "color": "poker-purple",
         "visible": false
       }
     ]
@@ -30,13 +30,13 @@
       {
         "name": "Negative",
         "description": "What didn't go well?",
-        "color": "poker-purple",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "Actions",
         "description": "",
-        "color": "planning-pink",
+        "color": "poker-purple",
         "visible": false
       }
     ]
@@ -60,13 +60,13 @@
       {
         "name": "Continue",
         "description": "What is working well and should be continued?",
-        "color": "online-orange",
+        "color": "goal-green",
         "visible": true
       },
       {
         "name": "Actions",
         "description": "",
-        "color": "planning-pink",
+        "color": "poker-purple",
         "visible": false
       }
     ]
@@ -84,19 +84,19 @@
       {
         "name": "Sad",
         "description": "What caused disappointment?",
-        "color": "online-orange",
+        "color": "goal-green",
         "visible": true
       },
       {
         "name": "Glad",
         "description": "What brought joy or motivation?",
-        "color": "poker-purple",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "Actions",
         "description": "",
-        "color": "planning-pink",
+        "color": "poker-purple",
         "visible": false
       }
     ]
@@ -126,13 +126,13 @@
       {
         "name": "More",
         "description": "What should be done more often?",
-        "color": "poker-purple",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "Actions",
         "description": "",
-        "color": "planning-pink",
+        "color": "poker-purple",
         "visible": false
       }
     ]
@@ -150,25 +150,25 @@
       {
         "name": "Learned",
         "description": "What knowledge was gained?",
-        "color": "poker-purple",
+        "color": "yielding-yellow",
         "visible": true
       },
       {
         "name": "Learned",
         "description": "What could habe been improved?",
-        "color": "value-violet",
+        "color": "yielding-yellow",
         "visible": true
       },
       {
         "name": "Longed for",
         "description": "What would be desirable for the future?",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "Actions",
         "description": "",
-        "color": "planning-pink",
+        "color": "poker-purple",
         "visible": false
       }
     ]
@@ -186,25 +186,25 @@
       {
         "name": "Weaknesses",
         "description": "What weaknesses should be adressed?",
-        "color": "online-orange",
+        "color": "goal-green",
         "visible": true
       },
       {
         "name": "Opportunities",
         "description": "What opportunities can be leveraged?",
-        "color": "goal-green",
+        "color": "yielding-yellow",
         "visible": true
       },
       {
         "name": "Threats",
         "description": "What challenges should be considered?",
-        "color": "yielding-yellow",
+        "color": "poker-purple",
         "visible": true
       },
       {
         "name": "Actions",
         "description": "",
-        "color": "planning-pink",
+        "color": "poker-purple",
         "visible": false
       }
     ]

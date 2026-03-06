@@ -5,20 +5,20 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/sessionrequests"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/sessionrequests"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
 	"github.com/google/uuid"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
 )
 
-//var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+//var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 func (s *Server) getBoardSessionRequest(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.session_requests.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.session_requests.api.get")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -59,7 +59,7 @@ func (s *Server) getBoardSessionRequest(w http.ResponseWriter, r *http.Request) 
 }
 
 func (s *Server) getBoardSessionRequests(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.session_requests.api.get.all")
+	ctx, span := tracer.Start(r.Context(), "aksa.session_requests.api.get.all")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -80,7 +80,7 @@ func (s *Server) getBoardSessionRequests(w http.ResponseWriter, r *http.Request)
 }
 
 func (s *Server) updateBoardSessionRequest(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.session_requests.api.update")
+	ctx, span := tracer.Start(r.Context(), "aksa.session_requests.api.update")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -119,3 +119,5 @@ func (s *Server) updateBoardSessionRequest(w http.ResponseWriter, r *http.Reques
 	render.Status(r, http.StatusOK)
 	render.Respond(w, r, request)
 }
+
+

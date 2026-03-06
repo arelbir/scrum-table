@@ -1,6 +1,6 @@
-resource "stackit_postgresflex_instance" "scrumlr-postgres" {
+resource "stackit_postgresflex_instance" "aksa-postgres" {
   project_id = var.project_id
-  name       = "scrumlr"
+  name       = "aksa"
   acl = [
 
     "193.148.160.0/19",
@@ -18,10 +18,10 @@ resource "stackit_postgresflex_instance" "scrumlr-postgres" {
   }
   version = 15
 }
-resource "stackit_postgresflex_user" "scrumlr" {
+resource "stackit_postgresflex_user" "aksa" {
   project_id  = var.project_id
-  instance_id = stackit_postgresflex_instance.scrumlr-postgres.instance_id
-  username    = "scrumlr"
+  instance_id = stackit_postgresflex_instance.aksa-postgres.instance_id
+  username    = "aksa"
   roles       = ["login", "createdb"]
 }
 
@@ -29,10 +29,11 @@ resource "local_file" "postgres_connection_url_file" {
   filename = "${path.module}/postgres_connection_url.txt"
   content = format(
     "postgresql://%s:%s@%s:%d/%s",
-    stackit_postgresflex_user.scrumlr.username,
-    stackit_postgresflex_user.scrumlr.password,
-    stackit_postgresflex_user.scrumlr.host,
-    stackit_postgresflex_user.scrumlr.port,
+    stackit_postgresflex_user.aksa.username,
+    stackit_postgresflex_user.aksa.password,
+    stackit_postgresflex_user.aksa.host,
+    stackit_postgresflex_user.aksa.port,
     "stackit"
   )
 }
+

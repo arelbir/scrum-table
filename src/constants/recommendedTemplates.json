@@ -12,7 +12,7 @@
       {
         "name": "template.lean_coffee.column.actions.name",
         "description": "template.lean_coffee.column.actions.description",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": false
       }
     ]
@@ -30,13 +30,13 @@
       {
         "name": "template.quick_review.column.negative.name",
         "description": "template.quick_review.column.negative.description",
-        "color": "poker-purple",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "template.quick_review.column.actions.name",
         "description": "template.quick_review.column.actions.description",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": false
       }
     ]
@@ -60,13 +60,13 @@
       {
         "name": "template.status_quo_check.column.continue.name",
         "description": "template.status_quo_check.column.continue.description",
-        "color": "online-orange",
+        "color": "goal-green",
         "visible": true
       },
       {
         "name": "template.status_quo_check.column.actions.name",
         "description": "template.status_quo_check.column.actions.description",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": false
       }
     ]
@@ -84,19 +84,19 @@
       {
         "name": "template.mood.column.sad.name",
         "description": "template.mood.column.sad.description",
-        "color": "online-orange",
+        "color": "goal-green",
         "visible": true
       },
       {
         "name": "template.mood.column.glad.name",
         "description": "template.mood.column.glad.description",
-        "color": "poker-purple",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "template.mood.column.actions.name",
         "description": "template.mood.column.actions.description",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": false
       }
     ]
@@ -114,7 +114,7 @@
       {
         "name": "template.kalm.column.add.name",
         "description": "template.kalm.column.add.description",
-        "color": "yielding-yellow",
+        "color": "goal-green",
         "visible": true
       },
       {
@@ -126,13 +126,13 @@
       {
         "name": "template.kalm.column.more.name",
         "description": "template.kalm.column.more.description",
-        "color": "poker-purple",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "template.kalm.column.actions.name",
         "description": "template.kalm.column.actions.description",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": false
       }
     ]
@@ -150,25 +150,25 @@
       {
         "name": "template.4l.column.learned.name",
         "description": "template.4l.column.learned.description",
-        "color": "poker-purple",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "template.4l.column.lacked.name",
         "description": "template.4l.column.lacked.description",
-        "color": "value-violet",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "template.4l.column.longed_for.name",
         "description": "template.4l.column.longed_for.description",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": true
       },
       {
         "name": "template.4l.column.actions.name",
         "description": "template.4l.column.actions.description",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": false
       }
     ]
@@ -186,7 +186,7 @@
       {
         "name": "template.swot.column.weaknesses.name",
         "description": "template.swot.column.weaknesses.description",
-        "color": "online-orange",
+        "color": "goal-green",
         "visible": true
       },
       {
@@ -198,13 +198,13 @@
       {
         "name": "template.swot.column.threats.name",
         "description": "template.swot.column.threats.description",
-        "color": "yielding-yellow",
+        "color": "goal-green",
         "visible": true
       },
       {
         "name": "template.swot.column.actions.name",
         "description": "template.swot.column.actions.description",
-        "color": "planning-pink",
+        "color": "backlog-blue",
         "visible": false
       }
     ]

@@ -8,11 +8,11 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/realtime"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/boards")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/boards")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/boards")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/boards")
 
 type Service struct {
 	realtime *realtime.Broker
@@ -28,7 +28,7 @@ func NewBoardReactionService(rt *realtime.Broker) BoardReactionService {
 // Create creates a new BoardReaction and notifies all connected clients for the respective boards.
 // no database query is required for this
 func (service *Service) Create(ctx context.Context, board uuid.UUID, body BoardReactionCreateRequest) {
-	_, span := tracer.Start(ctx, "scrumlr.board_reactions.service.create")
+	_, span := tracer.Start(ctx, "aksa.board_reactions.service.create")
 	defer span.End()
 
 	boardReaction := BoardReaction{
@@ -38,9 +38,9 @@ func (service *Service) Create(ctx context.Context, board uuid.UUID, body BoardR
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.board_reactions.service.create.board", board.String()),
-		attribute.String("scrumlr.board_reactions.service.create.user", body.User.String()),
-		attribute.String("scrumlr.board_reactions.service.create.reaction", string(body.ReactionType)),
+		attribute.String("aksa.board_reactions.service.create.board", board.String()),
+		attribute.String("aksa.board_reactions.service.create.user", body.User.String()),
+		attribute.String("aksa.board_reactions.service.create.reaction", string(body.ReactionType)),
 	)
 
 	boardReactionsCreatedCounter.Add(ctx, 1)
@@ -55,3 +55,5 @@ func (service *Service) addedReaction(ctx context.Context, board uuid.UUID, reac
 		Data: reaction,
 	})
 }
+
+

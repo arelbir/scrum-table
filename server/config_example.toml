@@ -26,7 +26,7 @@ unsafe-key = ""
 key = ""
 
 # Set the connection string for the PostgreSQL database.
-database = "postgres://admin:supersecret@localhost:5432/scrumlr?sslmode=disable"
+database = "postgres://admin:supersecret@localhost:5432/aksa?sslmode=disable"
 
 # Define the base path for the application.
 base-path = "/"
@@ -43,7 +43,7 @@ allow-anonymous-board-creation = true
 # enables/disables experimental file system store, in order to allow larger session cookie sizes
 auth-experimental-file-system-store = false
 
-# Set the protocol and host for the auth provider callbacks (e.g. https://scrumlr.io)
+# Set the protocol and host for the auth provider callbacks (e.g. https://aksa.local)
 auth-callback-host = ""
 
 # Set the client ID for Google OAuth authentication.
@@ -106,3 +106,4 @@ feedback-webhook-url = ""
 # Sepcify the OTel endpoint for sending logs, traces and metrics
 otel-grpc = ""
 otel-http = ""
+

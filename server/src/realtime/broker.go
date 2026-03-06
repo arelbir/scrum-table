@@ -7,9 +7,9 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/realtime")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/realtime")
 
-//var meter metric.Meter = otel.Meter("scrumlr.io/server/realtime")
+//var meter metric.Meter = otel.Meter("aksa.local/scrum/server/realtime")
 
 // Client can publish data to an external queue and receive events from
 // that external queue
@@ -30,3 +30,4 @@ type Client interface {
 type Broker struct {
 	Con Client
 }
+

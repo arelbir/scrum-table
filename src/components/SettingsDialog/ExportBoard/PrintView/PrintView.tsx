@@ -1,9 +1,10 @@
-import {ReactElement, useEffect, useRef, useState} from "react";
+﻿import {ReactElement, useEffect, useRef, useState} from "react";
 import {API} from "api";
 import {useNavigate} from "react-router";
 import {useReactToPrint} from "react-to-print";
-import {ReactComponent as ScrumlrLogo} from "assets/scrumlr-logo-light.svg";
+import {AksaLogo} from "components/AksaLogo";
 import {Close, Printer} from "components/Icon";
+
 import {useTranslation} from "react-i18next";
 import classNames from "classnames";
 import {getColorClassName} from "constants/colors";
@@ -31,7 +32,7 @@ export const PrintView = ({boardId, boardName}: PrintViewProps) => {
 
   const printRef = useRef(null);
   const handlePrint = useReactToPrint({
-    documentTitle: boardName ?? "scrumlr.io",
+    documentTitle: boardName ?? "Aksa",
     pageStyle,
   });
 
@@ -68,7 +69,7 @@ export const PrintView = ({boardId, boardName}: PrintViewProps) => {
   const voteLabel = (noteId: string) => {
     if (!(boardData?.votings && boardData?.board.showVoting)) return "";
     const votes = getNoteVotes(noteId, boardData?.votings);
-    return votes > 0 ? <div className="print-view__note-info-votes">{votes} Votes</div> : "";
+    return votes > 0 ? <div className="print-view__note-info-votes">{votes} {t("PrintView.Votes")}</div> : "";
   };
 
   const noteElement = (id: string, text: string, authorId: string, isChild: boolean, isTop: boolean) => (
@@ -117,8 +118,8 @@ export const PrintView = ({boardId, boardName}: PrintViewProps) => {
       </div>
       <div ref={printRef} className="print-view">
         <div className="print-view__title-wrapper">
-          <ScrumlrLogo />
-          <h1 className="print-view__title-text">{boardData?.board.name ?? "scrumlr.io"}</h1>
+          <AksaLogo />
+          <h1 className="print-view__title-text">{boardData?.board.name ?? "Aksa"}</h1>
           <div className="print-view__title-info">
             <p>{currDateStr}</p>
             <p>{`${boardData?.participants.length} ${t("PrintView.Participants")}`}</p>
@@ -156,17 +157,17 @@ export const PrintView = ({boardId, boardName}: PrintViewProps) => {
           <p>
             {t("PrintView.GeneratedOn")}{" "}
             <a href={DEFAULT_URL} target="_blank" rel="noopener noreferrer">
-              scrumlr.io
+              Aksa
             </a>
           </p>
           <p>
-            {t("PrintView.ProvidedBy")}{" "}
-            <a href="https://www.inovex.de/" target="_blank" rel="noopener noreferrer">
-              inovex
-            </a>
+            {t("PrintView.ProvidedBy")} Kazancı Holding
           </p>
         </div>
       </div>
     </div>
   );
 };
+
+
+

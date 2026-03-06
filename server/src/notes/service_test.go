@@ -3,7 +3,7 @@ package notes
 import (
 	"context"
 
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/realtime"
 
 	"database/sql"
 	"errors"
@@ -12,7 +12,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 func TestCreate(t *testing.T) {
@@ -992,3 +992,4 @@ func TestGetStack_DatabaseError(t *testing.T) {
 	assert.Nil(t, result)
 	assert.Equal(t, dbError, err)
 }
+

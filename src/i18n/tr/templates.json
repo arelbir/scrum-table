@@ -1,0 +1,158 @@
+﻿{
+  "template": {
+    "lean_coffee": {
+      "name": "Lean Coffee",
+      "description": "Sabit bir g\u00fcndemi olmayan esnek bir tart\u0131\u015fma y\u00f6ntemi. \u00d6nemli konular\u0131 belirlemek ve tart\u0131\u015fmak i\u00e7in idealdir.",
+      "column": {
+        "lean_coffee": {
+          "name": "Lean Coffee",
+          "description": "Konular\u0131, fikirleri ve sorular\u0131 toplay\u0131n."
+        },
+        "actions": {
+          "name": "Aksiyonlar",
+          "description": ""
+        }
+      }
+    },
+    "quick_review": {
+      "name": "H\u0131zl\u0131 G\u00f6zden Ge\u00e7irme",
+      "description": "Kat\u0131l\u0131mc\u0131lar, ba\u015far\u0131lar\u0131 ve sorunlar\u0131 h\u0131zla belirlemek i\u00e7in olumlu ve olumsuz olaylar\u0131 vurgular.",
+      "column": {
+        "positive": {
+          "name": "Olumlu",
+          "description": "Neler iyi gitti?"
+        },
+        "negative": {
+          "name": "Olumsuz",
+          "description": "Neler iyi gitmedi?"
+        },
+        "actions": {
+          "name": "Aksiyonlar",
+          "description": ""
+        }
+      }
+    },
+    "status_quo_check": {
+      "name": "Mevcut Durum Kontrol\u00fc",
+      "description": "Ekip, s\u00fcrd\u00fcr\u00fclebilir geli\u015fim i\u00e7in ba\u015flat\u0131lacak, durdurulacak ve devam ettirilecek eylemleri g\u00f6zden ge\u00e7irir.",
+      "column": {
+        "start": {
+          "name": "Ba\u015flat",
+          "description": "Hangi yeni s\u00fcre\u00e7ler denenmeli?"
+        },
+        "stop": {
+          "name": "Durdur",
+          "description": "Neler i\u015fe yaram\u0131yor ve durdurulmal\u0131?"
+        },
+        "continue": {
+          "name": "Devam Et",
+          "description": "Neler iyi gidiyor ve devam edilmeli?"
+        },
+        "actions": {
+          "name": "Aksiyonlar",
+          "description": ""
+        }
+      }
+    },
+    "mood": {
+      "name": "Ruh Hali",
+      "description": "Kat\u0131l\u0131mc\u0131lar\u0131n k\u0131zd\u0131\u011f\u0131, \u00fcz\u00fcld\u00fc\u011f\u00fc veya sevindi\u011fi \u015feyleri payla\u015fmas\u0131. Duygusal durumu anlamak i\u00e7in iyidir.",
+      "column": {
+        "mad": {
+          "name": "K\u0131zg\u0131n",
+          "description": "Hangi \u015feyler hayal k\u0131r\u0131kl\u0131\u011f\u0131 veya \u00f6fke yaratt\u0131?"
+        },
+        "sad": {
+          "name": "\u00dczg\u00fcn",
+          "description": "Hangi \u015feyler hayal k\u0131r\u0131kl\u0131\u011f\u0131 yaratt\u0131?"
+        },
+        "glad": {
+          "name": "Mutlu",
+          "description": "Neler ne\u015fe veya motivasyon getirdi?"
+        },
+        "actions": {
+          "name": "Aksiyonlar",
+          "description": ""
+        }
+      }
+    },
+    "kalm": {
+      "name": "KALM",
+      "description": "Ekip, performans\u0131 art\u0131rmak i\u00e7in neyin korunaca\u011f\u0131n\u0131, eklenece\u011fini, azalt\u0131laca\u011f\u0131n\u0131 veya art\u0131r\u0131laca\u011f\u0131n\u0131 belirler.",
+      "column": {
+        "keep": {
+          "name": "Koru",
+          "description": "Neler iyi \u00e7al\u0131\u015f\u0131yor ve korunmal\u0131?"
+        },
+        "add": {
+          "name": "Ekle",
+          "description": "Neler de\u011fer katabilir?"
+        },
+        "less": {
+          "name": "Daha Az",
+          "description": "Neleri daha az yapmal\u0131y\u0131z?"
+        },
+        "more": {
+          "name": "Daha Fazla",
+          "description": "Neleri daha fazla yapmal\u0131y\u0131z?"
+        },
+        "actions": {
+          "name": "Aksiyonlar",
+          "description": ""
+        }
+      }
+    },
+    "4l": {
+      "name": "4L",
+      "description": "Kat\u0131l\u0131mc\u0131lar sevdiklerini, \u00f6\u011frendiklerini, eksik kalanlar\u0131 ve gelecekte istediklerini g\u00f6zden ge\u00e7irir.",
+      "column": {
+        "liked": {
+          "name": "Sevdik",
+          "description": "\u00d6zellikle olumlu olan neydi?"
+        },
+        "learned": {
+          "name": "\u00d6\u011frendik",
+          "description": "Hangi bilgileri edindik?"
+        },
+        "lacked": {
+          "name": "Eksikti",
+          "description": "Neler geli\u015ftirilebilirdi?"
+        },
+        "longed_for": {
+          "name": "\u00d6zledik",
+          "description": "Gelecek i\u00e7in ne arzu edilir?"
+        },
+        "actions": {
+          "name": "Aksiyonlar",
+          "description": ""
+        }
+      }
+    },
+    "swot": {
+      "name": "SWOT",
+      "description": "G\u00fc\u00e7l\u00fc ve zay\u0131f y\u00f6nler, f\u0131rsatlar ve tehditleri analiz ederek stratejik planlamay\u0131 destekler.",
+      "column": {
+        "strengths": {
+          "name": "G\u00fc\u00e7l\u00fc Y\u00f6nler",
+          "description": "Hangi g\u00fc\u00e7l\u00fc y\u00f6nler avantaj sa\u011flar?"
+        },
+        "weaknesses": {
+          "name": "Zay\u0131f Y\u00f6nler",
+          "description": "Hangi zay\u0131f y\u00f6nler ele al\u0131nmal\u0131?"
+        },
+        "opportunities": {
+          "name": "F\u0131rsatlar",
+          "description": "Hangi f\u0131rsatlar de\u011ferlendirilebilir?"
+        },
+        "threats": {
+          "name": "Tehditler",
+          "description": "Hangi zorluklar dikkate al\u0131nmal\u0131?"
+        },
+        "actions": {
+          "name": "Aksiyonlar",
+          "description": ""
+        }
+      }
+    }
+  }
+}

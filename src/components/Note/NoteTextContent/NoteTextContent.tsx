@@ -11,7 +11,7 @@ type NoteTextContentProps = {
 export const NoteTextContent = (props: NoteTextContentProps) => {
   // render a link, opening in a new tab.
   // this functionality could also be extended,
-  // e.g. you could add wrappers for other scrumlr links etc.
+  // e.g. you could add wrappers for other aksa links etc.
   const renderLink = (content: {content: string}) => {
     const url = addProtocol(content.content);
     return (
@@ -38,3 +38,4 @@ export const NoteTextContent = (props: NoteTextContentProps) => {
     </Linkify>
   );
 };
+

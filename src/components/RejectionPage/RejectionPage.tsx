@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import {ScrumlrLogo} from "components/ScrumlrLogo";
+import {AksaLogo} from "components/AksaLogo";
 import {ReactComponent as StanLight} from "assets/stan/Stan_Toilette_Light.svg";
 import {ReactComponent as StanDark} from "assets/stan/Stan_Toilette_Dark.svg";
 import {ReactComponent as BackgroundFreeFormLight} from "assets/pages/404/404_Background_light.svg";
@@ -22,7 +22,7 @@ export const RejectionPage = ({status}: RejectionPageProps) => {
       </div>
       <header className="rejection-page__header">
         <div className="rejection-page__logo-container">
-          <ScrumlrLogo className="rejection-page__scrumlr-logo" />
+          <AksaLogo className="rejection-page__aksa-logo" />
         </div>
       </header>
       <main className="rejection-page__main">
@@ -46,3 +46,4 @@ export const RejectionPage = ({status}: RejectionPageProps) => {
     </div>
   );
 };
+

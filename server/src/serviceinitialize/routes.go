@@ -2,8 +2,8 @@ package serviceinitialize
 
 import (
 	"github.com/go-chi/chi/v5"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/users"
 )
 
 type RoutesInitializer struct {
@@ -74,3 +74,4 @@ func (init *RoutesInitializer) InitializeNotesRoutes() {
 func (init *RoutesInitializer) InitializeVotingRoutes() {
 	panic("Not implemented")
 }
+

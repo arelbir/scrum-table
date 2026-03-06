@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
 )
 
 type DatabaseBoardTemplateTestSuite struct {
@@ -225,3 +225,4 @@ func checkDatabaseBoardTemplateInList(list []DatabaseBoardTemplateFull, id uuid.
 	}
 	return nil
 }
+

@@ -1,8 +1,8 @@
-export const DEFAULT_BOARD_NAME = "scrumlr.io";
+export const DEFAULT_BOARD_NAME = "Aksa";
 export const MIN_PASSWORD_LENGTH = 1;
-export const PLACEHOLDER_PASSWORD = "••••••••••";
+export const PLACEHOLDER_PASSWORD = "**********";
 export const TEMPORARY_COLUMN_ID = "TEMP_ID";
-export const DEFAULT_URL = "https://scrumlr.io";
+export const DEFAULT_URL = typeof window !== "undefined" ? window.location.origin : "http://localhost";
 
 export const COMBINE_THRESHOLD = 0.13;
 export const MOVE_THRESHOLD = 0.63;
@@ -17,3 +17,4 @@ export const MAX_BOARD_NAME_LENGTH = 128;
 export const MAX_BOARD_DESCRIPTION_LENGTH = 1024;
 export const MAX_COLUMN_NAME_LENGTH = 128;
 export const MAX_COLUMN_DESCRIPTION_LENGTH = 1024;
+

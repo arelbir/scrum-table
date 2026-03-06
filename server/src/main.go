@@ -9,122 +9,122 @@ import (
 	"strings"
 
 	"go.uber.org/zap"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/initialize"
-	"scrumlr.io/server/serviceinitialize"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/initialize"
+	"aksa.local/scrum/server/serviceinitialize"
 
-	"scrumlr.io/server/auth"
+	"aksa.local/scrum/server/auth"
 
 	"github.com/urfave/cli/v2"
 	"github.com/urfave/cli/v2/altsrc"
-	"scrumlr.io/server/api"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/api"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/realtime"
 )
 
 func main() {
 	app := &cli.App{
-		Name:      "scrumlr.io",
-		Usage:     "Awesome & scalable server for the scrumlr.io web application",
-		HelpName:  "scrumlr",
-		UsageText: "scrumlr [global options]",
+		Name:      "aksa",
+		Usage:     "Aksa retrospective server",
+		HelpName:  "aksa",
+		UsageText: "aksa [global options]",
 		Action:    run,
 		Flags: []cli.Flag{
 			altsrc.NewIntFlag(&cli.IntFlag{
 				Name:    "port",
 				Aliases: []string{"p"},
-				EnvVars: []string{"SCRUMLR_SERVER_PORT"},
+				EnvVars: []string{"AKSA_SERVER_PORT"},
 				Usage:   "the `port` of the server to launch",
 				Value:   8080,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "address",
-				EnvVars: []string{"SCRUMLR_SERVER_LISTEN_ADDRESS"},
+				EnvVars: []string{"AKSA_SERVER_LISTEN_ADDRESS"},
 				Usage:   "the `address` on which the server listens",
 				Value:   "",
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "nats",
 				Aliases: []string{"n"},
-				EnvVars: []string{"SCRUMLR_SERVER_NATS_URL"},
+				EnvVars: []string{"AKSA_SERVER_NATS_URL"},
 				Usage:   "the `url` of the nats server",
 				Value:   "nats://localhost:4222", // nats://nats:4222
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "redis-address",
-				EnvVars: []string{"SCRUMLR_SERVER_REDIS_HOST"},
+				EnvVars: []string{"AKSA_SERVER_REDIS_HOST"},
 				Usage:   "the `address` of the redis server. Example `localhost:6379`. If redis-address is set, it's used over the default nats",
 				Value:   "",
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "redis-username",
-				EnvVars: []string{"SCRUMLR_SERVER_REDIS_USERNAME"},
+				EnvVars: []string{"AKSA_SERVER_REDIS_USERNAME"},
 				Usage:   "the redis user (if required)",
 				Value:   "",
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "redis-password",
-				EnvVars: []string{"SCRUMLR_SERVER_REDIS_PASSWORD"},
+				EnvVars: []string{"AKSA_SERVER_REDIS_PASSWORD"},
 				Usage:   "the redis password (if required)",
 				Value:   "",
 			}),
 			altsrc.NewBoolFlag(&cli.BoolFlag{
 				Name:    "insecure",
 				Aliases: []string{"i"},
-				EnvVars: []string{"SCRUMLR_INSECURE"},
+				EnvVars: []string{"AKSA_INSECURE"},
 				Usage:   "use default and embedded key to sign jwt's",
 				Value:   false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "unsafe-key",
-				EnvVars: []string{"SCRUMLR_UNSAFE_PRIVATE_KEY"},
+				EnvVars: []string{"AKSA_UNSAFE_PRIVATE_KEY"},
 				Usage:   "the private key which should be replaced by the new key, that'll be used to sign the jwt's - needed in ES512 (ecdsa)",
 				Value:   "",
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "key",
-				EnvVars: []string{"SCRUMLR_PRIVATE_KEY"},
+				EnvVars: []string{"AKSA_PRIVATE_KEY"},
 				Usage:   "the private key, used to sign the jwt's - needed in ES512 (ecdsa)",
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "database",
 				Aliases: []string{"d"},
-				EnvVars: []string{"SCRUMLR_SERVER_DATABASE_URL"},
+				EnvVars: []string{"AKSA_SERVER_DATABASE_URL"},
 				Usage:   "the connection `url` for the database",
 				Value:   "postgresql://localhost:5432", // postgres://YourUserName:YourPassword@YourHostname:5432/YourDatabaseName?sslmode=disable
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "base-path",
 				Aliases:  []string{"b"},
-				EnvVars:  []string{"SCRUMLR_BASE_PATH"},
+				EnvVars:  []string{"AKSA_BASE_PATH"},
 				Usage:    "the base `path` of the application (e.g. '/api'); must start with '/'",
 				Required: false,
 				Value:    "/",
 			}),
 			altsrc.NewBoolFlag(&cli.BoolFlag{
 				Name:     "disable-anonymous-login",
-				EnvVars:  []string{"SCRUMLR_DISABLE_ANONYMOUS_LOGIN"},
+				EnvVars:  []string{"AKSA_DISABLE_ANONYMOUS_LOGIN"},
 				Usage:    "enables/disables the login of anonymous clients",
 				Required: false,
 				Value:    false,
 			}),
 			altsrc.NewBoolFlag(&cli.BoolFlag{
 				Name:     "allow-anonymous-custom-templates",
-				EnvVars:  []string{"SCRUMLR_ALLOW_ANONYMOUS_CUSTOM_TEMPLATES"},
+				EnvVars:  []string{"AKSA_ALLOW_ANONYMOUS_CUSTOM_TEMPLATES"},
 				Usage:    "allows custom templates to be used for anonymous clients",
 				Required: false,
 				Value:    false,
 			}),
 			altsrc.NewBoolFlag(&cli.BoolFlag{
 				Name:     "allow-anonymous-board-creation",
-				EnvVars:  []string{"SCRUMLR_ALLOW_ANONYMOUS_BOARD_CREATION"},
+				EnvVars:  []string{"AKSA_ALLOW_ANONYMOUS_BOARD_CREATION"},
 				Usage:    "allows anonymous clients to create new boards",
 				Required: false,
 				Value:    true,
 			}),
 			altsrc.NewBoolFlag(&cli.BoolFlag{
 				Name:     "auth-enable-experimental-file-system-store",
-				EnvVars:  []string{"SCRUMLR_ENABLE_EXPERIMENTAL_AUTH_FILE_SYSTEM_STORE"},
+				EnvVars:  []string{"AKSA_ENABLE_EXPERIMENTAL_AUTH_FILE_SYSTEM_STORE"},
 				Usage:    "enables/disables experimental file system store, in order to allow larger session cookie sizes",
 				Required: false,
 				Value:    false,
@@ -132,103 +132,103 @@ func main() {
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-callback-host",
 				Aliases:  []string{"c"},
-				EnvVars:  []string{"SCRUMLR_AUTH_CALLBACK_HOST"},
-				Usage:    "the protocol and host for the auth provider callbacks (e.g. https://scrumlr.io)",
+				EnvVars:  []string{"AKSA_AUTH_CALLBACK_HOST"},
+				Usage:    "the protocol and host for the auth provider callbacks (e.g. https://aksa.local)",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-google-client-id",
-				EnvVars:  []string{"SCRUMLR_AUTH_GOOGLE_CLIENT_ID"},
+				EnvVars:  []string{"AKSA_AUTH_GOOGLE_CLIENT_ID"},
 				Usage:    "the client `id` for Google",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-google-client-secret",
-				EnvVars:  []string{"SCRUMLR_AUTH_GOOGLE_CLIENT_SECRET"},
+				EnvVars:  []string{"AKSA_AUTH_GOOGLE_CLIENT_SECRET"},
 				Usage:    "the client `secret` for Google",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-github-client-id",
-				EnvVars:  []string{"SCRUMLR_AUTH_GITHUB_CLIENT_ID"},
+				EnvVars:  []string{"AKSA_AUTH_GITHUB_CLIENT_ID"},
 				Usage:    "the client `id` for GitHub",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-github-client-secret",
-				EnvVars:  []string{"SCRUMLR_AUTH_GITHUB_CLIENT_SECRET"},
+				EnvVars:  []string{"AKSA_AUTH_GITHUB_CLIENT_SECRET"},
 				Usage:    "the client `secret` for GitHub",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-microsoft-client-id",
-				EnvVars:  []string{"SCRUMLR_AUTH_MICROSOFT_CLIENT_ID"},
+				EnvVars:  []string{"AKSA_AUTH_MICROSOFT_CLIENT_ID"},
 				Usage:    "the client `id` for Microsoft",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-microsoft-client-secret",
-				EnvVars:  []string{"SCRUMLR_AUTH_MICROSOFT_CLIENT_SECRET"},
+				EnvVars:  []string{"AKSA_AUTH_MICROSOFT_CLIENT_SECRET"},
 				Usage:    "the client `secret` for Microsoft",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-azure-ad-tenant-id",
-				EnvVars:  []string{"SCRUMLR_AUTH_AZURE_AD_TENANT_ID"},
+				EnvVars:  []string{"AKSA_AUTH_AZURE_AD_TENANT_ID"},
 				Usage:    "the tenant `id` for Azure AD",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-azure-ad-client-id",
-				EnvVars:  []string{"SCRUMLR_AUTH_AZURE_AD_CLIENT_ID"},
+				EnvVars:  []string{"AKSA_AUTH_AZURE_AD_CLIENT_ID"},
 				Usage:    "the client `id` for Azure AD",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-azure-ad-client-secret",
-				EnvVars:  []string{"SCRUMLR_AUTH_AZURE_AD_CLIENT_SECRET"},
+				EnvVars:  []string{"AKSA_AUTH_AZURE_AD_CLIENT_SECRET"},
 				Usage:    "the client `secret` for Azure AD",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-apple-client-id",
-				EnvVars:  []string{"SCRUMLR_AUTH_APPLE_CLIENT_ID"},
+				EnvVars:  []string{"AKSA_AUTH_APPLE_CLIENT_ID"},
 				Usage:    "the client `id` for Apple",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-apple-client-secret",
-				EnvVars:  []string{"SCRUMLR_AUTH_APPLE_CLIENT_SECRET"},
+				EnvVars:  []string{"AKSA_AUTH_APPLE_CLIENT_SECRET"},
 				Usage:    "the client `secret` for Apple",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-oidc-client-id",
-				EnvVars:  []string{"SCRUMLR_AUTH_OIDC_CLIENT_ID"},
+				EnvVars:  []string{"AKSA_AUTH_OIDC_CLIENT_ID"},
 				Usage:    "the client `id` for OpenID Connect",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-oidc-client-secret",
-				EnvVars:  []string{"SCRUMLR_AUTH_OIDC_CLIENT_SECRET"},
+				EnvVars:  []string{"AKSA_AUTH_OIDC_CLIENT_SECRET"},
 				Usage:    "the client `secret` for OpenID Connect",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "auth-oidc-discovery-url",
-				EnvVars:  []string{"SCRUMLR_AUTH_OIDC_DISCOVERY_URL"},
+				EnvVars:  []string{"AKSA_AUTH_OIDC_DISCOVERY_URL"},
 				Usage:    "URL hosting the OIDC discovery document",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "auth-oidc-user-ident-scope",
-				EnvVars: []string{"SCRUMLR_AUTH_OIDC_USER_IDENT_SCOPE"},
+				EnvVars: []string{"AKSA_AUTH_OIDC_USER_IDENT_SCOPE"},
 				Usage:   "JWT claim to request for the user identifier",
 				Value:   "openid",
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:    "auth-oidc-user-name-scope",
-				EnvVars: []string{"SCRUMLR_AUTH_OIDC_USER_NAME_SCOPE"},
+				EnvVars: []string{"AKSA_AUTH_OIDC_USER_NAME_SCOPE"},
 				Usage:   "JWT claim to request for the user name",
 				Value:   "profile",
 			}),
@@ -240,19 +240,19 @@ func main() {
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "otel-grpc",
-				EnvVars:  []string{"SCRUMLR_OTEL_GRPC"},
+				EnvVars:  []string{"AKSA_OTEL_GRPC"},
 				Usage:    "grpc connection string for an OpenTelemetry collector",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "otel-http",
-				EnvVars:  []string{"SCRUMLR_OTEL_HTTP"},
+				EnvVars:  []string{"AKSA_OTEL_HTTP"},
 				Usage:    "http connection string for an OpenTelemetry collector",
 				Required: false,
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "log-level",
-				EnvVars:  []string{"SCRUMLR_LOG_LEVEL"},
+				EnvVars:  []string{"AKSA_LOG_LEVEL"},
 				Aliases:  []string{"l"},
 				Usage:    "Log level for the logger. Can be one of 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'. Defaults to INFO.",
 				Required: false,
@@ -265,13 +265,13 @@ func main() {
 			}),
 			altsrc.NewStringFlag(&cli.StringFlag{
 				Name:     "feedback-webhook-url",
-				EnvVars:  []string{"SCRUMLR_FEEDBACK_WEBHOOK_URL"},
+				EnvVars:  []string{"AKSA_FEEDBACK_WEBHOOK_URL"},
 				Usage:    "the url where feedback will be sent to",
 				Required: false,
 			}),
 			&cli.StringFlag{
 				Name:     "config",
-				EnvVars:  []string{"SCRUMLR_CONFIG_PATH"},
+				EnvVars:  []string{"AKSA_CONFIG_PATH"},
 				Usage:    "TOML `filepath` to be loaded ",
 				Required: false,
 			},
@@ -466,3 +466,5 @@ func run(c *cli.Context) error {
 	logger.Get().Infow("starting server", "base-path", basePath, "listen", listen)
 	return http.ListenAndServe(listen, s)
 }
+
+

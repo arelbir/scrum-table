@@ -9,12 +9,12 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/columntemplates"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/columntemplates"
+	"aksa.local/scrum/server/logger"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/boardtemplates")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/boardtemplates")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/boardtemplates")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/boardtemplates")
 
 type BoardTemplateDatabase interface {
 	Create(ctx context.Context, board DatabaseBoardTemplateInsert) (DatabaseBoardTemplate, error)
@@ -39,7 +39,7 @@ func NewBoardTemplateService(db BoardTemplateDatabase, columnTempalteService col
 
 func (service *Service) Create(ctx context.Context, body CreateBoardTemplateRequest) (*BoardTemplate, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.board_templates.service.create")
+	ctx, span := tracer.Start(ctx, "aksa.board_templates.service.create")
 	defer span.End()
 
 	// map request on board object to insert into database
@@ -51,8 +51,8 @@ func (service *Service) Create(ctx context.Context, body CreateBoardTemplateRequ
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.board_templates.service.create.user", board.Creator.String()),
-		attribute.Int("scrumlr.board_templates.service.create.columns.count", len(body.Columns)),
+		attribute.String("aksa.board_templates.service.create.user", board.Creator.String()),
+		attribute.Int("aksa.board_templates.service.create.columns.count", len(body.Columns)),
 	)
 
 	// create the board template
@@ -80,11 +80,11 @@ func (service *Service) Create(ctx context.Context, body CreateBoardTemplateRequ
 
 func (service *Service) Get(ctx context.Context, id uuid.UUID) (*BoardTemplate, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.board_templates.service.get")
+	ctx, span := tracer.Start(ctx, "aksa.board_templates.service.get")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.board_templates.service.get.board", id.String()),
+		attribute.String("aksa.board_templates.service.get.board", id.String()),
 	)
 
 	boardTemplate, err := service.database.Get(ctx, id)
@@ -100,11 +100,11 @@ func (service *Service) Get(ctx context.Context, id uuid.UUID) (*BoardTemplate, 
 
 func (service *Service) GetAll(ctx context.Context, user uuid.UUID) ([]*BoardTemplateFull, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.board_templates.service.get.all")
+	ctx, span := tracer.Start(ctx, "aksa.board_templates.service.get.all")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.board_templates.service.get.all.user", user.String()),
+		attribute.String("aksa.board_templates.service.get.all.user", user.String()),
 	)
 
 	templates, err := service.database.GetAll(ctx, user)
@@ -125,7 +125,7 @@ func (service *Service) GetAll(ctx context.Context, user uuid.UUID) ([]*BoardTem
 
 func (service *Service) Update(ctx context.Context, body BoardTemplateUpdateRequest) (*BoardTemplate, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.board_templates.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.board_templates.service.update")
 	defer span.End()
 
 	// parse req update to db update
@@ -137,7 +137,7 @@ func (service *Service) Update(ctx context.Context, body BoardTemplateUpdateRequ
 	}
 
 	span.SetAttributes(
-		attribute.String("scrumlr.board_templates.service.update.board", body.ID.String()),
+		attribute.String("aksa.board_templates.service.update.board", body.ID.String()),
 	)
 
 	updatedTemplate, err := service.database.Update(ctx, updateBoard)
@@ -153,11 +153,11 @@ func (service *Service) Update(ctx context.Context, body BoardTemplateUpdateRequ
 
 func (service *Service) Delete(ctx context.Context, templateId uuid.UUID) error {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.board_templates.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.board_templates.service.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.board_templates.service.delete.board", templateId.String()),
+		attribute.String("aksa.board_templates.service.delete.board", templateId.String()),
 	)
 
 	err := service.database.Delete(ctx, templateId)
@@ -171,3 +171,5 @@ func (service *Service) Delete(ctx context.Context, templateId uuid.UUID) error 
 	boardTemplatesDeletedCounter.Add(ctx, 1)
 	return err
 }
+
+

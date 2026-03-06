@@ -19,22 +19,24 @@ RUN yarn build
 FROM nginxinc/nginx-unprivileged:1.29-alpine
 
 # Toggle visibility of cookie policy, privacy policy, and terms & conditions
-ENV SCRUMLR_SHOW_LEGAL_DOCUMENTS=''
+ENV AKSA_SHOW_LEGAL_DOCUMENTS='false'
 
 # Override the server address for API calls
-ENV SCRUMLR_SERVER_URL=''
+ENV AKSA_SERVER_URL=''
 
 # Override the websocket address for API calls
-ENV SCRUMLR_WEBSOCKET_URL=''
+ENV AKSA_WEBSOCKET_URL=''
 
 # Server port
-ENV SCRUMLR_LISTEN_PORT='8080'
+ENV AKSA_LISTEN_PORT='8080'
 
 # Analytics variables
-ENV SCRUMLR_ANALYTICS_DATA_DOMAIN=''
-ENV SCRUMLR_ANALYTICS_SRC=''
-ENV SCRUMLR_CLARITY_ID=''
+ENV AKSA_ANALYTICS_DATA_DOMAIN=''
+ENV AKSA_ANALYTICS_SRC=''
+ENV AKSA_CLARITY_ID=''
 
-COPY ./nginx.conf /etc/nginx/templates/scrumlr.io.conf.template
+COPY ./nginx.conf /etc/nginx/templates/aksa.local.conf.template
 COPY --from=build-stage /usr/src/app/build /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
+
+

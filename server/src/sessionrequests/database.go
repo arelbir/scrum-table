@@ -5,8 +5,8 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
 )
 
 type SessionRequestDB struct {
@@ -121,3 +121,4 @@ func (database *SessionRequestDB) Exists(ctx context.Context, board, user uuid.U
 		Where("\"user\" = ?", user).
 		Exists(ctx)
 }
+

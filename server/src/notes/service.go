@@ -12,13 +12,13 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/google/uuid"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/realtime"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/realtime"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/notes")
-var meter metric.Meter = otel.Meter("scrumlr.io/server/notes")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/notes")
+var meter metric.Meter = otel.Meter("aksa.local/scrum/server/notes")
 
 type Service struct {
 	database NotesDatabase
@@ -47,13 +47,13 @@ func NewNotesService(db NotesDatabase, rt *realtime.Broker) NotesService {
 
 func (service *Service) Create(ctx context.Context, body NoteCreateRequest) (*Note, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.create")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.create")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.create.board", body.Board.String()),
-		attribute.String("scrumlr.notes.service.create.user", body.User.String()),
-		attribute.String("scrumlr.notes.service.create.column", body.Column.String()),
+		attribute.String("aksa.notes.service.create.board", body.Board.String()),
+		attribute.String("aksa.notes.service.create.user", body.User.String()),
+		attribute.String("aksa.notes.service.create.column", body.Column.String()),
 	)
 
 	if body.Text == "" {
@@ -79,13 +79,13 @@ func (service *Service) Create(ctx context.Context, body NoteCreateRequest) (*No
 
 func (service *Service) Import(ctx context.Context, body NoteImportRequest) (*Note, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.import")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.import")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.import.board", body.Board.String()),
-		attribute.String("scrumlr.notes.service.import.user", body.User.String()),
-		attribute.String("scrumlr.notes.service.import.column", body.Position.Column.String()),
+		attribute.String("aksa.notes.service.import.board", body.Board.String()),
+		attribute.String("aksa.notes.service.import.user", body.User.String()),
+		attribute.String("aksa.notes.service.import.column", body.Position.Column.String()),
 	)
 
 	if body.Text == "" {
@@ -118,12 +118,12 @@ func (service *Service) Import(ctx context.Context, body NoteImportRequest) (*No
 
 func (service *Service) Update(ctx context.Context, user uuid.UUID, body NoteUpdateRequest) (*Note, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.update")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.update.note", body.ID.String()),
-		attribute.String("scrumlr.notes.service.update.board", body.Board.String()),
+		attribute.String("aksa.notes.service.update.note", body.ID.String()),
+		attribute.String("aksa.notes.service.update.board", body.Board.String()),
 	)
 
 	precondition, err := service.database.GetPrecondition(ctx, body.ID, body.Board, user)
@@ -168,9 +168,9 @@ func (service *Service) Update(ctx context.Context, user uuid.UUID, body NoteUpd
 		}
 
 		span.SetAttributes(
-			attribute.String("scrumlr.notes.service.update.position.column", body.Position.Column.String()),
-			attribute.Int("scrumlr.notes.service.update.position.rank", body.Position.Rank),
-			attribute.String("scrumlr.notes.service.update.position.stack", body.Position.Stack.UUID.String()),
+			attribute.String("aksa.notes.service.update.position.column", body.Position.Column.String()),
+			attribute.Int("aksa.notes.service.update.position.rank", body.Position.Rank),
+			attribute.String("aksa.notes.service.update.position.stack", body.Position.Stack.UUID.String()),
 		)
 	}
 
@@ -195,14 +195,14 @@ func (service *Service) Update(ctx context.Context, user uuid.UUID, body NoteUpd
 
 func (service *Service) Delete(ctx context.Context, user uuid.UUID, body NoteDeleteRequest) error {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.delete.note", body.ID.String()),
-		attribute.String("scrumlr.notes.service.delete.board", body.Board.String()),
-		attribute.String("scrumlr.notes.service.delete.user", user.String()),
-		attribute.Bool("scrumlr.notes.service.delete.stack", body.DeleteStack),
+		attribute.String("aksa.notes.service.delete.note", body.ID.String()),
+		attribute.String("aksa.notes.service.delete.board", body.Board.String()),
+		attribute.String("aksa.notes.service.delete.user", user.String()),
+		attribute.Bool("aksa.notes.service.delete.stack", body.DeleteStack),
 	)
 
 	preconditions, err := service.database.GetPrecondition(ctx, body.ID, body.Board, user)
@@ -252,11 +252,11 @@ func (service *Service) Delete(ctx context.Context, user uuid.UUID, body NoteDel
 
 func (service *Service) Get(ctx context.Context, id uuid.UUID) (*Note, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.get")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.get")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.get.note", id.String()),
+		attribute.String("aksa.notes.service.get.note", id.String()),
 	)
 
 	note, err := service.database.Get(ctx, id)
@@ -277,11 +277,11 @@ func (service *Service) Get(ctx context.Context, id uuid.UUID) (*Note, error) {
 
 func (service *Service) GetAll(ctx context.Context, boardID uuid.UUID, columnID ...uuid.UUID) ([]*Note, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.get.all")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.get.all")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.get.all.board", boardID.String()),
+		attribute.String("aksa.notes.service.get.all.board", boardID.String()),
 	)
 
 	notes, err := service.database.GetAll(ctx, boardID, columnID...)
@@ -302,11 +302,11 @@ func (service *Service) GetAll(ctx context.Context, boardID uuid.UUID, columnID 
 
 func (service *Service) GetStack(ctx context.Context, note uuid.UUID) ([]*Note, error) {
 	log := logger.FromContext(ctx)
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.get.stack")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.get.stack")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.get.stack.note", note.String()),
+		attribute.String("aksa.notes.service.get.stack.note", note.String()),
 	)
 
 	notes, err := service.database.GetStack(ctx, note)
@@ -321,11 +321,11 @@ func (service *Service) GetStack(ctx context.Context, note uuid.UUID) ([]*Note, 
 }
 
 func (service *Service) updatedNotes(ctx context.Context, board uuid.UUID) {
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.update")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.update")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.update.board", board.String()),
+		attribute.String("aksa.notes.service.update.board", board.String()),
 	)
 
 	notes, err := service.database.GetAll(ctx, board)
@@ -347,11 +347,11 @@ func (service *Service) updatedNotes(ctx context.Context, board uuid.UUID) {
 }
 
 func (service *Service) deletedNote(ctx context.Context, board uuid.UUID, notes ...uuid.UUID) {
-	ctx, span := tracer.Start(ctx, "scrumlr.notes.service.delete")
+	ctx, span := tracer.Start(ctx, "aksa.notes.service.delete")
 	defer span.End()
 
 	span.SetAttributes(
-		attribute.String("scrumlr.notes.service.delete.board", board.String()),
+		attribute.String("aksa.notes.service.delete.board", board.String()),
 	)
 
 	_ = service.realtime.BroadcastToBoard(ctx, board, realtime.BoardEvent{
@@ -359,3 +359,5 @@ func (service *Service) deletedNote(ctx context.Context, board uuid.UUID, notes 
 		Data: notes,
 	})
 }
+
+

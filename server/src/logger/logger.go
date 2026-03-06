@@ -75,7 +75,7 @@ func EnableOtelLogging() {
 
 	core := zapcore.NewTee(
 		zapcore.NewCore(zapcore.NewJSONEncoder(config), zapcore.AddSync(os.Stdout), _logLevel),
-		otelzap.NewCore("scrumlr.io/server/", otelzap.WithLoggerProvider(provider)),
+		otelzap.NewCore("aksa.local/scrum/server/", otelzap.WithLoggerProvider(provider)),
 	)
 
 	_logger = zap.New(core).Sugar()
@@ -162,3 +162,4 @@ func InitTestLoggerRequest(req *http.Request) *http.Request {
 	req = req.WithContext(ctx)
 	return req
 }
+

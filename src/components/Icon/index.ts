@@ -65,7 +65,7 @@ export {ReactComponent as Wifi} from "assets/icons/wifi.svg";
 export {ReactComponent as Bug} from "assets/icons/bug.svg";
 export {ReactComponent as Praise} from "assets/icons/praise.svg";
 export {ReactComponent as GitHub} from "assets/icons/github.svg";
-export {ReactComponent as Inovex} from "assets/icons/inovex.svg";
+export {ReactComponent as Kazanci} from "assets/icons/kazanci.svg";
 export {ReactComponent as Join} from "assets/icons/join.svg";
 export {ReactComponent as Kick} from "assets/icons/kick.svg";
 export {ReactComponent as PlusOne} from "assets/icons/plus-one.svg";
@@ -76,3 +76,5 @@ export {ReactComponent as Printer} from "assets/icons/printer.svg";
 export {ReactComponent as ThreeDots} from "assets/icons/three-dots.svg";
 export {ReactComponent as Menu} from "assets/icons/menu.svg";
 export {ReactComponent as Minus} from "assets/icons/minus.svg";
+
+

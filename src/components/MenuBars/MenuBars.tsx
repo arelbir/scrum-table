@@ -192,8 +192,7 @@ export const MenuBars = ({showPreviousColumn, showNextColumn, onPreviousColumn, 
 
   /**
    * Logic for "Mark me as Done" tooltip.
-   * https://github.com/inovex/scrumlr.io/issues/4269
-   * addendum: updated logic: https://github.com/inovex/scrumlr.io/issues/4846
+   * Internal tracking: revisit if tooltip timing needs adjustment.
    */
   const timerExpired = useTimer(state.timerEnd);
   const [isReadyTooltipClass, setIsReadyTooltipClass] = useState("");
@@ -411,3 +410,4 @@ export const MenuBars = ({showPreviousColumn, showNextColumn, onPreviousColumn, 
     </>
   );
 };
+

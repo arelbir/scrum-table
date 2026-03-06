@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 type DatabaseBoardSession struct {
@@ -42,3 +42,4 @@ type DatabaseBoardSessionUpdate struct {
 	Role              *common.SessionRole
 	Banned            *bool
 }
+

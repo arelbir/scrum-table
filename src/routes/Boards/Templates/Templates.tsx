@@ -23,7 +23,7 @@ export type TemplatesNavigationState = {scrollToSaved?: boolean};
 
 export const Templates = () => {
   const templatesRef = useRef<HTMLDivElement>(null);
-  const {t} = useTranslation(["translation", "templates"]);
+  const {t} = useTranslation();
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();

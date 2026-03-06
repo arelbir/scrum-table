@@ -10,10 +10,10 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/sessions"
 )
 
 type UserService interface {
@@ -40,7 +40,7 @@ type API struct {
 }
 
 func (api *API) GetUser(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.users.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.users.api.get")
 	defer span.End()
 
 	userId := ctx.Value(identifiers.UserIdentifier).(uuid.UUID)
@@ -58,7 +58,7 @@ func (api *API) GetUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func (api *API) GetUserByID(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.users.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.users.api.get")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -84,7 +84,7 @@ func (api *API) GetUserByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func (api *API) GetUsersFromBoard(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.users.api.getAll")
+	ctx, span := tracer.Start(r.Context(), "aksa.users.api.getAll")
 	defer span.End()
 
 	boardID := ctx.Value(identifiers.BoardIdentifier).(uuid.UUID)
@@ -102,7 +102,7 @@ func (api *API) GetUsersFromBoard(w http.ResponseWriter, r *http.Request) {
 }
 
 func (api *API) Update(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.users.api.update")
+	ctx, span := tracer.Start(r.Context(), "aksa.users.api.update")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -132,7 +132,7 @@ func (api *API) Update(w http.ResponseWriter, r *http.Request) {
 }
 
 func (api *API) Delete(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.users.api.delete")
+	ctx, span := tracer.Start(r.Context(), "aksa.users.api.delete")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -153,7 +153,7 @@ func (api *API) Delete(w http.ResponseWriter, r *http.Request) {
 
 func (api *API) BoardAuthenticatedContext(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := tracer.Start(r.Context(), "scrumlr.user.api.context.authenticated")
+		ctx, span := tracer.Start(r.Context(), "aksa.user.api.context.authenticated")
 		defer span.End()
 		log := logger.FromContext(ctx)
 
@@ -169,8 +169,8 @@ func (api *API) BoardAuthenticatedContext(next http.Handler) http.Handler {
 		userIDValue := ctx.Value(identifiers.UserIdentifier)
 		userID, ok := userIDValue.(uuid.UUID)
 		span.SetAttributes(
-			attribute.String("scrumlr.user.api.context.authenticated.board", board.String()),
-			attribute.String("scrumlr.user.api.context.authenticated.user", userID.String()),
+			attribute.String("aksa.user.api.context.authenticated.board", board.String()),
+			attribute.String("aksa.user.api.context.authenticated.user", userID.String()),
 		)
 		if !ok {
 			span.SetStatus(codes.Error, "unable to authenticate user")
@@ -207,14 +207,14 @@ func (api *API) BoardAuthenticatedContext(next http.Handler) http.Handler {
 
 func (api *API) AnonymousBoardCreationContext(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := tracer.Start(r.Context(), "scrumlr.user.api.context.anonymous_board_creation")
+		ctx, span := tracer.Start(r.Context(), "aksa.user.api.context.anonymous_board_creation")
 		defer span.End()
 		log := logger.FromContext(ctx)
 
 		userIDValue := ctx.Value(identifiers.UserIdentifier)
 		userID, ok := userIDValue.(uuid.UUID)
 		span.SetAttributes(
-			attribute.String("scrumlr.user.api.context.authenticated.user", userID.String()),
+			attribute.String("aksa.user.api.context.authenticated.user", userID.String()),
 		)
 		if !ok {
 			span.SetStatus(codes.Error, "invalid or missing user identifier in context")
@@ -248,7 +248,7 @@ func (api *API) AnonymousBoardCreationContext(next http.Handler) http.Handler {
 
 func (api *API) AnonymousCustomTemplateCreationContext(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := tracer.Start(r.Context(), "scrumlr.user.api.context.anonymous_template_creation")
+		ctx, span := tracer.Start(r.Context(), "aksa.user.api.context.anonymous_template_creation")
 		defer span.End()
 		log := logger.FromContext(ctx)
 
@@ -286,7 +286,7 @@ func (api *API) AnonymousCustomTemplateCreationContext(next http.Handler) http.H
 
 func (api *API) isAccountOwner(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := tracer.Start(r.Context(), "scrumlr.user.api.context.is_account_owner")
+		ctx, span := tracer.Start(r.Context(), "aksa.user.api.context.is_account_owner")
 		defer span.End()
 		log := logger.FromContext(ctx)
 
@@ -311,8 +311,8 @@ func (api *API) isAccountOwner(next http.Handler) http.Handler {
 		}
 
 		span.SetAttributes(
-			attribute.String("scrumlr.user.api.context.is_account_owner.userId", userID.String()),
-			attribute.String("scrumlr.user.api.context.is_account_owner.requestedUserId", requestedUserID.String()),
+			attribute.String("aksa.user.api.context.is_account_owner.userId", userID.String()),
+			attribute.String("aksa.user.api.context.is_account_owner.requestedUserId", requestedUserID.String()),
 		)
 		if userID != requestedUserID {
 			span.SetStatus(codes.Error, "requested user does not match authenticated user")
@@ -333,3 +333,5 @@ func NewUserApi(service UserService, sessionService sessions.SessionService, all
 	api.allowAnonymousCustomTemplates = allowAnonymousCustomTemplates
 	return api
 }
+
+

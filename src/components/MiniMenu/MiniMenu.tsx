@@ -42,7 +42,7 @@ export const MiniMenu = ({className, focusBehaviour, items, onBlur, small, wrapT
         const anchor = uniqueId(`mini-menu-${item.label}`);
         return (
           <button
-            data-tooltip-id="scrumlr-tooltip"
+            data-tooltip-id="aksa-tooltip"
             data-tooltip-content={item.label}
             aria-label={item.label}
             id={anchor}
@@ -76,3 +76,4 @@ export const MiniMenu = ({className, focusBehaviour, items, onBlur, small, wrapT
       return <>{renderMenu()}</>;
   }
 };
+

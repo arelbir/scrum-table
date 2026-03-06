@@ -1,16 +1,16 @@
 LINKERFLAGS = -X main.Version=`git describe --tags --always --long --dirty` -X main.BuildTimestamp=`date -u '+%Y-%m-%d_%I:%M:%S_UTC'`
 
 .ONESHELL:
-build-alpine: ## Build the scrumlr backend
+build-alpine: ## Build the aksa backend
 	cd src && GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -a -o main -ldflags "$(LINKERFLAGS)"
 
-run-docker: ## Run the scrumlr backend in docker
+run-docker: ## Run the aksa backend in docker
 	make build-alpine
-	docker compose up --build scrumlr
+	docker compose up --build aksa
 
 .ONESHELL:
-run-dev: ## Run the scrumlr backend. It starts the needed services in docker
-	cd src && go run . -d postgresql://admin:supersecret@localhost:5432/scrumlr?sslmode=disable
+run-dev: ## Run the aksa backend. It starts the needed services in docker
+	cd src && go run . -d postgresql://admin:supersecret@localhost:5432/aksa?sslmode=disable
 
 run-docker-dev: ## Run all needed services for the backend in docker
 	docker compose --profile dev up
@@ -73,3 +73,4 @@ help: ## Prints this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .DEFAULT_GOAL := help
+

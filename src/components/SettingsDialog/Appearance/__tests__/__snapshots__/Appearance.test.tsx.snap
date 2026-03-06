@@ -30,7 +30,7 @@ exports[`Appearance should render all Settings correctly with Snowfall 1`] = `
         <label
           class="appearence-settings__theme-option"
           for="auto"
-          title="Scrumlr will match the appearance mode (dark or light) with your active system settings"
+          title="Aksa will match the appearance mode (dark or light) with your active system settings"
         >
           <input
             checked=""
@@ -365,7 +365,7 @@ exports[`Appearance should render all Settings correctly without Snowfall 1`] = 
         <label
           class="appearence-settings__theme-option"
           for="auto"
-          title="Scrumlr will match the appearance mode (dark or light) with your active system settings"
+          title="Aksa will match the appearance mode (dark or light) with your active system settings"
         >
           <input
             checked=""
@@ -651,3 +651,4 @@ exports[`Appearance should render all Settings correctly without Snowfall 1`] = 
   </div>
 </div>
 `;
+

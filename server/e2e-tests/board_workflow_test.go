@@ -9,12 +9,12 @@ import (
   "github.com/stretchr/testify/assert"
   "github.com/stretchr/testify/require"
   "github.com/stretchr/testify/suite"
-  "scrumlr.io/server/boards"
-  "scrumlr.io/server/columns"
-  "scrumlr.io/server/notes"
-  "scrumlr.io/server/reactions"
-  "scrumlr.io/server/users"
-  "scrumlr.io/server/votings"
+  "aksa.local/scrum/server/boards"
+  "aksa.local/scrum/server/columns"
+  "aksa.local/scrum/server/notes"
+  "aksa.local/scrum/server/reactions"
+  "aksa.local/scrum/server/users"
+  "aksa.local/scrum/server/votings"
 )
 
 // Helper functions for pointers
@@ -505,3 +505,4 @@ func (s *E2ESuite) TestLockBoard() {
   require.NoError(s.T(), err)
   assert.False(s.T(), updated.IsLocked)
 }
+

@@ -6,14 +6,14 @@ import (
 	"log"
 	"testing"
 
-	"scrumlr.io/server/initialize/testDbTemplates"
+	"aksa.local/scrum/server/initialize/testDbTemplates"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/common"
 )
 
 type DatabaseColumnTemplateTestSuite struct {
@@ -371,3 +371,4 @@ func (suite *DatabaseColumnTemplateTestSuite) seedData(db *bun.DB) {
 		}
 	}
 }
+

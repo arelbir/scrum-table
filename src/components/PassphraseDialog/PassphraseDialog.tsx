@@ -1,7 +1,7 @@
 import {ChangeEvent, FC, FormEvent, MouseEvent, useState} from "react";
 import {Hidden, KeyProtected, Visible, ArrowRight} from "components/Icon";
 import {Background} from "components/Background";
-import {ScrumlrLogo} from "components/ScrumlrLogo";
+import {AksaLogo} from "components/AksaLogo";
 import "./PassphraseDialog.scss";
 
 import {useTranslation} from "react-i18next";
@@ -37,7 +37,7 @@ export const PassphraseDialog: FC<PassphraseDialogProps> = ({onSubmit, incorrect
     <Background>
       <div className="passphrase-dialog">
         <a className="passphrase-dialog__logo" href="/" aria-label="Homepage">
-          <ScrumlrLogo />
+          <AksaLogo />
         </a>
 
         <form className="passphrase-dialog__form" onSubmit={submitPassphraseForm}>
@@ -74,3 +74,4 @@ export const PassphraseDialog: FC<PassphraseDialogProps> = ({onSubmit, incorrect
 };
 
 export default PassphraseDialog;
+

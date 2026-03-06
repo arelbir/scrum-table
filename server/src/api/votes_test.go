@@ -8,11 +8,11 @@ import (
 	"strings"
 	"testing"
 
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/technical_helper"
-	"scrumlr.io/server/votings"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/technical_helper"
+	"aksa.local/scrum/server/votings"
 
 	"github.com/google/uuid"
 
@@ -74,3 +74,4 @@ func (suite *VoteTestSuite) TestAddVote() {
 	}
 
 }
+

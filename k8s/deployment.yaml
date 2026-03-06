@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: scrumlr-backend-PR_NUMBER
+  name: aksa-backend-PR_NUMBER
 spec:
   selector:
-    app: scrumlr-PR_NUMBER
+    app: aksa-PR_NUMBER
   ports:
     - port: 8080
       targetPort: 8080
@@ -13,27 +13,27 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: scrumlr-deployment-PR_NUMBER
+  name: aksa-deployment-PR_NUMBER
   labels:
-    app: scrumlr-PR_NUMBER
+    app: aksa-PR_NUMBER
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: scrumlr-PR_NUMBER
+      app: aksa-PR_NUMBER
   template:
     metadata:
       labels:
-        app: scrumlr-PR_NUMBER
+        app: aksa-PR_NUMBER
     spec:
       securityContext:
         seccompProfile:
           type: RuntimeDefault
       containers:
-        - name: scrumlr
+        - name: aksa
           securityContext:
             allowPrivilegeEscalation: false
-          image: ghcr.io/inovex/scrumlr.io/scrumlr-server
+          image: registry.aksa.local/aksa/aksa-server
           args:
             - "-disable-check-origin"
           resources:
@@ -41,61 +41,61 @@ spec:
               cpu: "10m"
               memory: "50Mi"
           env:
-            - name: SCRUMLR_SERVER_PORT
+            - name: AKSA_SERVER_PORT
               value: "8080"
-            - name: SCRUMLR_LOG_LEVEL
+            - name: AKSA_LOG_LEVEL
               value: "INFO"
-            - name: SCRUMLR_API_HOST
-              value: "https://PR_NUMBER.development.scrumlr.fra.ics.inovex.io"
-            - name: SCRUMLR_SERVER_NATS_URL
+            - name: AKSA_API_HOST
+              value: "https://PR_NUMBER.development.aksa.fra.ics.kazanci.io"
+            - name: AKSA_SERVER_NATS_URL
               value: nats://nats-PR_NUMBER:4222
-            - name: SCRUMLR_AUTH_CALLBACK_HOST
-              value: "https://PR_NUMBER.development.scrumlr.fra.ics.inovex.io"
-            - name: SCRUMLR_PRIVATE_KEY
+            - name: AKSA_AUTH_CALLBACK_HOST
+              value: "https://PR_NUMBER.development.aksa.fra.ics.kazanci.io"
+            - name: AKSA_PRIVATE_KEY
               valueFrom:
                 secretKeyRef:
-                  name: scrumlr-ecdsa-key
+                  name: aksa-ecdsa-key
                   key: private_key
-            - name: SCRUMLR_SERVER_DATABASE_URL
+            - name: AKSA_SERVER_DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   name: postgres-url-PR_NUMBER
                   key: url
-            - name: SCRUMLR_AUTH_GOOGLE_CLIENT_ID
+            - name: AKSA_AUTH_GOOGLE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: scrumlr-secrets
+                  name: aksa-secrets
                   key: GOOGLE_CLIENT_ID
-            - name: SCRUMLR_AUTH_GOOGLE_CLIENT_SECRET
+            - name: AKSA_AUTH_GOOGLE_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: scrumlr-secrets
+                  name: aksa-secrets
                   key: GOOGLE_CLIENT_SECRET
-            - name: SCRUMLR_AUTH_MICROSOFT_CLIENT_ID
+            - name: AKSA_AUTH_MICROSOFT_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: scrumlr-secrets
+                  name: aksa-secrets
                   key: MICROSOFT_CLIENT_ID
-            - name: SCRUMLR_AUTH_MICROSOFT_CLIENT_SECRET
+            - name: AKSA_AUTH_MICROSOFT_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: scrumlr-secrets
+                  name: aksa-secrets
                   key: MICROSOFT_CLIENT_SECRET
-            - name: SCRUMLR_FEEDBACK_WEBHOOK_URL
+            - name: AKSA_FEEDBACK_WEBHOOK_URL
               valueFrom:
                 secretKeyRef:
-                  name: scrumlr-secrets
+                  name: aksa-secrets
                   key: WEBHOOK_URL
             - name: SESSION_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: scrumlr-secrets
+                  name: aksa-secrets
                   key: SESSION_SECRET
-            - name: SCRUMLR_BASE_PATH
+            - name: AKSA_BASE_PATH
               value: "/api"
-            - name: SCRUMLR_ALLOW_ANONYMOUS_CUSTOM_TEMPLATES
+            - name: AKSA_ALLOW_ANONYMOUS_CUSTOM_TEMPLATES
               value: "true"
-            - name: SCRUMLR_ALLOW_ANONYMOUS_BOARD_CREATION
+            - name: AKSA_ALLOW_ANONYMOUS_BOARD_CREATION
               value: "true"
           ports:
             - containerPort: 8080
@@ -103,7 +103,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: scrumlr-frontend-PR_NUMBER
+  name: aksa-frontend-PR_NUMBER
 spec:
   selector:
     app: frontend-PR_NUMBER
@@ -135,20 +135,20 @@ spec:
         - name: frontend
           securityContext:
             allowPrivilegeEscalation: false
-          image: ghcr.io/inovex/scrumlr.io/scrumlr-frontend
+          image: registry.aksa.local/aksa/aksa-frontend
           resources:
             requests:
               cpu: "10m"
               memory: "50Mi"
           env:
-            # - name: SCRUMLR_SERVER_PORT
+            # - name: AKSA_SERVER_PORT
             #   value: "80"
-            - name: SCRUMLR_SERVER_URL
+            - name: AKSA_SERVER_URL
               value: /api
-            # - name: SCRUMLR_WEBSOCKET_URL
+            # - name: AKSA_WEBSOCKET_URL
             #   value: /api
-            - name: SCRUMLR_SHOW_LEGAL_DOCUMENTS
-              value: "true"
+            - name: AKSA_SHOW_LEGAL_DOCUMENTS
+              value: "false"
           ports:
             - containerPort: 80
 
@@ -156,7 +156,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: scrumlr-landing-page-PR_NUMBER
+  name: aksa-landing-page-PR_NUMBER
 spec:
   selector:
     app: landing-page-PR_NUMBER
@@ -187,7 +187,7 @@ spec:
         - name: landing-page
           securityContext:
             allowPrivilegeEscalation: false
-          image: ghcr.io/inovex/scrumlr.io-landing-page/image:latest
+          image: registry.aksa.local/aksa/landing-page:latest
           resources:
             requests:
               cpu: "100m"
@@ -201,45 +201,45 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: scrumlr-ingressroute-PR_NUMBER
+  name: aksa-ingressroute-PR_NUMBER
   annotations:
-    external-dns.alpha.kubernetes.io/target: ingress.dev.scrumlr.fra.ics.inovex.io.
+    external-dns.alpha.kubernetes.io/target: ingress.dev.aksa.fra.ics.kazanci.io.
     kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`PR_NUMBER.development.scrumlr.fra.ics.inovex.io`) && PathPrefix(`/api`)
+    - match: Host(`PR_NUMBER.development.aksa.fra.ics.kazanci.io`) && PathPrefix(`/api`)
       kind: Rule
       services:
-        - name: scrumlr-backend-PR_NUMBER
+        - name: aksa-backend-PR_NUMBER
           port: 8080
-    - match: Host(`PR_NUMBER.development.scrumlr.fra.ics.inovex.io`) && (PathPrefix(`/static`) || PathPrefix(`/locales`) || PathPrefix(`/login`) || PathPrefix(`/board`) || PathPrefix(`/new`)  || PathPrefix(`/timer_finished.mp3`) || PathPrefix(`/hotkeys.pdf`) || PathPrefix(`/legal/`) || PathPrefix(`/emoji-data/`))
+    - match: Host(`PR_NUMBER.development.aksa.fra.ics.kazanci.io`) && (PathPrefix(`/static`) || PathPrefix(`/locales`) || PathPrefix(`/login`) || PathPrefix(`/board`) || PathPrefix(`/new`)  || PathPrefix(`/timer_finished.mp3`) || PathPrefix(`/hotkeys.pdf`) || PathPrefix(`/emoji-data/`))
       kind: Rule
       services:
-        - name: scrumlr-frontend-PR_NUMBER
+        - name: aksa-frontend-PR_NUMBER
           port: 80
-    - match: Host(`PR_NUMBER.development.scrumlr.fra.ics.inovex.io`)
+    - match: Host(`PR_NUMBER.development.aksa.fra.ics.kazanci.io`)
       kind: Rule
       services:
-        - name: scrumlr-landing-page-PR_NUMBER
+        - name: aksa-landing-page-PR_NUMBER
           port: 80
 
   tls:
-    secretName: scrumlr-development-certificate-PR_NUMBER
+    secretName: aksa-development-certificate-PR_NUMBER
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: scrumlr-development-certificate-PR_NUMBER
+  name: aksa-development-certificate-PR_NUMBER
 spec:
-  secretName: scrumlr-development-certificate-PR_NUMBER
+  secretName: aksa-development-certificate-PR_NUMBER
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
-  commonName: PR_NUMBER.development.scrumlr.fra.ics.inovex.io
+  commonName: PR_NUMBER.development.aksa.fra.ics.kazanci.io
   dnsNames:
-    - PR_NUMBER.development.scrumlr.fra.ics.inovex.io
+    - PR_NUMBER.development.aksa.fra.ics.kazanci.io
 ---
 # Database for the deployment
 apiVersion: postgresql.cnpg.io/v1
@@ -261,8 +261,8 @@ spec:
       max_connections: "200"
   bootstrap:
     initdb:
-      database: scrumlr
-      owner: scrumlr
+      database: aksa
+      owner: aksa
       secret:
         name: postgresql-creds
 ---
@@ -273,7 +273,7 @@ metadata:
   name: postgres-url-PR_NUMBER
 type: Opaque
 stringData:
-  url: postgres://scrumlr:POSTGRES_DEV_PASSWORD@cluster-PR_NUMBER-rw:5432/scrumlr
+  url: postgres://aksa:POSTGRES_DEV_PASSWORD@cluster-PR_NUMBER-rw:5432/aksa
 ---
 # nats repository
 apiVersion: source.toolkit.fluxcd.io/v1
@@ -300,4 +300,7 @@ spec:
         name: nats
   install: {}
   interval: 10m0s
-  targetNamespace: scrumlr-dev-deployments
+  targetNamespace: aksa-dev-deployments
+
+
+

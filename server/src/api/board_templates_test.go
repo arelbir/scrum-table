@@ -13,15 +13,15 @@ import (
 	"github.com/markbates/goth"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"scrumlr.io/server/auth"
-	"scrumlr.io/server/boardtemplates"
-	"scrumlr.io/server/columns"
-	"scrumlr.io/server/columntemplates"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/serviceinitialize"
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/auth"
+	"aksa.local/scrum/server/boardtemplates"
+	"aksa.local/scrum/server/columns"
+	"aksa.local/scrum/server/columntemplates"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/serviceinitialize"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/users"
 )
 
 // createValidBoardTemplateRequest creates a valid board template request for testing
@@ -470,3 +470,4 @@ func TestTemplateRoutesMiddlewareIntegration(t *testing.T) {
 		})
 	}
 }
+

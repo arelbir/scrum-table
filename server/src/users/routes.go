@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
-	"scrumlr.io/server/sessions"
+	"aksa.local/scrum/server/sessions"
 )
 
 type UsersApi interface {
@@ -42,3 +42,4 @@ func NewUsersRouter(usersApi UsersApi, sessionApi sessions.SessionApi) *Router {
 	r.sessionApi = sessionApi
 	return r
 }
+

@@ -33,7 +33,7 @@ exports[`<HeaderMenu/> should render correctly for moderator 1`] = `
                 <input
                   class="board-settings__board-name"
                   disabled=""
-                  placeholder="scrumlr.io"
+                  placeholder="aksa.local"
                   value="test-board-name"
                 />
                 <button
@@ -191,7 +191,7 @@ exports[`<HeaderMenu/> should render correctly for participants 1`] = `
                 <input
                   class="board-settings__board-name"
                   disabled=""
-                  placeholder="scrumlr.io"
+                  placeholder="aksa.local"
                   value="test-board-name"
                 />
               </form>
@@ -224,3 +224,4 @@ exports[`<HeaderMenu/> should render correctly for participants 1`] = `
   </div>
 </div>
 `;
+

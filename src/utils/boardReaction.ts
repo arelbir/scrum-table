@@ -2,8 +2,8 @@ import {BoardReactionType} from "store/features/boardReactions/types";
 
 // these are custom events that can be emitted and subscribed to.
 // using redux is overkill, so we decided to separate the logic, similar to toasts
-export const ADD_BOARD_REACTION = "scrumlr.io/addBoardReaction";
-export const REMOVE_BOARD_REACTION = "scrumlr.io/removeBoardReaction";
+export const ADD_BOARD_REACTION = "aksa/addBoardReaction";
+export const REMOVE_BOARD_REACTION = "aksa/removeBoardReaction";
 
 const add = (reaction: BoardReactionType) => {
   const addBoardReactionEvent = new CustomEvent<BoardReactionType>(ADD_BOARD_REACTION, {detail: reaction});
@@ -19,3 +19,4 @@ export const BoardReactionEmitter = {
   add,
   remove,
 };
+

@@ -8,16 +8,16 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
-	"scrumlr.io/server/reactions"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
+	"aksa.local/scrum/server/reactions"
 )
 
-var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 func (s *Server) getReaction(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.reactions.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.reactions.api.get")
 	defer span.End()
 
 	id := ctx.Value(identifiers.ReactionIdentifier).(uuid.UUID)
@@ -35,7 +35,7 @@ func (s *Server) getReaction(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getReactions(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.reactions.api.get.all")
+	ctx, span := tracer.Start(r.Context(), "aksa.reactions.api.get.all")
 	defer span.End()
 
 	board := ctx.Value(identifiers.BoardIdentifier).(uuid.UUID)
@@ -53,7 +53,7 @@ func (s *Server) getReactions(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) createReaction(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.reactions.api.create")
+	ctx, span := tracer.Start(r.Context(), "aksa.reactions.api.create")
 	defer span.End()
 
 	log := logger.FromContext(ctx)
@@ -86,7 +86,7 @@ func (s *Server) createReaction(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) removeReaction(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.reactions.api.remove")
+	ctx, span := tracer.Start(r.Context(), "aksa.reactions.api.remove")
 	defer span.End()
 
 	board := ctx.Value(identifiers.BoardIdentifier).(uuid.UUID)
@@ -106,7 +106,7 @@ func (s *Server) removeReaction(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) updateReaction(w http.ResponseWriter, r *http.Request) {
 	log := logger.FromRequest(r)
-	ctx, span := tracer.Start(r.Context(), "scrumlr.reactions.api.update")
+	ctx, span := tracer.Start(r.Context(), "aksa.reactions.api.update")
 	defer span.End()
 
 	board := ctx.Value(identifiers.BoardIdentifier).(uuid.UUID)
@@ -133,3 +133,5 @@ func (s *Server) updateReaction(w http.ResponseWriter, r *http.Request) {
 	render.Status(r, http.StatusOK)
 	render.Respond(w, r, reaction)
 }
+
+

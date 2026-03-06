@@ -8,7 +8,7 @@
    2. [Actions](#actions)
    3. [Reducers](#reducers)
    4. [Async Thunks](#async-thunks)
-3. [Scrumlr Specifics](#scrumlr-specifics)
+3. [Aksa Specifics](#aksa-specifics)
 
 ## Introduction
 
@@ -190,9 +190,9 @@ A thunk is called like any other action:
 dispatch(myAsyncThunk(someParameter));
 ```
 
-## Scrumlr Specifics
+## Aksa Specifics
 
-For Scrumlr, you should know about some extra things:
+For Aksa, you should know about some extra things:
 
 ### The `retryable` function
 
@@ -224,7 +224,7 @@ Maybe in the future, this could also be done using a custom middleware; feel fre
 
 ### Sockets and Backend
 
-The Scrumlr Backend uses sockets for primary communication.
+The Aksa Backend uses sockets for primary communication.
 For that reason, there are two socket connections:
 
 1. **requests/thunks**: Used for initial login; closed after.
@@ -243,3 +243,4 @@ Adding a note flows like this:
 8. reducer catches action and adds note to `NoteState`
 9. state is updated
 10. components reading notes using `useAppSelector` are re-rendered
+

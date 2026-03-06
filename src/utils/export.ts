@@ -1,4 +1,4 @@
-import {saveAs} from "file-saver";
+﻿import {saveAs} from "file-saver";
 import i18n from "i18next";
 import {DEFAULT_BOARD_NAME, DEFAULT_URL} from "constants/misc";
 import {Board} from "store/features/board/types";
@@ -123,9 +123,7 @@ const mdColumns = (boardData: ExportBoardDataType) => {
 };
 
 const mdBranding = () =>
-  `> ${t("PrintView.GeneratedOn")} [scrumlr.io](${DEFAULT_URL})  \n${t(
-    "PrintView.ProvidedBy"
-  )} [inovex](https://www.inovex.de)  \n\n![Scrumlr Logo](${DEFAULT_URL}/scrumlr-logo-light.svg)`;
+  `> ${t("PrintView.GeneratedOn")} [Aksa](${DEFAULT_URL})  \n${t("PrintView.ProvidedBy")} Kazancı Holding  \n\n![Aksa Logo](${DEFAULT_URL}/aksa-logo.svg)`;
 
 const mdTemplate = (boardData: ExportBoardDataType) =>
   mdBoardHeader(boardData.board.name || DEFAULT_BOARD_NAME) + mdBoardProperties(boardData.board, boardData.participants) + mdColumns(boardData) + mdBranding();
@@ -140,3 +138,5 @@ export const getMarkdownExport = async (id: string) => {
   };
   return `${mdTemplate(exportData)}`;
 };
+
+

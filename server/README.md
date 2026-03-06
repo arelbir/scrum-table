@@ -1,10 +1,10 @@
-# scrumlr.io Server
+# aksa.local Server
 
-This is the server application of [scrumlr.io](https://scrumlr.io) targeted by the web client.
+This is the server application of [aksa.local](https://aksa.local) targeted by the web client.
 
 ## Local development
 
-To run the scrumlr backend locally for development, you first need to run the needed services (postgres database and nats).
+To run the aksa backend locally for development, you first need to run the needed services (postgres database and nats).
 For that you can use the provided docker compose files.
 To start the docker containers either run
 
@@ -18,11 +18,11 @@ or
 docker compose --profile dev up
 ```
 
-After the container started you can start the scrumlr backend with.
+After the container started you can start the aksa backend with.
 
 ```bash
 cd src/
-go run . --database "postgres://admin:supersecret@localhost:5432/scrumlr?sslmode=disable" --disable-check-origin --insecure
+go run . --database "postgres://admin:supersecret@localhost:5432/aksa?sslmode=disable" --disable-check-origin --insecure
 ```
 
 For more information read the [development documentation](./docs/development.md).
@@ -46,7 +46,7 @@ at our documentation.
 
 ## Architecture
 
-In the picture below is a high level overview of how scrumlr works
+In the picture below is a high level overview of how aksa works
 
 ![Architecture](./docs/architecture.png)
 
@@ -57,3 +57,4 @@ For a detailed overview of the backend read the [architecture documentation](./d
 Currently the backend is refactored.
 Not all parts of the backend are done.
 For a list of things that need refactorings see the [todos](./docs/todo.md)
+

@@ -11,9 +11,9 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
 )
 
 type SessionService interface {
@@ -39,7 +39,7 @@ type API struct {
 }
 
 func (api *API) GetBoardSessions(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.sessions.api.get.all")
+	ctx, span := tracer.Start(r.Context(), "aksa.sessions.api.get.all")
 	defer span.End()
 
 	board := ctx.Value(identifiers.BoardIdentifier).(uuid.UUID)
@@ -58,7 +58,7 @@ func (api *API) GetBoardSessions(w http.ResponseWriter, r *http.Request) {
 }
 
 func (api *API) GetBoardSession(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.sessions.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.sessions.api.get")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -86,7 +86,7 @@ func (api *API) GetBoardSession(w http.ResponseWriter, r *http.Request) {
 }
 
 func (api *API) UpdateBoardSession(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.sessions.api.update")
+	ctx, span := tracer.Start(r.Context(), "aksa.sessions.api.update")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -128,7 +128,7 @@ func (api *API) UpdateBoardSession(w http.ResponseWriter, r *http.Request) {
 }
 
 func (api *API) UpdateBoardSessions(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.sessions.api.update.all")
+	ctx, span := tracer.Start(r.Context(), "aksa.sessions.api.update.all")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -158,7 +158,7 @@ func (api *API) UpdateBoardSessions(w http.ResponseWriter, r *http.Request) {
 
 func (api *API) BoardParticipantContext(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := tracer.Start(r.Context(), "scrumlr.sessions.api.context.participant")
+		ctx, span := tracer.Start(r.Context(), "aksa.sessions.api.context.participant")
 		defer span.End()
 		log := logger.FromContext(ctx)
 
@@ -173,8 +173,8 @@ func (api *API) BoardParticipantContext(next http.Handler) http.Handler {
 
 		user := ctx.Value(identifiers.UserIdentifier).(uuid.UUID)
 		span.SetAttributes(
-			attribute.String("scrumlr.sessions.api.context.participant.board", board.String()),
-			attribute.String("scrumlr.sessions.api.context.participant.user", user.String()),
+			attribute.String("aksa.sessions.api.context.participant.board", board.String()),
+			attribute.String("aksa.sessions.api.context.participant.user", user.String()),
 		)
 
 		exists, err := api.service.Exists(ctx, board, user)
@@ -216,7 +216,7 @@ func (api *API) BoardParticipantContext(next http.Handler) http.Handler {
 
 func (api *API) BoardModeratorContext(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx, span := tracer.Start(r.Context(), "scrumlr.sessions.api.context.moderator")
+		ctx, span := tracer.Start(r.Context(), "aksa.sessions.api.context.moderator")
 		defer span.End()
 		log := logger.FromContext(ctx)
 
@@ -231,8 +231,8 @@ func (api *API) BoardModeratorContext(next http.Handler) http.Handler {
 		user := ctx.Value(identifiers.UserIdentifier).(uuid.UUID)
 
 		span.SetAttributes(
-			attribute.String("scrumlr.sessions.api.context.moderator.board", board.String()),
-			attribute.String("scrumlr.sessions.api.context.moderator.user", user.String()),
+			attribute.String("aksa.sessions.api.context.moderator.board", board.String()),
+			attribute.String("aksa.sessions.api.context.moderator.user", user.String()),
 		)
 
 		exists, err := api.service.ModeratorSessionExists(ctx, board, user)
@@ -261,3 +261,5 @@ func NewSessionApi(service SessionService) SessionApi {
 	api.service = service
 	return api
 }
+
+

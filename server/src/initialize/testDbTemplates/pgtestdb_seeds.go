@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/uptrace/bun"
-	"scrumlr.io/server/common"
+	"aksa.local/scrum/server/common"
 )
 
 var baseSeedHash = "base_seed_hash_v1"
@@ -186,3 +186,4 @@ func SeedDBBase(db *bun.DB) {
 		}
 	}
 }
+

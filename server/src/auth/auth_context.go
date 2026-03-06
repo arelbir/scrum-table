@@ -4,11 +4,11 @@ import (
 	"context"
 	"net/http"
 
-	"scrumlr.io/server/identifiers"
+	"aksa.local/scrum/server/identifiers"
 
 	"github.com/go-chi/jwtauth/v5"
 	"github.com/google/uuid"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/logger"
 )
 
 func AuthContext(next http.Handler) http.Handler {
@@ -25,3 +25,4 @@ func AuthContext(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r.WithContext(newContext))
 	})
 }
+

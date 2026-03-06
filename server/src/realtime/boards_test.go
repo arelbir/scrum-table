@@ -10,7 +10,7 @@ import (
 	"github.com/testcontainers/testcontainers-go/modules/nats"
 	"github.com/testcontainers/testcontainers-go/modules/redis"
 
-	"scrumlr.io/server/initialize"
+	"aksa.local/scrum/server/initialize"
 )
 
 type RealtimeBoardTestSuite struct {
@@ -203,3 +203,4 @@ func (suite *RealtimeBoardTestSuite) Test_Redis_Board_SendComplexData() {
 		},
 	}, event.Data)
 }
+

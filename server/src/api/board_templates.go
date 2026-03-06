@@ -7,16 +7,16 @@ import (
 	"github.com/go-chi/render"
 	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/codes"
-	"scrumlr.io/server/boardtemplates"
-	"scrumlr.io/server/common"
-	"scrumlr.io/server/identifiers"
-	"scrumlr.io/server/logger"
+	"aksa.local/scrum/server/boardtemplates"
+	"aksa.local/scrum/server/common"
+	"aksa.local/scrum/server/identifiers"
+	"aksa.local/scrum/server/logger"
 )
 
-//var tracer trace.Tracer = otel.Tracer("scrumlr.io/server/api")
+//var tracer trace.Tracer = otel.Tracer("aksa.local/scrum/server/api")
 
 func (s *Server) createBoardTemplate(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.board_templates.api.create")
+	ctx, span := tracer.Start(r.Context(), "aksa.board_templates.api.create")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -48,7 +48,7 @@ func (s *Server) createBoardTemplate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getBoardTemplate(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.board_templates.api.get")
+	ctx, span := tracer.Start(r.Context(), "aksa.board_templates.api.get")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -73,7 +73,7 @@ func (s *Server) getBoardTemplate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getBoardTemplates(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.board_templates.api.get.all")
+	ctx, span := tracer.Start(r.Context(), "aksa.board_templates.api.get.all")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -100,7 +100,7 @@ func (s *Server) getBoardTemplates(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) updateBoardTemplate(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.board_templates.api.update")
+	ctx, span := tracer.Start(r.Context(), "aksa.board_templates.api.update")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -129,7 +129,7 @@ func (s *Server) updateBoardTemplate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) deleteBoardTemplate(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "scrumlr.board_templates.api.delete")
+	ctx, span := tracer.Start(r.Context(), "aksa.board_templates.api.delete")
 	defer span.End()
 	log := logger.FromContext(ctx)
 
@@ -147,3 +147,5 @@ func (s *Server) deleteBoardTemplate(w http.ResponseWriter, r *http.Request) {
 	render.Status(r, http.StatusNoContent)
 	render.Respond(w, r, nil)
 }
+
+

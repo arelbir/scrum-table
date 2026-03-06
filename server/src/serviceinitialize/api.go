@@ -1,8 +1,8 @@
 package serviceinitialize
 
 import (
-	"scrumlr.io/server/sessions"
-	"scrumlr.io/server/users"
+	"aksa.local/scrum/server/sessions"
+	"aksa.local/scrum/server/users"
 )
 
 type ApiInitializer struct {
@@ -74,3 +74,4 @@ func (init *ApiInitializer) InitializeNotesApi() {
 func (init *ApiInitializer) InitializeVotingApi() {
 	panic("Not implemented")
 }
+

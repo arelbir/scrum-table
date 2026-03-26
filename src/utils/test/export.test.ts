@@ -1,4 +1,4 @@
-﻿import {API} from "api";
+import {API} from "api";
 import {Auth} from "store/features";
 import {getMarkdownExport} from "../export";
 import dummyBoardData from "./dummy-board-data.json";
@@ -33,11 +33,8 @@ describe("the board export functions", () => {
       expect(API.exportBoard).toHaveBeenCalledTimes(1);
       expect(mdExport).toBe(
         // eslint-disable-next-line max-len
-        `# Test Board\n\n- Participants: 1\n- [Link to board](https://aksa.local/board/4af0854f-2cf1-4607-b1a6-6f96cd88a000)\n\n## Positive (2 Notes)\n\n- qwert _(Happy Hornet, 2 Votes)_\n    - asdf _(Happy Hornet, 1 Vote)_\n\n## Negative (2 Notes)\n\n- asdf _(Happy Hornet, 2 Votes)_\n- poiuz _(Happy Hornet)_\n\n> Generated on [Aksa](https://aksa.local)  \nProvided by Kazancı Holding  \n\n![Aksa Logo](https://aksa.local/aksa-logo.svg)`
+        `# Test Board\n\n- Katılımcılar: 1\n- [Pano bağlantısı](https://aksa.local/board/4af0854f-2cf1-4607-b1a6-6f96cd88a000)\n\n## Positive (2 Notlar)\n\n- qwert _(Happy Hornet, 2 Oylar)_\n    - asdf _(Happy Hornet, 1 Oy)_\n\n## Negative (2 Notlar)\n\n- asdf _(Happy Hornet, 2 Oylar)_\n- poiuz _(Happy Hornet)_\n\n> Oluşturulma tarihi [Aksa](http://localhost)  \n♥️ ile sunan Kazancı Holding  \n\n![Aksa Logo](http://localhost/aksa-logo.svg)`
       );
     });
   });
 });
-
-
-

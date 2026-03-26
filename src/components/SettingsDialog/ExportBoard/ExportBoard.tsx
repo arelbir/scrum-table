@@ -1,14 +1,16 @@
 import classNames from "classnames";
+import {useRef, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {FileCsv, FileJson, Duplicate, Printer} from "components/Icon";
+import {FileCsv, FileJson, Duplicate, Printer, AddImage} from "components/Icon";
 import {useAppSelector} from "store";
-import {exportAsJSON, exportAsCSV, getMarkdownExport} from "utils/export";
+import {exportAsJSON, exportAsCSV, getMarkdownExport, exportAsPNG, exportAsJPG} from "utils/export";
 import {Toast} from "utils/Toast";
 import {TOAST_TIMER_SHORT} from "constants/misc";
 import {MenuItemConfig} from "constants/settings";
 import {useOutletContext} from "react-router";
 import {getColorClassName} from "constants/colors";
 import ExportHintHiddenContent from "./ExportHintHiddenContent/ExportHintHiddenContent";
+import {PrintView} from "./PrintView/PrintView";
 import {SettingsButton} from "../Components/SettingsButton";
 import "../SettingsDialog.scss";
 import "./ExportBoard.scss";
@@ -20,8 +22,41 @@ export const ExportBoard = () => {
   const boardId = useAppSelector((state) => state.board.data!.id);
   const boardName = useAppSelector((state) => state.board.data!.name);
 
+  const [isExporting, setIsExporting] = useState<boolean>(false);
+  const printViewRef = useRef<HTMLDivElement>(null);
+
+  const handleExportPNG = async () => {
+    setIsExporting(true);
+    try {
+      await exportAsPNG(printViewRef.current!, boardName);
+      Toast.success({title: t("ExportBoardOption.exportImageSuccess"), autoClose: TOAST_TIMER_SHORT});
+    } catch {
+      Toast.error({title: t("ExportBoardOption.exportImageError"), autoClose: TOAST_TIMER_SHORT});
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleExportJPG = async () => {
+    setIsExporting(true);
+    try {
+      await exportAsJPG(printViewRef.current!, boardName);
+      Toast.success({title: t("ExportBoardOption.exportImageSuccess"), autoClose: TOAST_TIMER_SHORT});
+    } catch {
+      Toast.error({title: t("ExportBoardOption.exportImageError"), autoClose: TOAST_TIMER_SHORT});
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   return (
     <div data-testid="export" className={classNames("settings-dialog__container", getColorClassName(activeMenuItem?.color))}>
+      <div style={{position: "absolute", left: "-9999px", top: "-9999px"}}>
+        <div ref={printViewRef}>
+          <PrintView boardId={boardId} boardName={boardName ?? ""} hideControls />
+        </div>
+      </div>
+
       <div className="settings-dialog__header">
         <h2 className="settings-dialog__header-text"> {t("ExportBoardOption.title")}</h2>
       </div>
@@ -68,6 +103,26 @@ export const ExportBoard = () => {
             });
           }}
           data-testid="export-markdown"
+          reverseOrder
+        />
+        <hr className="settings-dialog__separator" />
+        <SettingsButton
+          label={t("ExportBoardOption.exportAsPNG")}
+          icon={AddImage}
+          disabled={isExporting}
+          aria-label={isExporting ? t("ExportBoardOption.exportingAriaLabel") : undefined}
+          onClick={handleExportPNG}
+          data-testid="export-png"
+          reverseOrder
+        />
+        <hr className="settings-dialog__separator" />
+        <SettingsButton
+          label={t("ExportBoardOption.exportAsJPG")}
+          icon={AddImage}
+          disabled={isExporting}
+          aria-label={isExporting ? t("ExportBoardOption.exportingAriaLabel") : undefined}
+          onClick={handleExportJPG}
+          data-testid="export-jpg"
           reverseOrder
         />
       </div>

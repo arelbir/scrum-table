@@ -1,4 +1,4 @@
-﻿import {ReactElement, useEffect, useRef, useState} from "react";
+import {ReactElement, useEffect, useRef, useState} from "react";
 import {API} from "api";
 import {useNavigate} from "react-router";
 import {useReactToPrint} from "react-to-print";
@@ -16,9 +16,10 @@ import {mapMultipleParticipants} from "utils/participant";
 interface PrintViewProps {
   boardId: string;
   boardName: string;
+  hideControls?: boolean;
 }
 
-export const PrintView = ({boardId, boardName}: PrintViewProps) => {
+export const PrintView = ({boardId, boardName, hideControls}: PrintViewProps) => {
   const {t} = useTranslation();
   const navigate = useNavigate();
 
@@ -55,7 +56,7 @@ export const PrintView = ({boardId, boardName}: PrintViewProps) => {
   }, []);
 
   useEffect(() => {
-    if (boardData) {
+    if (boardData && !hideControls) {
       handlePrint(() => printRef.current);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,7 +70,13 @@ export const PrintView = ({boardId, boardName}: PrintViewProps) => {
   const voteLabel = (noteId: string) => {
     if (!(boardData?.votings && boardData?.board.showVoting)) return "";
     const votes = getNoteVotes(noteId, boardData?.votings);
-    return votes > 0 ? <div className="print-view__note-info-votes">{votes} {t("PrintView.Votes")}</div> : "";
+    return votes > 0 ? (
+      <div className="print-view__note-info-votes">
+        {votes} {t("PrintView.Votes")}
+      </div>
+    ) : (
+      ""
+    );
   };
 
   const noteElement = (id: string, text: string, authorId: string, isChild: boolean, isTop: boolean) => (
@@ -108,7 +115,7 @@ export const PrintView = ({boardId, boardName}: PrintViewProps) => {
 
   return (
     <div className="print-view__container">
-      <div className="print-view__button-container">
+      <div className="print-view__button-container" style={hideControls ? {display: "none"} : undefined}>
         <button className="print-view__button" onClick={() => handlePrint(() => printRef.current)} aria-label={t("PrintView.Print")}>
           <Printer className="print-view__icon-print" />
         </button>
@@ -160,14 +167,9 @@ export const PrintView = ({boardId, boardName}: PrintViewProps) => {
               Aksa
             </a>
           </p>
-          <p>
-            {t("PrintView.ProvidedBy")} Kazancı Holding
-          </p>
+          <p>{t("PrintView.ProvidedBy")} Kazancı Holding</p>
         </div>
       </div>
     </div>
   );
 };
-
-
-

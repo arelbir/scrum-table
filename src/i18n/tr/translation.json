@@ -163,7 +163,12 @@
     "exportToClipboard": "Markdown'\u0131 panoya kopyala",
     "copyToClipboardSuccess": "Markdown kopyaland\u0131!",
     "hintHiddenColumns": "A\u015fa\u011f\u0131daki s\u00fctunlar gizli ve d\u0131\u015fa aktar\u0131lmayacak:",
-    "hintHiddenNotes": "Di\u011fer kat\u0131l\u0131mc\u0131lar\u0131n notlar\u0131 gizli ve d\u0131\u015fa aktar\u0131lmayacak."
+    "hintHiddenNotes": "Di\u011fer kat\u0131l\u0131mc\u0131lar\u0131n notlar\u0131 gizli ve d\u0131\u015fa aktar\u0131lmayacak.",
+    "exportAsPNG": "PNG olarak d\u0131\u015fa aktar",
+    "exportAsJPG": "JPG olarak d\u0131\u015fa aktar",
+    "exportImageSuccess": "G\u00f6r\u00fcnt\u00fc ba\u015far\u0131yla indirildi!",
+    "exportImageError": "G\u00f6r\u00fcnt\u00fc olu\u015fturulurken hata olu\u015ftu. L\u00fctfen tekrar deneyin.",
+    "exportingAriaLabel": "G\u00f6r\u00fcnt\u00fc olu\u015fturuluyor..."
   },
   "PrintView": {
     "Participants": "Kat\u0131l\u0131mc\u0131lar",

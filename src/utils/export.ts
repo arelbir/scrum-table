@@ -1,4 +1,4 @@
-﻿import {saveAs} from "file-saver";
+import {saveAs} from "file-saver";
 import i18n from "i18next";
 import {DEFAULT_BOARD_NAME, DEFAULT_URL} from "constants/misc";
 import {Board} from "store/features/board/types";
@@ -27,6 +27,8 @@ export type ExportBoardDataTypeWithUserId = {
   votings: Voting[];
 };
 
+export type ExportFormat = "png" | "jpg";
+
 export const fileName = (name?: string) => {
   const date = new Date().toJSON().slice(0, 10);
   return `${date}_${name}`;
@@ -43,6 +45,26 @@ export const exportAsJSON = async (id: string, name?: string) => {
   const json = await response.json();
   const blob = new Blob([JSON.stringify(json)], {type: "application/json"});
   saveAs(blob, `${fileName(name ?? DEFAULT_BOARD_NAME)}.json`);
+};
+
+export const exportAsPNG = async (element: HTMLElement, name?: string): Promise<void> => {
+  const html2canvas = (await import("html2canvas")).default;
+  const canvas = await html2canvas(element, {scale: 2, useCORS: true, logging: false});
+  canvas.toBlob((blob: Blob | null) => {
+    if (blob) saveAs(blob, `${fileName(name)}.png`);
+  }, "image/png");
+};
+
+export const exportAsJPG = async (element: HTMLElement, name?: string): Promise<void> => {
+  const html2canvas = (await import("html2canvas")).default;
+  const canvas = await html2canvas(element, {scale: 2, useCORS: true, logging: false});
+  canvas.toBlob(
+    (blob: Blob | null) => {
+      if (blob) saveAs(blob, `${fileName(name)}.jpg`);
+    },
+    "image/jpeg",
+    0.92
+  );
 };
 
 export const getNoteVotes = (noteId: string, votings: Voting[]) => votings[0].votes?.votesPerNote[noteId]?.total ?? 0;
@@ -122,8 +144,7 @@ const mdColumns = (boardData: ExportBoardDataType) => {
   return `${columnList}\n\n`;
 };
 
-const mdBranding = () =>
-  `> ${t("PrintView.GeneratedOn")} [Aksa](${DEFAULT_URL})  \n${t("PrintView.ProvidedBy")} Kazancı Holding  \n\n![Aksa Logo](${DEFAULT_URL}/aksa-logo.svg)`;
+const mdBranding = () => `> ${t("PrintView.GeneratedOn")} [Aksa](${DEFAULT_URL})  \n${t("PrintView.ProvidedBy")} Kazancı Holding  \n\n![Aksa Logo](${DEFAULT_URL}/aksa-logo.svg)`;
 
 const mdTemplate = (boardData: ExportBoardDataType) =>
   mdBoardHeader(boardData.board.name || DEFAULT_BOARD_NAME) + mdBoardProperties(boardData.board, boardData.participants) + mdColumns(boardData) + mdBranding();
@@ -138,5 +159,3 @@ export const getMarkdownExport = async (id: string) => {
   };
   return `${mdTemplate(exportData)}`;
 };
-
-

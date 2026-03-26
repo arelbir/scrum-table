@@ -10,20 +10,109 @@ Object {
         data-testid="export"
       >
         <div
+          style="position: absolute; left: -9999px; top: -9999px;"
+        >
+          <div>
+            <div
+              class="print-view__container"
+            >
+              <div
+                class="print-view__button-container"
+              >
+                <button
+                  aria-label="Yazdır"
+                  class="print-view__button"
+                >
+                  <svg
+                    class="print-view__icon-print"
+                  >
+                    printer.svg
+                  </svg>
+                </button>
+                <button
+                  aria-label="Kapat"
+                  class="print-view__button"
+                >
+                  <svg
+                    class="print-view__icon-close"
+                  >
+                    close.svg
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="print-view"
+              >
+                <div
+                  class="print-view__title-wrapper"
+                >
+                  <img
+                    alt="Aksa"
+                    class="aksa-logo aksa-logo--desktop"
+                    src="/aksa-logo-2.svg"
+                  />
+                  <img
+                    alt="Aksa"
+                    class="aksa-logo aksa-logo--mobile"
+                    src="/aksa-logo-2.svg"
+                  />
+                  <h1
+                    class="print-view__title-text"
+                  >
+                    Aksa
+                  </h1>
+                  <div
+                    class="print-view__title-info"
+                  >
+                    <p>
+                      26.03.2026, 14:24
+                    </p>
+                    <p>
+                      undefined Katılımcılar
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="print-view__column-list"
+                />
+                <div
+                  class="print-view__footer-container"
+                >
+                  <p>
+                    Oluşturulma tarihi
+                     
+                    <a
+                      href="http://localhost"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      Aksa
+                    </a>
+                  </p>
+                  <p>
+                    ♥️ ile sunan
+                     Kazancı Holding
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
           class="settings-dialog__header"
         >
           <h2
             class="settings-dialog__header-text"
           >
              
-            Export board
+            Panoyu dışa aktar
           </h2>
         </div>
         <div
           class="settings-dialog__group"
         >
           <button
-            aria-label="Export as JSON"
+            aria-label="JSON olarak dışa aktar"
             class="settings-option-button settings-option-button--reverse-order"
             data-testid="export-json"
             type="button"
@@ -31,7 +120,7 @@ Object {
             <span
               class="settings-option-button__label"
             >
-              Export as JSON
+              JSON olarak dışa aktar
             </span>
             <svg
               class="settings-option-button__icon"
@@ -43,7 +132,7 @@ Object {
             class="settings-dialog__separator"
           />
           <button
-            aria-label="Export as CSV"
+            aria-label="CSV olarak dışa aktar"
             class="settings-option-button settings-option-button--reverse-order"
             data-testid="export-csv"
             type="button"
@@ -51,7 +140,7 @@ Object {
             <span
               class="settings-option-button__label"
             >
-              Export as CSV
+              CSV olarak dışa aktar
             </span>
             <svg
               class="settings-option-button__icon"
@@ -63,14 +152,14 @@ Object {
             class="settings-dialog__separator"
           />
           <button
-            aria-label="Export PDF"
+            aria-label="PDF dışa aktar"
             class="settings-option-button settings-option-button--reverse-order export-board__button-print-view"
             type="button"
           >
             <span
               class="settings-option-button__label"
             >
-              Export PDF
+              PDF dışa aktar
             </span>
             <svg
               class="settings-option-button__icon"
@@ -82,7 +171,7 @@ Object {
             class="settings-dialog__separator"
           />
           <button
-            aria-label="Copy Markdown to Clipboard"
+            aria-label="Markdown'ı panoya kopyala"
             class="settings-option-button settings-option-button--reverse-order"
             data-testid="export-markdown"
             type="button"
@@ -90,12 +179,50 @@ Object {
             <span
               class="settings-option-button__label"
             >
-              Copy Markdown to Clipboard
+              Markdown'ı panoya kopyala
             </span>
             <svg
               class="settings-option-button__icon"
             >
               duplicate.svg
+            </svg>
+          </button>
+          <hr
+            class="settings-dialog__separator"
+          />
+          <button
+            class="settings-option-button settings-option-button--reverse-order"
+            data-testid="export-png"
+            type="button"
+          >
+            <span
+              class="settings-option-button__label"
+            >
+              PNG olarak dışa aktar
+            </span>
+            <svg
+              class="settings-option-button__icon"
+            >
+              add-image.svg
+            </svg>
+          </button>
+          <hr
+            class="settings-dialog__separator"
+          />
+          <button
+            class="settings-option-button settings-option-button--reverse-order"
+            data-testid="export-jpg"
+            type="button"
+          >
+            <span
+              class="settings-option-button__label"
+            >
+              JPG olarak dışa aktar
+            </span>
+            <svg
+              class="settings-option-button__icon"
+            >
+              add-image.svg
             </svg>
           </button>
         </div>
@@ -108,20 +235,109 @@ Object {
       data-testid="export"
     >
       <div
+        style="position: absolute; left: -9999px; top: -9999px;"
+      >
+        <div>
+          <div
+            class="print-view__container"
+          >
+            <div
+              class="print-view__button-container"
+            >
+              <button
+                aria-label="Yazdır"
+                class="print-view__button"
+              >
+                <svg
+                  class="print-view__icon-print"
+                >
+                  printer.svg
+                </svg>
+              </button>
+              <button
+                aria-label="Kapat"
+                class="print-view__button"
+              >
+                <svg
+                  class="print-view__icon-close"
+                >
+                  close.svg
+                </svg>
+              </button>
+            </div>
+            <div
+              class="print-view"
+            >
+              <div
+                class="print-view__title-wrapper"
+              >
+                <img
+                  alt="Aksa"
+                  class="aksa-logo aksa-logo--desktop"
+                  src="/aksa-logo-2.svg"
+                />
+                <img
+                  alt="Aksa"
+                  class="aksa-logo aksa-logo--mobile"
+                  src="/aksa-logo-2.svg"
+                />
+                <h1
+                  class="print-view__title-text"
+                >
+                  Aksa
+                </h1>
+                <div
+                  class="print-view__title-info"
+                >
+                  <p>
+                    26.03.2026, 14:24
+                  </p>
+                  <p>
+                    undefined Katılımcılar
+                  </p>
+                </div>
+              </div>
+              <div
+                class="print-view__column-list"
+              />
+              <div
+                class="print-view__footer-container"
+              >
+                <p>
+                  Oluşturulma tarihi
+                   
+                  <a
+                    href="http://localhost"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Aksa
+                  </a>
+                </p>
+                <p>
+                  ♥️ ile sunan
+                   Kazancı Holding
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
         class="settings-dialog__header"
       >
         <h2
           class="settings-dialog__header-text"
         >
            
-          Export board
+          Panoyu dışa aktar
         </h2>
       </div>
       <div
         class="settings-dialog__group"
       >
         <button
-          aria-label="Export as JSON"
+          aria-label="JSON olarak dışa aktar"
           class="settings-option-button settings-option-button--reverse-order"
           data-testid="export-json"
           type="button"
@@ -129,7 +345,7 @@ Object {
           <span
             class="settings-option-button__label"
           >
-            Export as JSON
+            JSON olarak dışa aktar
           </span>
           <svg
             class="settings-option-button__icon"
@@ -141,7 +357,7 @@ Object {
           class="settings-dialog__separator"
         />
         <button
-          aria-label="Export as CSV"
+          aria-label="CSV olarak dışa aktar"
           class="settings-option-button settings-option-button--reverse-order"
           data-testid="export-csv"
           type="button"
@@ -149,7 +365,7 @@ Object {
           <span
             class="settings-option-button__label"
           >
-            Export as CSV
+            CSV olarak dışa aktar
           </span>
           <svg
             class="settings-option-button__icon"
@@ -161,14 +377,14 @@ Object {
           class="settings-dialog__separator"
         />
         <button
-          aria-label="Export PDF"
+          aria-label="PDF dışa aktar"
           class="settings-option-button settings-option-button--reverse-order export-board__button-print-view"
           type="button"
         >
           <span
             class="settings-option-button__label"
           >
-            Export PDF
+            PDF dışa aktar
           </span>
           <svg
             class="settings-option-button__icon"
@@ -180,7 +396,7 @@ Object {
           class="settings-dialog__separator"
         />
         <button
-          aria-label="Copy Markdown to Clipboard"
+          aria-label="Markdown'ı panoya kopyala"
           class="settings-option-button settings-option-button--reverse-order"
           data-testid="export-markdown"
           type="button"
@@ -188,12 +404,50 @@ Object {
           <span
             class="settings-option-button__label"
           >
-            Copy Markdown to Clipboard
+            Markdown'ı panoya kopyala
           </span>
           <svg
             class="settings-option-button__icon"
           >
             duplicate.svg
+          </svg>
+        </button>
+        <hr
+          class="settings-dialog__separator"
+        />
+        <button
+          class="settings-option-button settings-option-button--reverse-order"
+          data-testid="export-png"
+          type="button"
+        >
+          <span
+            class="settings-option-button__label"
+          >
+            PNG olarak dışa aktar
+          </span>
+          <svg
+            class="settings-option-button__icon"
+          >
+            add-image.svg
+          </svg>
+        </button>
+        <hr
+          class="settings-dialog__separator"
+        />
+        <button
+          class="settings-option-button settings-option-button--reverse-order"
+          data-testid="export-jpg"
+          type="button"
+        >
+          <span
+            class="settings-option-button__label"
+          >
+            JPG olarak dışa aktar
+          </span>
+          <svg
+            class="settings-option-button__icon"
+          >
+            add-image.svg
           </svg>
         </button>
       </div>

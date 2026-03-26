@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Aksa">
-  <rect width="256" height="128" fill="#005EB8" />
-  <rect y="128" width="256" height="128" fill="#97D700" />
-  <rect x="48" y="72" width="160" height="112" rx="10" fill="#111111" />
-  <text x="68" y="150" fill="#FFFFFF" font-size="64" font-family="Arial Black, Arial, sans-serif" letter-spacing="2">aksa</text>
-</svg>

@@ -1,8 +1,8 @@
-http://retroinsight.aksa.com.tr {
-	redir https://retroinsight.aksa.com.tr{uri} permanent
+http://retroinsight.aksa.com {
+	redir https://retroinsight.aksa.com{uri} permanent
 }
 
-retroinsight.aksa.com.tr {
+retroinsight.aksa.com {
 	tls /etc/caddy/certs/cert.pem /etc/caddy/certs/key.pem
 
 	log {

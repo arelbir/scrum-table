@@ -129,9 +129,9 @@ services:
       AKSA_LISTEN_PORT: "${AKSA_LISTEN_PORT:-8080}"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - ../../ssl/_.aksa.com_2027/linux/wildcard_aksa_com.crt:/etc/caddy/certs/cert.pem:ro
-      - ../../ssl/_.aksa.com_2027/linux/CACert.crt:/etc/caddy/certs/ca.pem:ro
-      - ../../ssl/_.aksa.com_2027/linux/wildcard_aksa_com.key:/etc/caddy/certs/key.pem:ro
+      - ../../ssl/_.aksa.com.tr_2026/_.aksa.com.tr/linux/wildcard_aksa_com_tr.crt:/etc/caddy/certs/cert.pem:ro
+      - ../../ssl/_.aksa.com.tr_2026/_.aksa.com.tr/linux/CACert.crt:/etc/caddy/certs/ca.pem:ro
+      - ../../ssl/_.aksa.com.tr_2026/_.aksa.com.tr/linux/wildcard_aksa_com_tr.key:/etc/caddy/certs/key.pem:ro
     ports:
       - "80:80"
       - "443:443"

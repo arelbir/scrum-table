@@ -1,26 +1,26 @@
-# Backend Architecture
+# Backend Mimarisi
 
-In the following diagram the packages of the backend and how they interact with each other are shown.
+Aşağıdaki diyagramda backend paketleri ve birbirleriyle nasıl etkileşime girdikleri gösterilmektedir.
 
 ```mermaid
 %%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
 flowchart TB
     api[API]
-    boards[Boards]
-    boardTemplates[Board Templates]
-    boardReactions[Board Reactions]
-    columns[Columns]
-    columnTemplates[Column Templates]
-    notes[Notes]
-    votings[Votings]
-    sessions[Sessions]
-    sessionRequests[Session Requests]
-    users[Users]
-    reactions[Reactions]
-    health[Health]
-    feedback[Feedback]
+    boards[Panolar]
+    boardTemplates[Pano Şablonları]
+    boardReactions[Pano Tepkileri]
+    columns[Sütunlar]
+    columnTemplates[Sütun Şablonları]
+    notes[Notlar]
+    votings[Oylamalar]
+    sessions[Oturumlar]
+    sessionRequests[Oturum İstekleri]
+    users[Kullanıcılar]
+    reactions[Tepkiler]
+    health[Sağlık]
+    feedback[Geri Bildirim]
 
-    database@{ shape: cyl, label: "Database" }
+    database@{ shape: cyl, label: "Veritabanı" }
     nats@{ shape: das, label: "Nats" }
 
     api --> boards
@@ -70,28 +70,25 @@ flowchart TB
     health --> nats
 ```
 
-## Package structure
+## Paket Yapısı
 
-A general package structure is shown in the diagram below.
+Genel paket yapısı aşağıdaki diyagramda gösterilmektedir.
 
 ```mermaid
 flowchart TB
-    subgraph "Package"
+    subgraph "Paket"
         api[API]
-        service[Service]
-        databaseAccess[Database Access]
+        service[Servis]
+        databaseAccess[Veritabanı Erişimi]
         api --> service
         service --> databaseAccess
     end
 
-    database@{ shape: cyl, label: "Database" }
+    database@{ shape: cyl, label: "Veritabanı" }
     nats@{ shape: das, label: "Nats" }
 
     service --> nats
     databaseAccess --> database
 ```
 
-Each package has at least an api and a service.
-If the service needs access to the database, a database access is created.
-If the service needs access to a database, which is not under the control of that service, the corresponding service is injected.
-For access to the message broker, the `realtime` package is used.
+Her paketin en az bir API ve bir servisi vardır. Servisin veritabanına erişmesi gerekiyorsa bir veritabanı erişim katmanı oluşturulur. Servisin kendi kontrolünde olmayan bir veritabanına erişmesi gerekiyorsa ilgili servis enjekte edilir. Mesaj aracısına erişim için `realtime` paketi kullanılır.

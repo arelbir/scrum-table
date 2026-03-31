@@ -2,10 +2,8 @@ http://retroinsight.aksa.com.tr {
 	redir https://retroinsight.aksa.com.tr{uri} permanent
 }
 
-https://retroinsight.aksa.com.tr {
-	tls /etc/caddy/certs/cert.pem /etc/caddy/certs/key.pem {
-		protocols tls1.2 tls1.3
-	}
+retroinsight.aksa.com.tr {
+	tls /etc/caddy/certs/cert.pem /etc/caddy/certs/key.pem
 
 	log {
 		output stdout

@@ -1,4 +1,6 @@
 retroinsight.aksa.com.tr {
+	tls /etc/caddy/certs/cert.pem /etc/caddy/certs/key.pem
+
 	log {
 		output stdout
 	}

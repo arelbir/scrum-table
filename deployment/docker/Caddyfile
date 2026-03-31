@@ -3,7 +3,9 @@ http://retroinsight.aksa.com.tr {
 }
 
 https://retroinsight.aksa.com.tr {
-	tls /etc/caddy/certs/cert.pem /etc/caddy/certs/key.pem
+	tls /etc/caddy/certs/cert.pem /etc/caddy/certs/key.pem {
+		protocols tls1.2 tls1.3
+	}
 
 	log {
 		output stdout

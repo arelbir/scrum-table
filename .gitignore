@@ -52,3 +52,6 @@ deployment/**/.env
 
 # script output
 scripts/out
+
+# SSL sertifikaları
+ssl/

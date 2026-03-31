@@ -130,7 +130,6 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ../../ssl/_.aksa.com.tr_2026/_.aksa.com.tr/linux/wildcard_aksa_com_tr.crt:/etc/caddy/certs/cert.pem:ro
-      - ../../ssl/_.aksa.com.tr_2026/_.aksa.com.tr/linux/CACert.crt:/etc/caddy/certs/ca.pem:ro
       - ../../ssl/_.aksa.com.tr_2026/_.aksa.com.tr/linux/wildcard_aksa_com_tr.key:/etc/caddy/certs/key.pem:ro
     ports:
       - "80:80"
